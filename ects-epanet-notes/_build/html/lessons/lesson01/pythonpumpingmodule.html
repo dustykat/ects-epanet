@@ -1,0 +1,1328 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.6 Pumps &#8212; Hydraulic Network Simulation with EPANET and Python</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2 EPANET Introduction" href="../lesson02/epanet-classic.html" />
+    <link rel="prev" title="1.5 The pipenet module" href="pythonhydraulicsmodule.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Hydraulic Network Simulation with EPANET and Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="introduction.html">
+   1 Introduction
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="hydraulic-networks.html">
+     1.2 Network Hydraulics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pythonjupyter.html">
+     1.3 Python/Jupyter Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pythonhydraulics.html">
+     1.4 Hydraulics in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pythonhydraulicsmodule.html">
+     1.5 The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pipenet
+      </span>
+     </code>
+     module
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.6 Pumps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lesson02/epanet-classic.html">
+   2 EPANET Introduction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson02/epanet-gui.html">
+     2.1 EPANET Examples using the GUI
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson02/epanet-eps.html">
+     2.2 Extended period simulation (EPS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson02/epanet-watq.html">
+     2.3 Water Quality Simulation in EPANET
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson02/epanet-toolkit.html">
+     2.4 EPANET Programmers Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson02/epanet-API.html">
+     2.5 EPANET example using the Toolkit
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lesson03/epanet-rules.html">
+   3 EPANET Control Rules
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson03/epanet-rulesGUI.html">
+     3.2 EPANET example using
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson03/epanet-rulesCLI.html">
+     3.3 EPANET example using the Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson03/epanet-rulesAPI.html">
+     3.4 EPANET example using the Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson03/epanet-sensors.html">
+     3.5 EPANET Sensors integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lesson04/epanet-future-CandC1.html">
+   4 Command and Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson04/epanet-future-CandC2.html">
+     4.2 CandC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson04/epanet-future-CandC3.html">
+     4.3 Unsolved Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson04/epanet-future.html">
+     4.4 Unsolved Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson04/epanet-exam.html">
+     4.5 EPANET Exam
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/lessons/lesson01/pythonpumpingmodule.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flessons/lesson01/pythonpumpingmodule.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lessons/lesson01/pythonpumpingmodule.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#purpose">
+   Purpose
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-4">
+   Example 4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pipenet-pumps-py-module-source">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     pipenet_pumps.py
+    </span>
+   </code>
+   module source
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#readings">
+   Readings
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="pumps">
+<h1>1.6 Pumps<a class="headerlink" href="#pumps" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p>This is the last of the python native sections to illustrate hown pumps are managed in our solver.  After this is done, we will focus on EPANET as the computation engine, but have our homebrew framework to examine from an algorithmic aspect if necessary.</p>
+<p>Herein we will simply add a few bits of code to the simulator, modify the input file structure then will have a homebrew tool that mimics most features of professional hydraulics software (except the error checking).   As before we will start with an example, beat our code to solve the example, then generailze.</p>
+<p>We will name the module <code class="docutils literal notranslate"><span class="pre">pipenet-pumps.py</span></code></p>
+</div>
+<div class="section" id="example-4">
+<h2>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h2>
+<p>Build a script that includes a pump that supplies the network at the upper left corner
+and determine the flow distribution in <a class="reference internal" href="#netwiddapump"><span class="std std-numref">Fig. 14</span></a>.</p>
+<div class="figure align-default" id="netwiddapump">
+<a class="reference internal image-reference" href="../../_images/netwiddapump.png"><img alt="../../_images/netwiddapump.png" src="../../_images/netwiddapump.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Pipe network for Example 4</span><a class="headerlink" href="#netwiddapump" title="Permalink to this image">¶</a></p>
+</div>
+<p><a class="reference internal" href="#netwiddapump"><span class="std std-numref">Fig. 14</span></a> is a pipe network for with supply and demands identified. Pipe
+lengths (in feet) and diameters (in feet) are also depicted.  The supply to the upper left corner node is through a pump with the following characteristic curve</p>
+<div class="math notranslate nohighlight">
+\[h_p = 318.11 − 0.25 × Q^{1.86}\]</div>
+<p>The pump supplies from a reservoir with a pool elevation (total head in reservoir) of 0.0 feet. The elevation of each node is 200 feet.</p>
+<p>Our simulator only requires a few subtle changes; link 11 is the pump that joins the specified grade node (the reservoir) into the network at node 1, node 8 controls the system as it is the only demand in this example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#input file generator </span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;1</span>
+<span class="s2">8</span>
+<span class="s2">11</span>
+<span class="s2">200 200 200 200 200 200 200 200</span>
+<span class="s2">1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 </span>
+<span class="s2">300 300 150 150 300 150 300 150 300 300 30</span>
+<span class="s2">0.00001 0.00001 0.00001 0.00001 0.00001 0.00001 0.00001 0.00001 0.00001 0.00001 0.00001</span>
+<span class="s2">0.000011</span>
+<span class="s2">1 1 1 1 1 1 1 1 1 1 1</span>
+<span class="s2">-1 0 -1 0 0 0 0 0 0 0 1</span>
+<span class="s2">1 -1 0 -1 0 0 0 0 0 0 0</span>
+<span class="s2">0 1 0 0 -1 0 0 0 0 0 0</span>
+<span class="s2">0 0 1 0 0 -1 -1 0 0 0 0</span>
+<span class="s2">0 0 0 1 0 0 1 -1 0 0 0</span>
+<span class="s2">0 0 0 0 0 1 0 0 -1 0 0</span>
+<span class="s2">0 0 0 0 0 0 0 1 1 -1 0</span>
+<span class="s2">0 0 0 0 1 0 0 0 0 1 0</span>
+<span class="s2">0 0 0 0 0 0 0 10 0 0 0 0 0 0 0 0 0 0 0</span>
+<span class="s2">11 318.11 0.25 1.86&quot;&quot;&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;L16-E1.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now will modify the module, first run it with an older file, with zero pumps</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A simple script to generate L15-E3.txt with zero pump row</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;0</span>
+<span class="s2">6</span>
+<span class="s2">8</span>
+<span class="s2">170.0 180.0 165.0 155.0 150.0 145.0</span>
+<span class="s2">0.83 0.83 1.00 2.00 0.83 1.50 0.83 1.00</span>
+<span class="s2">4000 6000 6000 6000 7000 3000 5000 300.0</span>
+<span class="s2">0.00001 0.00001 0.00001 0.00001 0.00001 0.00001 0.00001 0.00001</span>
+<span class="s2">0.000011</span>
+<span class="s2">1 1 1 1 1 1 1 1 1 1 1 1</span>
+<span class="s2">1   0 -1  0  0  0  0  0</span>
+<span class="s2">-1 -1  0 -1  0  0  0  1</span>
+<span class="s2">0   1  0  0 -1  0  0  0</span>
+<span class="s2">0   0  1  0  0 -1  0  0</span>
+<span class="s2">0   0  0  1  0  1  1  0</span>
+<span class="s2">0   0  0  0  1  0 -1  0</span>
+<span class="s2">1.114 1.114 1.114 3.347 2.228 3.347 0  0  0  0  0  0  0  -315&quot;&quot;&quot;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;L15-E3.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Now import the simulation module </span>
+<span class="kn">import</span> <span class="nn">pipenet_pumps</span>
+<span class="c1"># Now run the simulation </span>
+<span class="n">pipenet_pumps</span><span class="o">.</span><span class="n">pipenet_pumps</span><span class="p">(</span><span class="s1">&#39;L15-E3.txt&#39;</span><span class="p">,</span><span class="s1">&#39;false&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>####ECHO INPUT################
+Input File:  L15-E3.txt
+number of pumps :  0
+number of nodes :  6
+number of pipes :  8
+viscosity       :  1.1e-05
+-----------------------------
+node id: 0 , elevation : 170.0  head : 0.0
+node id: 1 , elevation : 180.0  head : 0.0
+node id: 2 , elevation : 165.0  head : 0.0
+node id: 3 , elevation : 155.0  head : 0.0
+node id: 4 , elevation : 150.0  head : 0.0
+node id: 5 , elevation : 145.0  head : -315.0
+-----------------------------
+pipe id: 0 , diameter :  0.83 , distance :  4000.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 1 , diameter :  0.83 , distance :  6000.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 2 , diameter :  1.0 , distance :  6000.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 3 , diameter :  2.0 , distance :  6000.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 4 , diameter :  0.83 , distance :  7000.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 5 , diameter :  1.5 , distance :  3000.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 6 , diameter :  0.83 , distance :  5000.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 7 , diameter :  1.0 , distance :  300.0 , roughness :  1e-05 , flow  :  1.0
+-----------------------------
+node-arc incidence matrix
+[1.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[-1.0, -1.0, 0.0, -1.0, 0.0, 0.0, 0.0, 1.0]
+[0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0]
+[0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0]
+[0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, 0.0]
+[0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -1.0, 0.0]
+-----------------------------
+###EXIT TYPE###
+Update not changing --exit and report current update
+iteration 13
+#####SIMULATION RESULTS#####
+Results at iteration = : 13
+number of nodes :  6
+number of pipes :  8
+viscosity       :  1.1e-05
+-----------------------------
+node id: 1 , elevation (feet) : 170.0  head (feet) : 296.63  pressure (psi) : 56.6
+node id: 2 , elevation (feet) : 180.0  head (feet) : 302.21  pressure (psi) : 54.63
+node id: 3 , elevation (feet) : 165.0  head (feet) : 278.57  pressure (psi) : 50.76
+node id: 4 , elevation (feet) : 155.0  head (feet) : 296.62  pressure (psi) : 63.3
+node id: 5 , elevation (feet) : 150.0  head (feet) : 298.24  pressure (psi) : 66.26
+node id: 6 , elevation (feet) : 145.0  head (feet) : 271.87  pressure (psi) : 56.71
+-----------------------------
+pipe id: 1 , diameter (feet) :  0.83 , distance (feet) :  4000.0 , friction factor :  0.016 , flow (cfs) :  1.16
+pipe id: 2 , diameter (feet) :  0.83 , distance (feet) :  6000.0 , friction factor :  0.015 , flow (cfs) :  2.05
+pipe id: 3 , diameter (feet) :  1.0 , distance (feet) :  6000.0 , friction factor :  0.038 , flow (cfs) :  0.04
+pipe id: 4 , diameter (feet) :  2.0 , distance (feet) :  6000.0 , friction factor :  0.013 , flow (cfs) :  7.94
+pipe id: 5 , diameter (feet) :  0.83 , distance (feet) :  7000.0 , friction factor :  0.017 , flow (cfs) :  0.94
+pipe id: 6 , diameter (feet) :  1.5 , distance (feet) :  3000.0 , friction factor :  0.015 , flow (cfs) :  -3.3
+pipe id: 7 , diameter (feet) :  0.83 , distance (feet) :  5000.0 , friction factor :  0.014 , flow (cfs) :  -2.41
+pipe id: 8 , diameter (feet) :  1.0 , distance (feet) :  300.0 , friction factor :  0.011 , flow (cfs) :  12.26
+-----------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we identify the changes in the script to make the simulation package.  The requesite modifications are shown below.  The remainder of the script is unchanged. Notice that we now need to include pump count in the input file, and the pump curve for each pump.  The pumps will replace a link in the network, and the naming scheme is same as a pipe same connections.</p>
+<p><strong>Modify the Entry Point Name</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pipenet_pumps</span><span class="p">(</span><span class="n">infilename</span><span class="p">,</span><span class="n">verbose</span><span class="p">):</span> <span class="c1"># pass input file name as a parameter,pass verbose flag as string</span>
+
+    <span class="c1"># hydraulic elements prototype functions</span>
+    <span class="c1"># Jain Friction Factor Function -- Tested OK 23SEP16</span>
+    <span class="kn">import</span> <span class="nn">math</span>   <span class="c1"># This will import math module</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Add a pump curve function</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+    <span class="c1"># Pump Curve factor function</span>
+    <span class="k">def</span> <span class="nf">p_factor</span><span class="p">(</span><span class="n">shutoff</span><span class="p">,</span><span class="n">constant</span><span class="p">,</span><span class="n">exponent</span><span class="p">,</span><span class="n">flow</span><span class="p">):</span>
+        <span class="n">p_factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">shutoff</span><span class="o">/</span><span class="nb">abs</span><span class="p">(</span><span class="n">flow</span><span class="p">))</span> <span class="o">-</span> <span class="n">constant</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">flow</span><span class="o">**</span><span class="p">(</span><span class="n">exponent</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">p_factor</span><span class="p">)</span>
+    
+    <span class="c1"># SolveLinearSystem.py</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Allocate memory for pumps</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+    <span class="n">rhs_true</span> <span class="o">=</span>  <span class="p">[]</span> <span class="c1"># null list for nodal demands</span>
+    <span class="n">pumps</span>    <span class="o">=</span>  <span class="p">[]</span> <span class="c1"># null list for pumps</span>
+    <span class="n">tempvect</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># null list for reading from external file, then recasting into one of the above lists</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Read in pump information</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+    <span class="n">npumps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="n">nnodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="n">npipes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="c1"># read elevation vector </span>
+
+          <span class="o">.</span>
+          <span class="o">.</span>
+          <span class="o">.</span>
+
+    <span class="c1"># read demands and heads at FGNs (i.e. the rhs)</span>
+    <span class="n">tempvect</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">rhs_true</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tempvect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">tempvect</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># reset vector  </span>
+    <span class="c1"># read the pumps list</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># then read each row</span>
+        <span class="n">pumps</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="c1">#print(pumps)</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Echo the pump inputs</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;link ID:&#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;, shutoff head: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;, constant: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="s1">&#39;, exponent: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Build the pump factor array for unit flow in the pump</strong></p>
+<p>This is done in the outer iteration loop</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">):</span> <span class="c1"># iteration outer loop</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">):</span>
+            <span class="n">addedhead</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">p_factor</span><span class="p">(</span><span class="n">pumps</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">pumps</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="n">pumps</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span><span class="n">flowguess</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pumps</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+            
+</pre></div>
+</div>
+<p><strong>Modify the Energy Equations part of the matrix</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         
+        <span class="c1"># build lower left partition of the matrix</span>
+        <span class="n">istart</span> <span class="o">=</span> <span class="n">nnodes</span>
+        <span class="n">iend</span> <span class="o">=</span> <span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span>
+        <span class="n">jstart</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">jend</span> <span class="o">=</span> <span class="n">npipes</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">istart</span><span class="p">,</span><span class="n">iend</span> <span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">jstart</span><span class="p">,</span><span class="n">jend</span> <span class="p">):</span>
+        <span class="c1">#        print(&#39;i =&#39;,i,&#39;j=&#39;,j)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">istart</span><span class="p">)</span> <span class="o">==</span> <span class="n">j</span> <span class="p">:</span>
+        <span class="c1">#            print(&#39;i =&#39;,i,&#39;j=&#39;,j)</span>
+                    <span class="n">augmentedMat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">lossfactor</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.0</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">npumps</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+                        <span class="k">for</span> <span class="n">ipump</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">):</span>
+                            <span class="k">if</span><span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="p">(</span><span class="n">pumps</span><span class="p">[</span><span class="n">ipump</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">):</span>
+                                <span class="n">augmentedMat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">addedhead</span><span class="p">[</span><span class="n">ipump</span><span class="p">]</span> 
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Modify result report</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Report Results</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#####SIMULATION RESULTS#####</span><span class="se">\n</span><span class="s2">Results at iteration = :&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;link ID:&#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;, shutoff head: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;, constant: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="s1">&#39;, exponent: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span><span class="s1">&#39; added head:&#39;</span><span class="p">,</span><span class="n">addedhead</span><span class="p">[</span><span class="n">irow</span><span class="p">]</span><span class="o">*</span><span class="n">flowguess</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+         <span class="o">.</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now import the module </span>
+<span class="kn">import</span> <span class="nn">pipenet_pumps</span>
+<span class="c1"># Now run the simulation </span>
+<span class="n">pipenet_pumps</span><span class="o">.</span><span class="n">pipenet_pumps</span><span class="p">(</span><span class="s1">&#39;L16-E1.txt&#39;</span><span class="p">,</span><span class="s1">&#39;false&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>####ECHO INPUT################
+Input File:  L16-E1.txt
+number of pumps :  1
+number of nodes :  8
+number of pipes :  11
+viscosity       :  1.1e-05
+-----------------------------
+node id: 0 , elevation : 200.0  head : 0.0
+node id: 1 , elevation : 200.0  head : 0.0
+node id: 2 , elevation : 200.0  head : 0.0
+node id: 3 , elevation : 200.0  head : 0.0
+node id: 4 , elevation : 200.0  head : 0.0
+node id: 5 , elevation : 200.0  head : 0.0
+node id: 6 , elevation : 200.0  head : 0.0
+node id: 7 , elevation : 200.0  head : 0.0
+-----------------------------
+pipe id: 0 , diameter :  1.0 , distance :  300.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 1 , diameter :  1.0 , distance :  300.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 2 , diameter :  1.0 , distance :  150.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 3 , diameter :  1.0 , distance :  150.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 4 , diameter :  1.0 , distance :  300.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 5 , diameter :  1.0 , distance :  150.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 6 , diameter :  1.0 , distance :  300.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 7 , diameter :  1.0 , distance :  150.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 8 , diameter :  1.0 , distance :  300.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 9 , diameter :  1.0 , distance :  300.0 , roughness :  1e-05 , flow  :  1.0
+pipe id: 10 , diameter :  1.0 , distance :  30.0 , roughness :  1e-05 , flow  :  1.0
+-----------------------------
+node-arc incidence matrix
+[-1.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+[1.0, -1.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+[0.0, 0.0, 1.0, 0.0, 0.0, -1.0, -1.0, 0.0, 0.0, 0.0, 0.0]
+[0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, -1.0, 0.0, 0.0, 0.0]
+[0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 0.0]
+[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, -1.0, 0.0]
+[0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+-----------------------------
+pump id: 11.0 , shutoff head:  318.11 , constant:  0.25 , exponent:  1.86
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>###EXIT TYPE###
+Gradient near zero --exit and report current update
+iteration 12
+#####SIMULATION RESULTS#####
+Results at iteration = : 12
+number of nodes :  8
+number of pipes :  11
+viscosity       :  1.1e-05
+-----------------------------
+node id: 1 , elevation (feet) : 200.0  head (feet) : 300.0  pressure (psi) : 44.7
+node id: 2 , elevation (feet) : 200.0  head (feet) : 297.87  pressure (psi) : 43.75
+node id: 3 , elevation (feet) : 200.0  head (feet) : 296.06  pressure (psi) : 42.93
+node id: 4 , elevation (feet) : 200.0  head (feet) : 298.61  pressure (psi) : 44.08
+node id: 5 , elevation (feet) : 200.0  head (feet) : 297.86  pressure (psi) : 43.74
+node id: 6 , elevation (feet) : 200.0  head (feet) : 298.2  pressure (psi) : 43.89
+node id: 7 , elevation (feet) : 200.0  head (feet) : 297.38  pressure (psi) : 43.53
+node id: 8 , elevation (feet) : 200.0  head (feet) : 294.24  pressure (psi) : 42.12
+-----------------------------
+pipe id: 1 , diameter (feet) :  1.0 , distance (feet) :  300.0 , friction factor :  0.013 , flow (cfs) :  4.64
+pipe id: 2 , diameter (feet) :  1.0 , distance (feet) :  300.0 , friction factor :  0.013 , flow (cfs) :  4.26
+pipe id: 3 , diameter (feet) :  1.0 , distance (feet) :  150.0 , friction factor :  0.013 , flow (cfs) :  5.36
+pipe id: 4 , diameter (feet) :  1.0 , distance (feet) :  150.0 , friction factor :  0.021 , flow (cfs) :  0.38
+pipe id: 5 , diameter (feet) :  1.0 , distance (feet) :  300.0 , friction factor :  0.013 , flow (cfs) :  4.26
+pipe id: 6 , diameter (feet) :  1.0 , distance (feet) :  150.0 , friction factor :  0.014 , flow (cfs) :  2.75
+pipe id: 7 , diameter (feet) :  1.0 , distance (feet) :  300.0 , friction factor :  0.014 , flow (cfs) :  2.62
+pipe id: 8 , diameter (feet) :  1.0 , distance (feet) :  150.0 , friction factor :  0.014 , flow (cfs) :  2.99
+pipe id: 9 , diameter (feet) :  1.0 , distance (feet) :  300.0 , friction factor :  0.014 , flow (cfs) :  2.75
+pipe id: 10 , diameter (feet) :  1.0 , distance (feet) :  300.0 , friction factor :  0.013 , flow (cfs) :  5.74
+pipe id: 11 , diameter (feet) :  1.0 , distance (feet) :  30.0 , friction factor :  0.012 , flow (cfs) :  10.0
+-----------------------------
+pump id: 11.0 , shutoff head:  318.11 , constant:  0.25 , exponent:  1.86  added head: 300.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have addressed pumps, we have a rudimentary tool that can help solve steady pipeline network problems.  The full source warts and all is listed below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The script still needs some fixes, because pumps are used to overwrite links, information for both are provided; hence there are duplicate entries in the pipes array - its easier for homebrew to accept this structure, professional code would build in logic toidentify the overwrite and at least supress it from the output.  This is as far with this script as we go, and will use it for a few examples and compare to EPANET results to convince ourselves we have reverse-engineered EPANET (and hence have a good working understanding of whats going on in the program), then will explore the EPANET toolbox as a replacement for <code class="docutils literal notranslate"><span class="pre">pipenet-pumps</span></code> to programmatically access EPANET.</p>
+</div>
+</div>
+<div class="section" id="pipenet-pumps-py-module-source">
+<h2><code class="docutils literal notranslate"><span class="pre">pipenet_pumps.py</span></code> module source<a class="headerlink" href="#pipenet-pumps-py-module-source" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pipenet_pumps</span><span class="p">(</span><span class="n">infilename</span><span class="p">,</span><span class="n">verbose</span><span class="p">):</span> <span class="c1"># pass input file name as a parameter,pass verbose flag as string</span>
+
+    <span class="c1"># hydraulic elements prototype functions</span>
+    <span class="c1"># Jain Friction Factor Function -- Tested OK 23SEP16</span>
+    <span class="kn">import</span> <span class="nn">math</span>   <span class="c1"># This will import math module</span>
+
+    <span class="k">def</span> <span class="nf">friction_factor</span><span class="p">(</span><span class="n">roughness</span><span class="p">,</span><span class="n">diameter</span><span class="p">,</span><span class="n">reynolds</span><span class="p">):</span>
+        <span class="n">temp1</span> <span class="o">=</span> <span class="n">roughness</span><span class="o">/</span><span class="p">(</span><span class="mf">3.7</span><span class="o">*</span><span class="n">diameter</span><span class="p">)</span>
+        <span class="n">temp2</span> <span class="o">=</span> <span class="mf">5.74</span><span class="o">/</span><span class="p">(</span><span class="n">reynolds</span><span class="o">**</span><span class="p">(</span><span class="mf">0.9</span><span class="p">))</span>
+        <span class="n">temp3</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">temp1</span><span class="o">+</span><span class="n">temp2</span><span class="p">)</span>
+        <span class="n">temp3</span> <span class="o">=</span> <span class="n">temp3</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">friction_factor</span> <span class="o">=</span> <span class="mf">0.25</span><span class="o">/</span><span class="n">temp3</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">friction_factor</span><span class="p">)</span>
+
+    <span class="c1"># Velocity Function</span>
+    <span class="k">def</span> <span class="nf">velocity</span><span class="p">(</span><span class="n">diameter</span><span class="p">,</span><span class="n">discharge</span><span class="p">):</span>
+        <span class="n">velocity</span><span class="o">=</span><span class="n">discharge</span><span class="o">/</span><span class="p">(</span><span class="mf">0.25</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">diameter</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+
+    <span class="c1"># Reynolds Number Function  </span>
+    <span class="k">def</span> <span class="nf">reynolds_number</span><span class="p">(</span><span class="n">velocity</span><span class="p">,</span><span class="n">diameter</span><span class="p">,</span><span class="n">mu</span><span class="p">):</span>
+        <span class="n">reynolds_number</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span><span class="o">*</span><span class="n">diameter</span><span class="o">/</span><span class="n">mu</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">reynolds_number</span><span class="p">)</span>
+
+    <span class="c1"># Geometric factor function</span>
+    <span class="k">def</span> <span class="nf">kk_factor</span><span class="p">(</span><span class="n">howlong</span><span class="p">,</span><span class="n">diameter</span><span class="p">,</span><span class="n">gravity</span><span class="p">):</span>
+        <span class="n">kk_factor</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="o">*</span><span class="n">howlong</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">2.0</span><span class="o">*</span><span class="n">gravity</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">diameter</span><span class="o">**</span><span class="mi">5</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">kk_factor</span><span class="p">)</span>
+    
+    <span class="c1"># Pump Curve factor function</span>
+    <span class="k">def</span> <span class="nf">p_factor</span><span class="p">(</span><span class="n">shutoff</span><span class="p">,</span><span class="n">constant</span><span class="p">,</span><span class="n">exponent</span><span class="p">,</span><span class="n">flow</span><span class="p">):</span>
+        <span class="n">p_factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">shutoff</span><span class="o">/</span><span class="nb">abs</span><span class="p">(</span><span class="n">flow</span><span class="p">))</span> <span class="o">-</span> <span class="n">constant</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">flow</span><span class="o">**</span><span class="p">(</span><span class="n">exponent</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">p_factor</span><span class="p">)</span>
+    
+    <span class="c1"># SolveLinearSystem.py</span>
+    <span class="c1"># Solve Ax = b for x by Gaussian elimination with back substitution.</span>
+    <span class="c1"># Method returns solution as a list</span>
+    <span class="c1"># Method preserves A</span>
+    <span class="c1">##########</span>
+    <span class="k">def</span> <span class="nf">linearsolver</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="c1">#    M = A  #this is object to object equivalence</span>
+    <span class="c1"># copy A into M element by element - to operate on M without destroying A</span>
+        <span class="n">M</span><span class="o">=</span><span class="p">[[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span><span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">M</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span><span class="o">=</span><span class="n">A</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="n">jcol</span><span class="p">]</span>
+
+    <span class="c1">#</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">M</span><span class="p">:</span>
+         <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+         <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+           <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">])</span> <span class="o">&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">k</span><span class="p">]):</span>
+              <span class="n">M</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">M</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+           <span class="k">else</span><span class="p">:</span>
+              <span class="k">pass</span>
+
+         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+             <span class="n">q</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">k</span><span class="p">])</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+             <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">M</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">m</span><span class="p">]</span> <span class="o">-=</span>  <span class="n">q</span> <span class="o">*</span> <span class="n">M</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">m</span><span class="p">]</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+
+        <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span><span class="p">])</span><span class="o">/</span><span class="n">M</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+          <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+          <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+              <span class="n">z</span> <span class="o">=</span> <span class="n">z</span>  <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+          <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1">#    print (x)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="c1">#</span>
+
+    <span class="k">def</span> <span class="nf">writeM</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">ir</span><span class="p">,</span><span class="n">jc</span><span class="p">,</span><span class="n">label</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;------&quot;</span><span class="p">,</span><span class="n">label</span><span class="p">,</span><span class="s2">&quot;------&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ir</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">jc</span><span class="p">])</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">writeV</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="n">ir</span><span class="p">,</span><span class="n">label</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;------&quot;</span><span class="p">,</span><span class="n">label</span><span class="p">,</span><span class="s2">&quot;------&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ir</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">matrixmatrixmult</span><span class="p">(</span><span class="n">amatrix</span><span class="p">,</span><span class="n">bmatrix</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="n">colNumA</span><span class="p">,</span><span class="n">rowNumB</span><span class="p">,</span><span class="n">colNumB</span><span class="p">):</span>
+        <span class="n">AB</span> <span class="o">=</span><span class="p">[[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">colNumB</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">colNumB</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">colNumA</span><span class="p">):</span>
+                    <span class="n">AB</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">AB</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">amatrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">bmatrix</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">AB</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">matrixvectormult</span><span class="p">(</span><span class="n">amatrix</span><span class="p">,</span><span class="n">xvector</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="n">colNumA</span><span class="p">):</span>
+        <span class="n">bvector</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">colNumA</span><span class="p">):</span>
+                    <span class="n">bvector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">bvector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">amatrix</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="n">xvector</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">bvector</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">vectoradd</span><span class="p">(</span><span class="n">avector</span><span class="p">,</span><span class="n">bvector</span><span class="p">,</span><span class="n">length</span><span class="p">):</span>
+        <span class="n">cvector</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+            <span class="n">cvector</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">bvector</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">cvector</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">vectorsub</span><span class="p">(</span><span class="n">avector</span><span class="p">,</span><span class="n">bvector</span><span class="p">,</span><span class="n">length</span><span class="p">):</span>
+        <span class="n">cvector</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+            <span class="n">cvector</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">bvector</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">cvector</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">vdotv</span><span class="p">(</span><span class="n">avector</span><span class="p">,</span><span class="n">bvector</span><span class="p">,</span><span class="n">length</span><span class="p">):</span>
+        <span class="n">adotb</span><span class="o">=</span><span class="mf">0.0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
+            <span class="n">adotb</span><span class="o">=</span><span class="n">adotb</span><span class="o">+</span><span class="n">avector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">bvector</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">adotb</span><span class="p">)</span>    
+    
+    
+    <span class="c1">########## Initial Memory Allocations ###############</span>
+    <span class="n">bvector</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">rowNumA</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">colNumA</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">rowNumB</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">#    verbose = &#39;false&#39; # set to true for in-class demonstration</span>
+    <span class="c1">#############################################</span>
+
+    <span class="n">elevation</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># null list node elevations</span>
+    <span class="n">diameter</span> <span class="o">=</span>  <span class="p">[]</span> <span class="c1"># null list pipe diameters</span>
+    <span class="n">distance</span> <span class="o">=</span>  <span class="p">[]</span> <span class="c1"># null list pipe lengths</span>
+    <span class="n">roughness</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># null list pipe roughness</span>
+    <span class="n">flowguess</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># null list pipe flow rates</span>
+    <span class="n">nodearcs</span> <span class="o">=</span>  <span class="p">[]</span> <span class="c1"># node-arc incidence matrix</span>
+    <span class="n">rhs_true</span> <span class="o">=</span>  <span class="p">[]</span> <span class="c1"># null list for nodal demands</span>
+    <span class="n">pumps</span>    <span class="o">=</span>  <span class="p">[]</span> <span class="c1"># null list for pumps</span>
+    <span class="n">tempvect</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># null list for reading from external file, then recasting into one of the above lists</span>
+
+    <span class="c1">##############################################</span>
+    <span class="c1"># connect and read file for Pipeline Network #</span>
+    <span class="c1">##############################################</span>
+    <span class="n">afile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">infilename</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+    <span class="n">npumps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="n">nnodes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="n">npipes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="c1"># read elevation vector</span>
+    <span class="n">tempvect</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">elevation</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tempvect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">tempvect</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># reset vector</span>
+    <span class="c1"># read diameter vector</span>
+    <span class="n">tempvect</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">diameter</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tempvect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">tempvect</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># reset vector</span>
+    <span class="c1"># read length vector</span>
+    <span class="n">tempvect</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">distance</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tempvect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">tempvect</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># reset vector</span>
+    <span class="c1"># read roughness vector</span>
+    <span class="n">tempvect</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">roughness</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tempvect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">tempvect</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># reset vector</span>
+    <span class="c1"># read viscosity (scalar)</span>
+    <span class="n">viscosity</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="c1"># read current flow guess</span>
+    <span class="n">tempvect</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">flowguess</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tempvect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">tempvect</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># reset vector</span>
+    <span class="c1"># read nodearc incidence matrix</span>
+    <span class="c1">## future revisions read directly into augmented matrix, or find way to release nodearc from stack</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># then read each row</span>
+        <span class="n">nodearcs</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="c1"># read demands and heads at FGNs (i.e. the rhs)</span>
+    <span class="n">tempvect</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">rhs_true</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">tempvect</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">tempvect</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># reset vector  </span>
+    <span class="c1"># read the pumps list</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>  <span class="c1"># then read each row</span>
+        <span class="n">pumps</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">afile</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+    <span class="c1">#print(pumps)</span>
+    <span class="c1">######################################</span>
+    <span class="c1"># end file read ,disconnect file     #</span>
+    <span class="c1">######################################</span>
+    <span class="n">afile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1"># Disconnect the file</span>
+
+    <span class="c1">######################################</span>
+    <span class="c1"># echo the input in human readable   #</span>
+    <span class="c1">######################################</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;####ECHO INPUT################</span><span class="se">\n</span><span class="s1">Input File: &#39;</span><span class="p">,</span><span class="n">infilename</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of pumps : &#39;</span><span class="p">,</span><span class="n">npumps</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of nodes : &#39;</span><span class="p">,</span><span class="n">nnodes</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of pipes : &#39;</span><span class="p">,</span><span class="n">npipes</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;viscosity       : &#39;</span><span class="p">,</span><span class="n">viscosity</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;node id:&#39;</span><span class="p">,</span><span class="n">irow</span><span class="p">,</span> <span class="s1">&#39;, elevation :&#39;</span><span class="p">,</span><span class="n">elevation</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="s1">&#39; head :&#39;</span><span class="p">,</span><span class="n">rhs_true</span><span class="p">[</span><span class="n">irow</span><span class="o">+</span><span class="n">npipes</span><span class="p">])</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pipe id:&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39;, diameter : &#39;</span> <span class="p">,</span><span class="n">diameter</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s1">&#39;, distance : &#39;</span><span class="p">,</span><span class="n">distance</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span>
+              <span class="s1">&#39;, roughness : &#39;</span><span class="p">,</span><span class="n">roughness</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s1">&#39;, flow  : &#39;</span><span class="p">,</span><span class="n">flowguess</span><span class="p">[</span><span class="n">jcol</span><span class="p">])</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+    <span class="c1">##for jcol in range(0,nnodes+npipes):</span>
+    <span class="c1">##    print(&#39;irow :&#39;,jcol,&#39; RHS True :&#39;,rhs_true[jcol])</span>
+    <span class="c1">##print (&quot;-----------------------------&quot;)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;node-arc incidence matrix&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">nodearcs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">npipes</span><span class="p">])</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pump id:&#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;, shutoff head: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;, constant: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="s1">&#39;, exponent: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span>
+    <span class="c1"># create augmented matrix</span>
+    <span class="n">colNumA</span> <span class="o">=</span> <span class="n">npipes</span><span class="o">+</span><span class="n">nnodes</span>
+    <span class="n">rowNumA</span> <span class="o">=</span> <span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span>
+    <span class="n">augmentedMat</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># null list to store augmented matrix</span>
+
+    <span class="c1">#######################################################################################</span>
+    <span class="n">augmentedMat</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">colNumA</span><span class="p">)]</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span> <span class="c1">#fill with zeroes</span>
+    <span class="c1">#build upper left partition -- from nodearcs</span>
+    <span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">jc</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">):</span>
+            <span class="n">augmentedMat</span><span class="p">[</span><span class="n">ir</span><span class="p">][</span><span class="n">jc</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodearcs</span><span class="p">[</span><span class="n">ir</span><span class="p">][</span><span class="n">jc</span><span class="p">]</span>
+    <span class="n">istart</span><span class="o">=</span><span class="n">nnodes</span>
+    <span class="n">iend</span><span class="o">=</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span>
+    <span class="n">jstart</span><span class="o">=</span><span class="n">npipes</span>
+    <span class="n">jend</span><span class="o">=</span><span class="n">npipes</span><span class="o">+</span><span class="n">nnodes</span>
+    <span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">istart</span><span class="p">,</span><span class="n">iend</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">jc</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">jstart</span><span class="p">,</span><span class="n">jend</span><span class="p">):</span>
+            <span class="n">augmentedMat</span><span class="p">[</span><span class="n">ir</span><span class="p">][</span><span class="n">jc</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">nodearcs</span><span class="p">[</span><span class="n">jc</span><span class="o">-</span><span class="n">jstart</span><span class="p">][</span><span class="n">ir</span><span class="o">-</span><span class="n">istart</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.0</span>
+    <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;augmented matrix before loss factors&quot;</span><span class="p">)</span>
+        <span class="n">writeM</span><span class="p">(</span><span class="n">augmentedMat</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="n">colNumA</span><span class="p">,</span><span class="s2">&quot;augmented matrix&quot;</span><span class="p">)</span>
+
+    <span class="c1">#########Simulation Constants and Additional Memory Allocation #######</span>
+    <span class="n">howmany</span><span class="o">=</span><span class="mi">50</span> <span class="c1">#iterations max</span>
+    <span class="n">tolerance1</span> <span class="o">=</span> <span class="mf">1e-24</span>
+    <span class="n">tolerance2</span> <span class="o">=</span> <span class="mf">1e-24</span>
+    <span class="n">velocity_pipe</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npipes</span><span class="p">)]</span>  <span class="c1"># null list velocities</span>
+    <span class="n">reynolds</span>      <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npipes</span><span class="p">)]</span>  <span class="c1"># null list reynolds numbers</span>
+    <span class="n">friction</span>      <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npipes</span><span class="p">)]</span>  <span class="c1"># null list friction </span>
+    <span class="n">geometry</span>      <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npipes</span><span class="p">)]</span>  <span class="c1"># null list geometry</span>
+    <span class="n">lossfactor</span>    <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npipes</span><span class="p">)]</span>  <span class="c1"># null list loss</span>
+    <span class="n">addedhead</span>     <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">npumps</span><span class="p">)]</span>
+    <span class="n">jacbMat</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># null list to store jacobian matrix</span>
+    <span class="n">jacbMat</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">colNumA</span><span class="p">)]</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span> <span class="c1">#fill with zeroes</span>
+
+
+    <span class="n">solvecguess</span> <span class="o">=</span><span class="p">[</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span> 
+    <span class="n">solvecnew</span> <span class="o">=</span><span class="p">[</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">solvecguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">flowguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">geometry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">kk_factor</span><span class="p">(</span><span class="n">distance</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">diameter</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="mf">32.2</span><span class="p">)</span>
+    <span class="c1">#solvecguess is a current guess -- wonder if more pythonic way for this assignment</span>
+    <span class="c1">##    print(&#39;irow :&#39;,i,&#39; Geometry Factor :&#39;,geometry[i])</span>
+    <span class="c1">##print (&quot;-----------------------------&quot;)</span>
+
+    <span class="c1">###############################################################</span>
+    <span class="c1">## ITERATION LOOP                                             #</span>
+    <span class="c1">###############################################################</span>
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">howmany</span><span class="p">):</span> <span class="c1"># iteration outer loop</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;solutions at begin of iteration&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;irow :&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39; solvecnew :&#39;</span><span class="p">,</span><span class="n">solvecnew</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s2">&quot; solvecguess &quot;</span><span class="p">,</span><span class="n">solvecguess</span><span class="p">[</span><span class="n">jcol</span><span class="p">])</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">velocity_pipe</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">velocity</span><span class="p">(</span><span class="n">diameter</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">flowguess</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>    
+            <span class="n">reynolds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">reynolds_number</span><span class="p">(</span><span class="n">velocity_pipe</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">diameter</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">viscosity</span><span class="p">)</span>
+            <span class="n">friction</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">friction_factor</span><span class="p">(</span><span class="n">roughness</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">diameter</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">reynolds</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">lossfactor</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">friction</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">geometry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="nb">abs</span><span class="p">(</span><span class="n">flowguess</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">):</span>
+            <span class="n">addedhead</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">p_factor</span><span class="p">(</span><span class="n">pumps</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">pumps</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="n">pumps</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span><span class="n">flowguess</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pumps</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pipe id:&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39;, velocity : &#39;</span> <span class="p">,</span><span class="n">velocity_pipe</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s1">&#39;, reynolds : &#39;</span><span class="p">,</span><span class="n">reynolds</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span>
+              <span class="s1">&#39;, friction : &#39;</span><span class="p">,</span><span class="n">friction</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s1">&#39;, loss factor : &#39;</span><span class="p">,</span><span class="n">lossfactor</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s1">&#39;flow guess&#39;</span><span class="p">,</span><span class="n">flowguess</span><span class="p">[</span><span class="n">jcol</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;added head factor&#39;</span><span class="p">,</span><span class="n">addedhead</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="c1">################################################################</span>
+    <span class="c1"># BUILD AUGMENTED MATRIX CURRENT Q+H SOLUTION                  #</span>
+    <span class="c1">################################################################</span>
+        <span class="n">augmentedMat</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">colNumA</span><span class="p">)]</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span> <span class="c1">#fill with zeroes</span>
+        <span class="c1">#build upper left partition -- from nodearcs</span>
+        <span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">jc</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">):</span>
+                <span class="n">augmentedMat</span><span class="p">[</span><span class="n">ir</span><span class="p">][</span><span class="n">jc</span><span class="p">]</span> <span class="o">=</span> <span class="n">nodearcs</span><span class="p">[</span><span class="n">ir</span><span class="p">][</span><span class="n">jc</span><span class="p">]</span>
+        <span class="c1">#build lower right == transpose of upper left</span>
+        <span class="n">istart</span><span class="o">=</span><span class="n">nnodes</span>
+        <span class="n">iend</span><span class="o">=</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span>
+        <span class="n">jstart</span><span class="o">=</span><span class="n">npipes</span>
+        <span class="n">jend</span><span class="o">=</span><span class="n">npipes</span><span class="o">+</span><span class="n">nnodes</span>
+        <span class="k">for</span> <span class="n">ir</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">istart</span><span class="p">,</span><span class="n">iend</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">jc</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">jstart</span><span class="p">,</span><span class="n">jend</span><span class="p">):</span>
+                <span class="n">augmentedMat</span><span class="p">[</span><span class="n">ir</span><span class="p">][</span><span class="n">jc</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">nodearcs</span><span class="p">[</span><span class="n">jc</span><span class="o">-</span><span class="n">jstart</span><span class="p">][</span><span class="n">ir</span><span class="o">-</span><span class="n">istart</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.0</span>
+        <span class="c1"># build lower left partition of the matrix</span>
+        <span class="n">istart</span> <span class="o">=</span> <span class="n">nnodes</span>
+        <span class="n">iend</span> <span class="o">=</span> <span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span>
+        <span class="n">jstart</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">jend</span> <span class="o">=</span> <span class="n">npipes</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">istart</span><span class="p">,</span><span class="n">iend</span> <span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">jstart</span><span class="p">,</span><span class="n">jend</span> <span class="p">):</span>
+        <span class="c1">#        print(&#39;i =&#39;,i,&#39;j=&#39;,j)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">istart</span><span class="p">)</span> <span class="o">==</span> <span class="n">j</span> <span class="p">:</span>
+        <span class="c1">#            print(&#39;i =&#39;,i,&#39;j=&#39;,j)</span>
+                    <span class="n">augmentedMat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span><span class="o">*</span><span class="n">lossfactor</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.0</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">npumps</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">:</span>
+                        <span class="k">for</span> <span class="n">ipump</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">):</span>
+                            <span class="k">if</span><span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="p">(</span><span class="n">pumps</span><span class="p">[</span><span class="n">ipump</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">):</span>
+                                <span class="n">augmentedMat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">addedhead</span><span class="p">[</span><span class="n">ipump</span><span class="p">]</span> 
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;updated augmented matrix in iteration&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+            <span class="n">writeM</span><span class="p">(</span><span class="n">augmentedMat</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="n">colNumA</span><span class="p">,</span><span class="s2">&quot;augmented matrix&quot;</span><span class="p">)</span>
+    <span class="c1">################################################################</span>
+    <span class="c1"># BUILD JACOBIAN MATRIX CURRENT Q+H SOLUTION                   #</span>
+    <span class="c1">################################################################        </span>
+        <span class="c1"># now build current jacobian</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">colNumA</span><span class="p">):</span>
+                <span class="n">jacbMat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">augmentedMat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="c1"># modify lower left partition</span>
+        <span class="n">istart</span> <span class="o">=</span> <span class="n">nnodes</span>
+        <span class="n">iend</span> <span class="o">=</span> <span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span>
+        <span class="n">jstart</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">jend</span> <span class="o">=</span> <span class="n">npipes</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">istart</span><span class="p">,</span><span class="n">iend</span> <span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">jstart</span><span class="p">,</span><span class="n">jend</span> <span class="p">):</span>
+        <span class="c1">#        print(&#39;i =&#39;,i,&#39;j=&#39;,j)</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="n">istart</span><span class="p">)</span> <span class="o">==</span> <span class="n">j</span> <span class="p">:</span>
+        <span class="c1">#            print(&#39;i =&#39;,i,&#39;j=&#39;,j)</span>
+                    <span class="n">jacbMat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span><span class="o">*</span><span class="n">jacbMat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+    <span class="c1">##        for jcol in range(0,nnodes+npipes):</span>
+    <span class="c1">##            print(&#39;irow :&#39;,jcol,&#39; solvecnew :&#39;,solvecnew[jcol],&quot; solvecguess &quot;,solvecguess[jcol])</span>
+    <span class="c1">##        print (&quot;-----------------------------&quot;)</span>
+    <span class="c1"># matrix multiply augmentedMat*solvecguess to get current g(Q)</span>
+    <span class="c1">#    gq = [0.0 for i in range(rowNumA)] # zero gradient vector</span>
+    <span class="c1">##    if verbose == &#39;true&#39; :</span>
+    <span class="c1">##        print(&quot;augmented matrix in iteration&quot;,iteration)</span>
+    <span class="c1">##        writeM(augmentedMat,rowNumA,colNumA,&quot;augmented matrix before mmult&quot;)</span>
+        <span class="n">gq</span> <span class="o">=</span> <span class="n">matrixvectormult</span><span class="p">(</span><span class="n">augmentedMat</span><span class="p">,</span><span class="n">solvecguess</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="n">colNumA</span><span class="p">)</span>
+    <span class="c1">##    if verbose == &#39;true&#39; :</span>
+    <span class="c1">##        writeV(gq,rowNumA,&quot;gq vectorbefore subtract rhs_true&quot;)</span>
+    <span class="c1"># subtract rhs</span>
+    <span class="c1">#    for i in range(rowNumA):</span>
+        <span class="n">gq</span> <span class="o">=</span> <span class="n">vectorsub</span><span class="p">(</span><span class="n">gq</span><span class="p">,</span><span class="n">rhs_true</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">)</span><span class="c1">#vector subtract</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;computed g(q) in iteration&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+            <span class="n">writeV</span><span class="p">(</span><span class="n">gq</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="s2">&quot;gq vector&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;compare current and new guess&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;irow :&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39; solvecnew :&#39;</span><span class="p">,</span><span class="n">solvecnew</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s2">&quot; solvecguess &quot;</span><span class="p">,</span><span class="n">solvecguess</span><span class="p">[</span><span class="n">jcol</span><span class="p">])</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+        <span class="n">dq</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span> <span class="c1"># zero update vector</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="n">writeV</span><span class="p">(</span><span class="n">dq</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="s2">&quot;dq vector before linear solve&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;jacobian before linearsolve in iteration&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+            <span class="n">writeM</span><span class="p">(</span><span class="n">jacbMat</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="n">colNumA</span><span class="p">,</span><span class="s2">&quot;jabobian matrix&quot;</span><span class="p">)</span>
+        <span class="n">dq</span> <span class="o">=</span> <span class="n">linearsolver</span><span class="p">(</span><span class="n">jacbMat</span><span class="p">,</span><span class="n">gq</span><span class="p">)</span> <span class="c1"># memory leak after this call - linearsolve clobbers input lists</span>
+    <span class="c1">#    dq = numpy.linalg.solve(jacbMat,gq) #the numpy equivalent</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;jacobian after linearsolve in iteration&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+            <span class="n">writeM</span><span class="p">(</span><span class="n">jacbMat</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="n">colNumA</span><span class="p">,</span><span class="s2">&quot;jabobian matrix&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="n">writeV</span><span class="p">(</span><span class="n">dq</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="s2">&quot;dq vector -after linear solve&quot;</span><span class="p">)</span>
+        <span class="n">solvecnew</span> <span class="o">=</span> <span class="n">vectorsub</span><span class="p">(</span><span class="n">solvecguess</span><span class="p">,</span><span class="n">dq</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">)</span><span class="c1">#vector subtract</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Q_new = Q_old - DQ&quot;</span><span class="p">)</span>
+            <span class="n">writeV</span><span class="p">(</span><span class="n">solvecnew</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="s2">&quot;new guess vector&quot;</span><span class="p">)</span>
+    <span class="c1">#    tempvect =[ 0.0 for i in range(rowNumA)]</span>
+    <span class="c1">##        tempvect = matrixvectormult(jacbMat,dq,rowNumA,colNumA)</span>
+    <span class="c1">##        writeV(tempvect,rowNumA,&quot;J*dq vector&quot;)</span>
+    <span class="c1">##        tempvect = vectorsub(tempvect,gq,rowNumA)</span>
+    <span class="c1">##        writeV(tempvect,rowNumA,&quot;J*dq - gq vector&quot;)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;just after computing new guess, should be different&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;irow :&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39; solvecnew :&#39;</span><span class="p">,</span><span class="n">solvecnew</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s2">&quot; solvecguess &quot;</span><span class="p">,</span><span class="n">solvecguess</span><span class="p">[</span><span class="n">jcol</span><span class="p">])</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+    <span class="c1">#test for stopping</span>
+        <span class="n">tempvect</span> <span class="o">=</span><span class="p">[</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">):</span>
+            <span class="n">tempvect</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">solvecnew</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">solvecguess</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">test1</span> <span class="o">=</span> <span class="n">vdotv</span><span class="p">(</span><span class="n">tempvect</span><span class="p">,</span><span class="n">tempvect</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test1&#39;</span><span class="p">,</span><span class="n">test1</span><span class="p">)</span>
+        <span class="n">tempvect</span> <span class="o">=</span><span class="p">[</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rowNumA</span><span class="p">):</span>
+            <span class="n">tempvect</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">gq</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">test2</span> <span class="o">=</span> <span class="n">vdotv</span><span class="p">(</span><span class="n">tempvect</span><span class="p">,</span><span class="n">tempvect</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test2&#39;</span><span class="p">,</span><span class="n">test2</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">test1</span> <span class="o">&lt;</span> <span class="n">tolerance1</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;###EXIT TYPE###</span><span class="se">\n</span><span class="s2">Update not changing --exit and report current update&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iteration&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+    <span class="c1"># update guess</span>
+            <span class="n">solvecguess</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">solvecnew</span><span class="p">[:]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">flowguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">solvecguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="n">test2</span> <span class="o">&lt;</span> <span class="n">tolerance2</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;###EXIT TYPE###</span><span class="se">\n</span><span class="s2">Gradient near zero --exit and report current update&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iteration&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+    <span class="c1"># update guess</span>
+            <span class="n">solvecguess</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">solvecnew</span><span class="p">[:]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">flowguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">solvecguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+            <span class="k">break</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;solution continuing&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;iteration&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+        <span class="c1"># update guess</span>
+        <span class="n">solvecguess</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">solvecnew</span><span class="p">[:]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">flowguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">solvecguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">gq</span> <span class="o">=</span> <span class="n">matrixvectormult</span><span class="p">(</span><span class="n">augmentedMat</span><span class="p">,</span><span class="n">solvecguess</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="n">colNumA</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">flowguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">solvecguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1">## Write Current State ######################</span>
+            <span class="n">gq</span> <span class="o">=</span> <span class="n">matrixvectormult</span><span class="p">(</span><span class="n">augmentedMat</span><span class="p">,</span><span class="n">solvecguess</span><span class="p">,</span><span class="n">rowNumA</span><span class="p">,</span><span class="n">colNumA</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of nodes : &#39;</span><span class="p">,</span><span class="n">nnodes</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of pipes : &#39;</span><span class="p">,</span><span class="n">npipes</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;viscosity       : &#39;</span><span class="p">,</span><span class="n">viscosity</span><span class="p">)</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;node id:&#39;</span><span class="p">,</span><span class="n">irow</span><span class="p">,</span> <span class="s1">&#39;, elevation :&#39;</span><span class="p">,</span><span class="n">elevation</span><span class="p">[</span><span class="n">irow</span><span class="p">])</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pipe id:&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39;, diameter : &#39;</span> <span class="p">,</span><span class="n">diameter</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s1">&#39;, distance : &#39;</span><span class="p">,</span><span class="n">distance</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span>
+              <span class="s1">&#39;, roughness : &#39;</span><span class="p">,</span><span class="n">roughness</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s1">&#39;, flow guess : &#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">flowguess</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="mi">3</span><span class="p">))</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;irow :&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39; RHS True :&#39;</span><span class="p">,</span><span class="n">rhs_true</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s2">&quot;RHS Current&quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">gq</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="mi">3</span><span class="p">))</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;irow :&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39; solvecnew :&#39;</span><span class="p">,</span><span class="n">solvecnew</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s2">&quot; solvecguess &quot;</span><span class="p">,</span><span class="n">solvecguess</span><span class="p">[</span><span class="n">jcol</span><span class="p">])</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>   
+    <span class="c1">################################################</span>
+    <span class="c1"># end of outer loop</span>
+    <span class="c1">################################################</span>
+
+<span class="c1"># Report Results</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#####SIMULATION RESULTS#####</span><span class="se">\n</span><span class="s2">Results at iteration = :&quot;</span><span class="p">,</span><span class="n">iteration</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">,</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">flowguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">solvecguess</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of nodes : &#39;</span><span class="p">,</span><span class="n">nnodes</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;number of pipes : &#39;</span><span class="p">,</span><span class="n">npipes</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;viscosity       : &#39;</span><span class="p">,</span><span class="n">viscosity</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+    <span class="n">istart</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">npipes</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;node id:&#39;</span><span class="p">,</span><span class="n">irow</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;, elevation (feet) :&#39;</span><span class="p">,</span><span class="n">elevation</span><span class="p">[</span><span class="n">irow</span><span class="p">],</span><span class="s1">&#39; head (feet) :&#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">solvecnew</span><span class="p">[</span><span class="n">irow</span><span class="o">+</span><span class="n">npipes</span><span class="p">],</span><span class="mi">2</span><span class="p">),</span><span class="s1">&#39; pressure (psi) :&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">((</span><span class="mf">14.75</span><span class="o">/</span><span class="mi">33</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">solvecnew</span><span class="p">[</span><span class="n">irow</span><span class="o">+</span><span class="n">npipes</span><span class="p">]</span><span class="o">-</span><span class="n">elevation</span><span class="p">[</span><span class="n">irow</span><span class="p">]),</span><span class="mi">2</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npipes</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pipe id:&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;, diameter (feet) : &#39;</span> <span class="p">,</span><span class="n">diameter</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s1">&#39;, distance (feet) : &#39;</span><span class="p">,</span><span class="n">distance</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span>
+      <span class="s1">&#39;, friction factor : &#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">friction</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="mi">3</span><span class="p">),</span><span class="s1">&#39;, flow (cfs) : &#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">flowguess</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="mi">2</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">irow</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">npumps</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pump id:&#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;, shutoff head: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;, constant: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span><span class="s1">&#39;, exponent: &#39;</span><span class="p">,</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">3</span><span class="p">],</span><span class="s1">&#39; added head:&#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">addedhead</span><span class="p">[</span><span class="n">irow</span><span class="p">]</span><span class="o">*</span><span class="n">flowguess</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">pumps</span><span class="p">[</span><span class="n">irow</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)],</span><span class="mi">2</span><span class="p">))</span>
+    
+    <span class="k">if</span> <span class="n">verbose</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span> <span class="p">:</span>
+        <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;irow :&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39; RHS True :&#39;</span><span class="p">,</span><span class="n">rhs_true</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s2">&quot;RHS Current&quot;</span><span class="p">,</span><span class="n">gq</span><span class="p">[</span><span class="n">jcol</span><span class="p">])</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">jcol</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nnodes</span><span class="o">+</span><span class="n">npipes</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;irow :&#39;</span><span class="p">,</span><span class="n">jcol</span><span class="p">,</span><span class="s1">&#39; solvecnew :&#39;</span><span class="p">,</span><span class="n">solvecnew</span><span class="p">[</span><span class="n">jcol</span><span class="p">],</span><span class="s2">&quot; solvecguess &quot;</span><span class="p">,</span><span class="n">solvecguess</span><span class="p">[</span><span class="n">jcol</span><span class="p">])</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;-----------------------------&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="section" id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Hibbeler, R.C, Fluid Mechanics, 2ed. Prentice Hall, 2018. ISBN: 9780134655413 pp. 469-490</p></li>
+<li><p>DF Elger, BC Williams, Crowe, CT and JA Roberson, <em>Engineering Fluid Mechanics 10th edition</em>, John Wiley &amp; Sons, Inc., 2013. <a class="reference external" href="http://54.243.252.9/ce-3305-webroot/3-Readings/EFM-15.pdf">http://54.243.252.9/ce-3305-webroot/3-Readings/EFM-15.pdf</a></p></li>
+<li><p>Cleveland, T. G. (2014) <em>Fluid Mechanics Notes to Accompany CE 3305 at Jade-Holshule (TTU Study Abroad 2015-2019)</em>, Department of Civil, Environmental, and Construction Engineering, Whitacre College of Engineering. <a class="reference external" href="http://54.243.252.9/ce-3305-webroot/3-Readings/ce3305-lecture12.pdf">http://54.243.252.9/ce-3305-webroot/3-Readings/ce3305-lecture12.pdf</a></p></li>
+<li><p>Pipe Networks Chin, D. (2006). pp. 27-48 in “Water Resources Engineering, 2 ed.” Prentice Hall, Inc. <a class="reference external" href="http://54.243.252.9/ce-3372-webroot/3-Readings/Chin_27-48/">Chin_27-48</a></p></li>
+<li><p>Hydraulics of Pipelines and Pipe Networks Wurbs, R.A., and James, W. P. (2002) Water Resources Engineering, Prentice Hall; pp.130-156; and 156-198. <a class="reference external" href="http://54.243.252.9/ce-3372-webroot/3-Readings/Wurbs130-198/">Wurbs and James</a></p></li>
+<li><p>Hamam, Y.M., and Brameller, A. (1971) “Hybrid method for the solution of piping networks.” Proc. IEEE, Vol. 118, No. 11, pp 1607-1612. <a class="reference external" href="http://54.243.252.9/ce-3372-webroot/3-Readings/HamamAndBrameller/">HamamAndBrameller</a></p></li>
+<li><p>Jeppson, R.W. (1977) Analysis of Flow in Pipe Networks, Ann Arbor Science pp. 115-129 <a class="reference external" href="http://54.243.252.9/ce-3372-webroot/3-Readings/NewtonRaphsonTheory/">NewtonRaphsonTheory</a></p></li>
+<li><p>Jeppson, R.W. (1977) Analysis of Flow in Pipe Networks, Ann Arbor Science pp. 53-69 <a class="reference external" href="http://54.243.252.9/ce-3372-webroot/3-Readings/FlowInPipeNetworks/">FlowInPipeNetworks</a></p></li>
+<li><p>Computational Hydraulics in R (for CE 3305) <a class="reference external" href="http://54.243.252.9/ce-3372-webroot/3-Readings/CFMinR/">PCHinR</a></p></li>
+<li><p>Yoo, D.H. and Singh V. P. (2005) Two Methods for the Computation of Commercial Pipe Friction Factors. ASCE Journal of Hydraulic Engineering, 2005, 131(8): 694-704 <a class="reference external" href="http://54.243.252.9/ce-3372-webroot/3-Readings/FrictionFactor/">FrictionFactors</a></p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons/lesson01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="pythonhydraulicsmodule.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">1.5 The <code class="docutils literal notranslate"><span class="pre">pipenet</span></code> module</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../lesson02/epanet-classic.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2 EPANET Introduction</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, Ph.D., P.E., M.ASCE, F.EWRI<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

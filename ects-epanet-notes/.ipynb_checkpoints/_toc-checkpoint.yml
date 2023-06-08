@@ -1,0 +1,36 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+#- file: markdown
+#- file: notebooks
+- file: lessons/lesson01/introduction
+  sections:
+  - file: lessons/lesson01/hydraulic-networks
+  - file: lessons/lesson01/pythonjupyter
+  - file: lessons/lesson01/pythonhydraulics
+  - file: lessons/lesson01/pythonhydraulicsmodule
+  - file: lessons/lesson01/pythonpumpingmodule
+#
+- file: lessons/lesson02/epanet-classic
+  sections:
+  - file: lessons/lesson02/epanet-gui
+  - file: lessons/lesson02/epanet-eps 
+  - file: lessons/lesson02/epanet-watq
+  - file: lessons/lesson02/epanet-rules
+#
+- file: lessons/lesson03/epanet-toolkit
+  sections:
+  - file: lessons/lesson03/epanet-rulesGUI
+  - file: lessons/lesson03/epanet-rulesCLI
+  - file: lessons/lesson03/epanet-rulesAPI
+  - file: lessons/lesson03/epanet-sensors
+#
+- file: lessons/lesson04/epanet-future-CandC1
+  sections:
+  - file: lessons/lesson04/epanet-future-CandC2
+  - file: lessons/lesson04/epanet-future-CandC3
+  - file: lessons/lesson04/epanet-future
+  - file: lessons/lesson04/epanet-exam
