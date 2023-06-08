@@ -424,9 +424,10 @@ sudo snap set novnc services.n6082.listen=6082 services.n6082.vnc=localhost:5902
 <p>You may get a red warning bar across the top telling you the access is unsecure, but it will still work, just ignore the warning and proceede as shown below. The warning arises because the the server uses a self-signed certificate instead of certificate from a recoginized certificating authority and most corporate networks will not allow TLS handshake to complete (so end user cannot really access anything).</p>
 <p>In most cases you will also observe a security warning that obscures the password dialog, simply click on some part of the dialog to background the warning and proceede.</p>
 </div>
-<p>‘’’{admonition}Send the Password
-Enter the password <strong>freeswmm</strong> and select “SEND CREDENTIALS”
-‘’’</p>
+<div class="admonition-send-the-password admonition">
+<p class="admonition-title">Send the Password</p>
+<p>Enter the password <strong>freeswmm</strong> and select “SEND CREDENTIALS”</p>
+</div>
 <p>Upon sucessful connection you will be attached to an XFCE desktop on the remote server as pictured below:</p>
 <p><img alt="" src="lessons/lesson02/xfcedesktop.png" /></p>
 <p>To start SWMM navigate to the WINE application and select SWMM 5.1.015 to launch the interface, as pictured below:</p>
