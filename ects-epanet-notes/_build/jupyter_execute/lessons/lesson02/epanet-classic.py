@@ -52,9 +52,9 @@
 # In most cases you will also observe a security warning that obscures the password dialog, simply click on some part of the dialog to background the warning and proceede.
 # :::
 # 
-# :::{warning}
+# '''{admonition}Send the Password
 # Enter the password **freeswmm** and select "SEND CREDENTIALS" 
-# :::
+# '''
 # 
 # Upon sucessful connection you will be attached to an XFCE desktop on the remote server as pictured below:
 # 
