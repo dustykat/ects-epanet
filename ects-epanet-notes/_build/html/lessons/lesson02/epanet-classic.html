@@ -350,6 +350,16 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-epanet">
+   Installing EPANET
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installing-the-toolkit">
+   Installing the Toolkit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#epanet-on-line-access">
    EPANET On-Line Access
   </a>
@@ -413,6 +423,14 @@
 </div>
 </div>
 </div>
+<div class="section" id="installing-epanet">
+<h2>Installing EPANET<a class="headerlink" href="#installing-epanet" title="Permalink to this headline">¶</a></h2>
+<p>Follow the guidelines on the URL or watch</p>
+</div>
+<div class="section" id="installing-the-toolkit">
+<h2>Installing the Toolkit<a class="headerlink" href="#installing-the-toolkit" title="Permalink to this headline">¶</a></h2>
+<p>A bit more elaborate. You don’t need it initially, but will need it in a few sections.</p>
+</div>
 <div class="section" id="epanet-on-line-access">
 <h2>EPANET On-Line Access<a class="headerlink" href="#epanet-on-line-access" title="Permalink to this headline">¶</a></h2>
 <p>An on-line version is hosted at <a class="reference external" href="http://freeswmm.ddns.net">http://freeswmm.ddns.net</a> described herein uses the WINE application layer to run an implementation of EPANET with the “Classic” GUI on a Linux server, on an Intel x86-64 chipset.</p>
@@ -466,18 +484,20 @@ sudo snap set novnc services.n6082.listen=6082 services.n6082.vnc=localhost:5902
 <h2>Moving files to/from the host<a class="headerlink" href="#moving-files-to-from-the-host" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Moving files to/from the remote server is non-trivial.  :::</p>
+<p>Moving files to/from the remote server is non-trivial.</p>
+</div>
 <p>File upload/download is by a JupyterHub instance running on the host.  On your computer access the JupyterHub server at <a class="reference external" href="http://freeswmm.ddns.net:8000">http://freeswmm.ddns.net:8000</a> you should get a login window unless someone else is connected (or left a running instance) that looks like:</p>
 <p><img alt="" src="../../_images/antaresfreeswmm.png" /></p>
 <p>Enter the credentials from above and you will get a JupyterHub interface like below (it may take awhile to load)</p>
 <p><img alt="" src="../../_images/antaresjhub.png" /></p>
-<p>The EPANET files are located in <code class="docutils literal notranslate"><span class="pre">/Desktop/EPANET-Files</span></code> and to upload drag and drop from your computer to this directory (or a subdirectory).</p>
+<p>The EPANET files are located in <code class="docutils literal notranslate"><span class="pre">/Desktop/EPANET-Files</span></code> and to upload drag and drop from your computer to this directory (or a subdirectory).  A screen capture is below:</p>
+<p><img alt="" src="../../_images/jhepanetfiles.png" /></p>
 <p>To download, navigate to the target file in the JupyterHub, then select the file, right-click and download.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>I will demonstrate in class, its easy to accomplish, but also easy to confuse yourself as you have two entirely different browser windows accessing the same location. After the demonstration it will be obvious.</p>
 </div>
-</div>
+<p>When you are done, simply choose log-out from the JupyterHub menu (File Tab), or just close the browser window.</p>
 </div>
 <div class="section" id="exiting-freeswmm">
 <h2>Exiting FreeSWMM<a class="headerlink" href="#exiting-freeswmm" title="Permalink to this headline">¶</a></h2>

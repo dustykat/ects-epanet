@@ -22,6 +22,13 @@
 # At the time of this writing builds for aarch64 are kind of up to the end-user;  I have notes herein on how-to do so.  Why anyone would want to make such a build is to leverage embedded systems with intent to use the program to control things.  I am aware most people are going to be using a Windows machine on Intel hardware and special instructions specific to ARM hardware is meaningless.
 # ```
 
+# ## Installing EPANET
+# Follow the guidelines on the URL or watch
+# 
+# ## Installing the Toolkit
+# 
+# A bit more elaborate. You don't need it initially, but will need it in a few sections.  
+
 # ## EPANET On-Line Access
 # 
 # An on-line version is hosted at [http://freeswmm.ddns.net](http://freeswmm.ddns.net) described herein uses the WINE application layer to run an implementation of EPANET with the "Classic" GUI on a Linux server, on an Intel x86-64 chipset.  
@@ -79,11 +86,12 @@
 # The existing examples are all stored in the EPANET-Files Directory on the XFCE desktop (as well as some pre-installed examples).  As new examples are added they will be located in that directory.  
 # 
 # ![](epanet-ex1.png)
-# 
+
 # ## Moving files to/from the host
 # 
 # :::{warning}
-# Moving files to/from the remote server is non-trivial.  :::
+# Moving files to/from the remote server is non-trivial.
+# :::
 # 
 # File upload/download is by a JupyterHub instance running on the host.  On your computer access the JupyterHub server at [http://freeswmm.ddns.net:8000](http://freeswmm.ddns.net:8000) you should get a login window unless someone else is connected (or left a running instance) that looks like:
 # 
@@ -93,7 +101,9 @@
 # 
 # ![](antaresjhub.png)
 # 
-# The EPANET files are located in `/Desktop/EPANET-Files` and to upload drag and drop from your computer to this directory (or a subdirectory).
+# The EPANET files are located in `/Desktop/EPANET-Files` and to upload drag and drop from your computer to this directory (or a subdirectory).  A screen capture is below:
+# 
+# ![](jhepanetfiles.png)
 # 
 # To download, navigate to the target file in the JupyterHub, then select the file, right-click and download.
 # 
@@ -101,6 +111,8 @@
 # I will demonstrate in class, its easy to accomplish, but also easy to confuse yourself as you have two entirely different browser windows accessing the same location. After the demonstration it will be obvious.
 # :::
 # 
+# When you are done, simply choose log-out from the JupyterHub menu (File Tab), or just close the browser window.
+
 # ## Exiting FreeSWMM
 # 
 # When you are done using the application, save your work then exit EPANET in the usual fashion. 
@@ -118,6 +130,8 @@
 # :::{note}
 # The server is programmed to disconnect every hour and restart one minute later; if you are in the middle of something your work should be preserved, just wait the minute and reconnect.  This annoying behavior is to mitigate loss of CPU allocation on AWS because of an idle XFCE window being left open.   Please remember to disconnect your sessions, there are only about 2.4 hours/day of computation time available and the connection itself uses a fair portion of that allocation.
 # :::
+
+# 
 
 # ## EPANET by Example
 # 
