@@ -1,6 +1,6 @@
 # About this book
 
-This book is a collection of course notes adapted from [put links here]().
+This book is a collection of course notes adapted from ...
 
 ## Copyright
 

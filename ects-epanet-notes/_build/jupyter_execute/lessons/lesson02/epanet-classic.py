@@ -44,13 +44,13 @@
 # 
 # When you when you click on "Connect" you will encounter a simple password challenge as pictured below:
 # 
-# ![](challenge.png)
-# 
 # :::{note}
 # You may get a red warning bar across the top telling you the access is unsecure, but it will still work, just ignore the warning and proceede as shown below. The warning arises because the the server uses a self-signed certificate instead of certificate from a recoginized certificating authority and most corporate networks will not allow TLS handshake to complete (so end user cannot really access anything).  
 # 
 # In most cases you will also observe a security warning that obscures the password dialog, simply click on some part of the dialog to background the warning and proceede.
 # :::
+# 
+# ![](challenge.png)
 # 
 # ```{admonition} Send the Password
 # Enter the password **freeswmm** and select "SEND CREDENTIALS" 
