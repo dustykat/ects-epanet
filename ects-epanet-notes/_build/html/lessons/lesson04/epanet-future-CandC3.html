@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4.3 Unsolved Problems &#8212; Hydraulic Network Simulation with EPANET and Python</title>
+    <title>4.X Build Notes &#8212; Hydraulic Network Simulation with EPANET and Python</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -89,14 +89,14 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   Welcome to your Jupyter Book
+   About this book
   </a>
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lesson01/introduction.html">
-   1 Introduction
+   1 Hydraulic Networks and Python
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -139,7 +139,7 @@
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../lesson02/epanet-classic.html">
-   2 EPANET Introduction
+   2 EPANET Intro/Examples
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -149,34 +149,29 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson02/epanet-gui.html">
-     2.1 EPANET Examples using the GUI
+     2.2 EPANET GUI Examples
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson02/epanet-eps.html">
-     2.2 Extended period simulation (EPS)
+     2.3 Extended period simulation (EPS)
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson02/epanet-watq.html">
-     2.3 Water Quality Simulation in EPANET
+     2.4 Water Quality Simulation in EPANET
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../lesson02/epanet-toolkit.html">
-     2.4 EPANET Programmers Toolkit
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson02/epanet-API.html">
-     2.5 EPANET example using the Toolkit
+    <a class="reference internal" href="../lesson02/epanet-rules.html">
+     2.5 EPANET Control Rules
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lesson03/epanet-rules.html">
-   3 EPANET Control Rules
+  <a class="reference internal" href="../lesson03/epanet-toolkit.html">
+   3 EPANET Programmers Toolkit
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -223,7 +218,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4.3 Unsolved Problems
+     4.X Build Notes
     </a>
    </li>
    <li class="toctree-l2">
@@ -346,11 +341,18 @@
   <a class="reference internal nav-link" href="#purpose">
    Purpose
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples">
-   Examples
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#building-the-cle-program">
+     Building the CLE program.
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#files">
+     Files
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -363,13 +365,56 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="unsolved-problems">
-<h1>4.3 Unsolved Problems<a class="headerlink" href="#unsolved-problems" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="x-build-notes">
+<h1>4.X Build Notes<a class="headerlink" href="#x-build-notes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p>This section is a record of various “build” notes for running epanet on a Raspberry Pi - the development machine for this entire short course!</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The “online-EPANET” used for the GUI-based examples is run on Intel-based hardware, and was “built” simply by installing it in the WINE application layer.  Oddly enough, it worked well enough for the needs of this document (although moving and resizing the window does not work).  I could not make WINE deliver EPANET with the GUI on a Raspberry Pi;  someday I will try QEMU - that may be more sucessful; but that’s emulation not an application layer translation - there is no great reason to do so other than it would be cool.</p>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="building-the-cle-program">
+<h3>Building the CLE program.<a class="headerlink" href="#building-the-cle-program" title="Permalink to this headline">¶</a></h3>
+<p>The command-line environment build is straightforward.  The following is verbatim from the original programmers notes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INSTRUCTIONS</span> <span class="n">FOR</span> <span class="n">COMPILING</span> <span class="n">THE</span> <span class="n">COMMAND</span> <span class="n">LINE</span> <span class="n">VERSION</span> <span class="n">OF</span> <span class="n">EPANET</span>
+            <span class="n">USING</span> <span class="n">THE</span> <span class="n">GNU</span> <span class="n">C</span><span class="o">/</span><span class="n">C</span><span class="o">++</span> <span class="n">COMPILER</span> <span class="n">ON</span> <span class="n">LINUX</span>
+<span class="o">=====================================================================</span>
+
+<span class="mf">1.</span> <span class="n">Open</span> <span class="n">the</span> <span class="n">file</span> <span class="n">EPANET</span><span class="o">.</span><span class="n">C</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">text</span> <span class="n">editor</span> <span class="ow">and</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">the</span> <span class="n">line</span>
+       <span class="c1">#define CLE</span>
+   <span class="ow">is</span> <span class="ow">not</span> <span class="n">commented</span> <span class="n">out</span> <span class="k">while</span> <span class="n">the</span> <span class="n">lines</span>
+       <span class="c1">#define DLL</span>
+       <span class="c1">#define SOL</span>
+   <span class="n">are</span> <span class="n">commented</span> <span class="n">out</span><span class="o">.</span>
+
+<span class="mf">2.</span> <span class="n">Copy</span> <span class="n">the</span> <span class="n">file</span> <span class="s2">&quot;Makefile&quot;</span> <span class="n">to</span> <span class="n">the</span> <span class="n">directory</span> <span class="n">where</span> <span class="n">the</span> <span class="n">EPANET</span> <span class="n">engine</span>
+   <span class="n">source</span> <span class="n">code</span> <span class="n">files</span> <span class="n">are</span> <span class="n">located</span><span class="o">.</span>
+
+<span class="mf">3.</span> <span class="n">Open</span> <span class="n">a</span> <span class="n">console</span> <span class="n">shell</span> <span class="ow">and</span> <span class="n">navigate</span> <span class="n">to</span> <span class="n">the</span> <span class="n">EPANET</span> <span class="n">engine</span> <span class="n">source</span>
+   <span class="n">code</span> <span class="n">directory</span><span class="o">.</span>
+
+<span class="mf">4.</span> <span class="n">Issue</span> <span class="n">the</span> <span class="n">command</span><span class="p">:</span>
+
+      <span class="n">make</span>
+
+   <span class="n">to</span> <span class="n">create</span> <span class="n">an</span> <span class="n">executable</span> <span class="n">named</span> <span class="n">epanet2</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="simple">
+<li><p>The above also works fine on MacOS, but you have to supply at path to <code class="docutils literal notranslate"><span class="pre">malloc.c</span></code>.  On my Macintosh, the file did not exist, but a Google search turned up one that when running the compiler seemed to function.  That was circa 2017, I am sure it is no longer an issue.</p></li>
+<li><p>On my RPI, I could compile once, if I wished to recompile I would have to destroy all copies of the objects (<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-f</span> <span class="pre">*.o</span></code>) before running <code class="docutils literal notranslate"><span class="pre">make</span></code>.  Even as root this was the case, so give this a try if you run into “file not found” errors on the make utility.</p></li>
+<li><p>On my RPI, I got a lot of warnings from the compiler.  I choose to ignore them and did not attempt to chase down the causes.  I suspect (in my case) it was a result of forcing 64-bit objects from older code.  I’ll add a note if I get around to using newer code - for this short course I know the older code should work, so started there first. Why?  Because my intent is to use EPANET as a supervisory simulator to actually issue control commands to a network via an RPI controller, mostly for teaching, but also as a more intelligent way to water an indoor garden.</p></li>
+</ol>
+</div>
+<p>A screen capture from my computer is shown</p>
+<p><img alt="" src="../../_images/cle_build.png" /></p>
+</div>
+<div class="section" id="files">
+<h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 

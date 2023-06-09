@@ -1,0 +1,163 @@
+epanet.c: In function ‘writecon’:
+epanet.c:3097:4: warning: format not a string literal and no format arguments [-Wformat-security]
+ 3097 |    fprintf(stdout,s);
+      |    ^~~~~~~
+In file included from input1.c:30:
+input1.c: In function ‘inittanks’:
+text.h:484:16: warning: ‘%s’ directive writing up to 31 bytes into a region of size 27 [-Wformat-overflow=]
+  484 | #define ERR225 "Input Error 225: invalid lower/upper levels for Tank %s."
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:484:16: note: in definition of macro ‘ERR225’
+  484 | #define ERR225 "Input Error 225: invalid lower/upper levels for Tank %s."
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:484:70: note: format string is defined here
+  484 | #define ERR225 "Input Error 225: invalid lower/upper levels for Tank %s."
+      |                                                                      ^~
+input1.c:357:13: note: ‘sprintf’ output between 55 and 86 bytes into a destination of size 80
+  357 |             sprintf(Msg,ERR225,Node[Tank[j].Node].ID);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from input2.c:34:
+input2.c: In function ‘readdata’:
+text.h:472:2: warning: format ‘%s’ expects a matching ‘char *’ argument [-Wformat=]
+  472 |  "Input Error 214: following line of [%s] section contains too many characters:"
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:472:2: note: in definition of macro ‘ERR214’
+  472 |  "Input Error 214: following line of [%s] section contains too many characters:"
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:472:40: note: format string is defined here
+  472 |  "Input Error 214: following line of [%s] section contains too many characters:"
+      |                                       ~^
+      |                                        |
+      |                                        char *
+input2.c: In function ‘getpumpparams’:
+text.h:485:16: warning: ‘.’ directive writing 1 byte into a region of size between 0 and 31 [-Wformat-overflow=]
+  485 | #define ERR226 "Input Error 226: no head curve supplied for Pump %s."
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:485:16: note: in definition of macro ‘ERR226’
+  485 | #define ERR226 "Input Error 226: no head curve supplied for Pump %s."
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:485:68: note: format string is defined here
+  485 | #define ERR226 "Input Error 226: no head curve supplied for Pump %s."
+      |                                                                    ^
+input2.c:337:13: note: ‘sprintf’ output between 51 and 82 bytes into a destination of size 80
+  337 |             sprintf(Msg,ERR226,Link[k].ID);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from input2.c:34:
+input2.c: In function ‘getcurves’:
+text.h:487:16: warning: ‘ has nonincreasing x-values.’ directive writing 28 bytes into a region of size between 26 and 57 [-Wformat-overflow=]
+  487 | #define ERR230 "Input Error 230: Curve %s has nonincreasing x-values."
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:487:16: note: in definition of macro ‘ERR230’
+  487 | #define ERR230 "Input Error 230: Curve %s has nonincreasing x-values."
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:487:42: note: format string is defined here
+  487 | #define ERR230 "Input Error 230: Curve %s has nonincreasing x-values."
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+input2.c:687:16: note: ‘sprintf’ output between 52 and 83 bytes into a destination of size 80
+  687 |                sprintf(Msg,ERR230,c->ID);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from input2.c:34:
+text.h:487:16: warning: ‘ has nonincreasing x-values.’ directive writing 28 bytes into a region of size between 26 and 57 [-Wformat-overflow=]
+  487 | #define ERR230 "Input Error 230: Curve %s has nonincreasing x-values."
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:487:16: note: in definition of macro ‘ERR230’
+  487 | #define ERR230 "Input Error 230: Curve %s has nonincreasing x-values."
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:487:42: note: format string is defined here
+  487 | #define ERR230 "Input Error 230: Curve %s has nonincreasing x-values."
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+input2.c:666:13: note: ‘sprintf’ output between 52 and 83 bytes into a destination of size 80
+  666 |             sprintf(Msg,ERR230,c->ID);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~
+rules.c: In function ‘ruleerrmsg’:
+rules.c:953:16: warning: format not a string literal and no format arguments [-Wformat-security]
+  953 |    sprintf(Msg,fmt);
+      |                ^~~
+In file included from report.c:34:
+report.c: In function ‘writeline’:
+text.h:432:16: warning: format ‘%d’ expects argument of type ‘int’, but argument 3 has type ‘long int’ [-Wformat=]
+  432 | #define FMT82  "\n\f\n  Page %-d    %60.60s\n"
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+report.c:710:30: note: in expansion of macro ‘FMT82’
+  710 |          if (fprintf(RptFile,FMT82,PageNum,Title[0]) == EOF)
+      |                              ^~~~~
+text.h:432:32: note: format string is defined here
+  432 | #define FMT82  "\n\f\n  Page %-d    %60.60s\n"
+      |                              ~~^
+      |                                |
+      |                                int
+      |                              %-ld
+report.c: In function ‘writesummary’:
+text.h:352:16: warning: ‘%s’ directive writing up to 259 bytes into a region of size 220 [-Wformat-overflow=]
+  352 | #define FMT19  "    Input Data File ................... %s"
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:352:16: note: in definition of macro ‘FMT19’
+  352 | #define FMT19  "    Input Data File ................... %s"
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:352:57: note: format string is defined here
+  352 | #define FMT19  "    Input Data File ................... %s"
+      |                                                         ^~
+report.c:182:4: note: ‘sprintf’ output between 41 and 300 bytes into a destination of size 260
+  182 |    sprintf(s,FMT19,InpFname);
+      |    ^~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from report.c:34:
+report.c: In function ‘writeheader’:
+text.h:419:9: warning: ‘%s’ directive writing up to 255 bytes into a region of size 228 [-Wformat-overflow=]
+  419 |         "Pump      Factor Effic.     %s        Kw        Kw      /day"
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:419:9: note: in definition of macro ‘FMT73’
+  419 |         "Pump      Factor Effic.     %s        Kw        Kw      /day"
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:419:38: note: format string is defined here
+  419 |         "Pump      Factor Effic.     %s        Kw        Kw      /day"
+      |                                      ^~
+report.c:623:7: note: ‘sprintf’ output between 59 and 314 bytes into a destination of size 256
+  623 |       sprintf(s,FMT73,s1);
+      |       ^~~~~~~~~~~~~~~~~~~
+In file included from report.c:34:
+report.c: In function ‘writecontrolaction’:
+text.h:397:16: warning: ‘%s’ directive writing up to 31 bytes into a region of size between 23 and 54 [-Wformat-overflow=]
+  397 | #define FMT54  "%10s: %s %s changed by %s %s control"
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:397:16: note: in definition of macro ‘FMT54’
+  397 | #define FMT54  "%10s: %s %s changed by %s %s control"
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+text.h:397:43: note: format string is defined here
+  397 | #define FMT54  "%10s: %s %s changed by %s %s control"
+      |                                           ^~
+report.c:808:10: note: ‘sprintf’ output 35 or more bytes (assuming 97) into a destination of size 80
+  808 |          sprintf(Msg,FMT54,clocktime(Atime,Htime),LinkTxt[Link[k].Type],
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  809 |             Link[k].ID,NodeTxt[getnodetype(n)],Node[n].ID);
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from report.c:34:
+report.c: In function ‘writelimits’:
+text.h:386:16: warning: ‘%s’ directive writing up to 31 bytes into a region of size between 0 and 57 [-Wformat-overflow=]
+  386 | #define FMT47  "       with %s below %-.2f %s"
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+report.c:1123:22: note: in expansion of macro ‘FMT47’
+ 1123 |          sprintf(Msg,FMT47,
+      |                      ^~~~~
+text.h:386:44: note: format string is defined here
+  386 | #define FMT47  "       with %s below %-.2f %s"
+      |                                            ^~
+report.c:1123:10: note: ‘sprintf’ output between 24 and 396 bytes into a destination of size 80
+ 1123 |          sprintf(Msg,FMT47,
+      |          ^~~~~~~~~~~~~~~~~~
+ 1124 |                  Field[j].Name,Field[j].RptLim[LOW],Field[j].Units);
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from report.c:34:
+text.h:387:16: warning: ‘%s’ directive writing up to 31 bytes into a region of size between 0 and 57 [-Wformat-overflow=]
+  387 | #define FMT48  "       with %s above %-.2f %s"
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+report.c:1129:22: note: in expansion of macro ‘FMT48’
+ 1129 |          sprintf(Msg,FMT48,
+      |                      ^~~~~
+text.h:387:44: note: format string is defined here
+  387 | #define FMT48  "       with %s above %-.2f %s"
+      |                                            ^~
+report.c:1129:10: note: ‘sprintf’ output between 24 and 396 bytes into a destination of size 80
+ 1129 |          sprintf(Msg,FMT48,
+      |          ^~~~~~~~~~~~~~~~~~
+ 1130 |                  Field[j].Name,Field[j].RptLim[HI],Field[j].Units);
+      |                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
