@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -89,7 +91,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   Welcome to your Jupyter Book
+   About this book
   </a>
  </li>
 </ul>
@@ -218,7 +220,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson04/epanet-future-CandC3.html">
-     4.3 Unsolved Problems
+     4.X Build Notes
     </a>
    </li>
    <li class="toctree-l2">
@@ -346,6 +348,40 @@
   <a class="reference internal nav-link" href="#examples">
    Examples
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-3-three-reservoir-problem">
+     Example 3 : Three-Reservoir-Problem
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#files">
+       Files
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-4">
+     Example 4
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-5">
+     Example 5
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -366,6 +402,61 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="example-3-three-reservoir-problem">
+<h3>Example 3 : Three-Reservoir-Problem<a class="headerlink" href="#example-3-three-reservoir-problem" title="Permalink to this headline">¶</a></h3>
+<p>This example is a pretty classic hydraulics problem, that appears in some form in most if not all hydraulics textbooks.  Here it is useful to introduce the concept of a basemap (image) to help draw the network.</p>
+<p>First the <strong>problem statement</strong>:</p>
+<p>Reservoirs A, B, and C are connected as shown.
+The water elevations in reservoirs A, B, and C are 100 m, 80 m, and 60 m.
+The three pipes connecting the reservoirs meet at junction J, with pipe AJ being 900
+m long, BJ being 800 m long, and CJ being 700 m long. The diameters of
+all the pipes are 850 mm. If all the pipes are ductile iron, and the water
+temperature is 293<span class="math notranslate nohighlight">\(^o\)</span>K, find the direction and magnitude of flow in each
+pipe.</p>
+<p><img alt="" src="../../_images/EX3.bmp" /></p>
+<p>Here we will first convert the image into a bitmap (.bmp) file so EPANET can import
+the background image and we can use it to help draw the network. The remainder of
+the problem is reasonably simple and is an extension of the previous problem.</p>
+<p>The steps to model the situation are:</p>
+<ol class="simple">
+<li><p>Convert the image into a bitmap, place the bitmap into a directory where the model input file will be stored.</p></li>
+<li><p>Start EPANET</p></li>
+<li><p>Set defaults</p></li>
+<li><p>Import the background.</p></li>
+<li><p>Select the reservoir tool. Put three reservoirs on the map.</p></li>
+<li><p>Select the node tool, put the node on the map.</p></li>
+<li><p>Select the link (pipe) tool, connect the three reservoirs to the node.</p></li>
+<li><p>Set the total head each reservoir.</p></li>
+<li><p>Set the pipe length, roughness height, and diameter in each pipe.</p></li>
+<li><p>Save the input file.</p></li>
+<li><p>Run the program.
+Below is the result of the above steps.</p></li>
+</ol>
+<p><img alt="" src="../../_images/3reservoir-epanet.png" /></p>
+<p>In this case the default units were changed to
+LPS (liters per second). The roughness height is about 0.26 millimeters (if converted
+from the 0.85 millifeet unit).</p>
+<div class="section" id="files">
+<h4>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp">EX3.bmp</a> The base image file</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.net">EX3.net</a> An EPANET input file (binary .net file, readable by the GUI)</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3-1.net">EX3-1.net</a> A different EPANET input file (binary .net file, readable by the GUI)</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="example-4">
+<h3>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="example-5">
+<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 
