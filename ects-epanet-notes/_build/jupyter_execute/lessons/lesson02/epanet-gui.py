@@ -48,20 +48,29 @@
 # 9. Set the pipe length, roughness height, and diameter in each pipe.
 # 10. Save the input file.
 # 11. Run the program.
-# Below is the result of the above steps. 
+# 
+# Below is the result of the above steps run on a laptop. 
 # 
 # ![](./ex3/3reservoir-epanet.png)
 # 
 # In this case the default units were changed to
-# LPS (liters per second). The roughness height is about 0.26 millimeters (if converted
-# from the 0.85 millifeet unit).
+# LPS (liters per second). The roughness height is about 0.26 millimeters (if converted from the 0.85 millifeet unit).
+# 
+# A you-tube video [FREESWMM-EPANET-EX3](https://youtu.be/xeHs2C4UiGY) shows the example run on the (freeswmm.ddns.net) web interface.  A screen capture of the result is below:
+# 
+# ![](./ex3/EX3-GUI.png)
+# 
+# :::{note}
+# The results should be identical.  The video was not made at the same time as the screen capture, so there may be slight differences.  The input files are pre-loaded onto the webserver implementation.  In the face-to-face course, the actual modeling building process will be deomnstrated.
+# :::
+# 
+# The requestite files are listed below.
 # 
 # #### Files
 # 
 # 1. [EX3.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp) The base image file
 # 2. [EX3.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX3-1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3-1.net) A different EPANET input file (binary .net file, readable by the GUI)
-# 
 
 # In[ ]:
 
