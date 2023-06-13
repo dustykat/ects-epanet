@@ -130,12 +130,18 @@
 # :::{note}
 # The server is programmed to disconnect every hour and restart one minute later; if you are in the middle of something your work should be preserved, just wait the minute and reconnect.  This annoying behavior is to mitigate loss of CPU allocation on AWS because of an idle XFCE window being left open.   Please remember to disconnect your sessions, there are only about 2.4 hours/day of computation time available and the connection itself uses a fair portion of that allocation.
 # :::
-
 # 
+# The next section (of this notebook) works the examples in the document below.
 
-# ## EPANET by Example
+# ## References
+# 
+# 1. [Cleveland, T.G., Tay, C.C., and Neale, C.M. (2015) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University. (original publication)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/EPANETbyExampleV1.pdf)
+# 
+# 2. [Cleveland, T.G., and Neale, C.M., and Tay, C.C. (2018) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University. (restored publication)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/enbyexample/enbyexample.pdf)  same as above, but different cover graphic.  The files to build the document are contained in the [hosting directory](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/enbyexample/)
 # 
 # ## Exercises
+# 
+# 1. Examine the document(s) above familarize yourself with the examples, these are worked in the next section using the On-Line EPANET implementation.  The files are pre-placed in those examples. 
 
 # 
 
