@@ -54,7 +54,50 @@
 
 # ### Files
 
+# ## `epanet2toolkit` (R package)
 # 
+# This section documents that the R package functions on RPi, which provides two pieces of information:
+# 
+# 1. The .so library can be extracted from its store in the R library 
+# 2. The toolkit can be accessed on a RPi (so we are not constrained to intel hardware)
+# 
+# 
+# ### Installing on my RPi
+# 
+# I already have R installed. To install the epanet2toolkit onto my machine the following **R** script is run as superuser.
+# 
+# ```
+# # script to install epanet2toolkit and epanetReader
+# install.packages("epanet2toolkit", INSTALL_opts = "--install-tests")
+# install.packages("epanetReader")
+# library(epanet2toolkit)
+# library(epanetReader)
+# inp <- file.path( find.package("epanet2toolkit"), "extdata","Net1.inp")
+# ENepanet( inp, "Net1.rpt") 
+# myRpt <- epanetReader::read.rpt("Net1.rpt")
+# summary(myRpt)
+# ```
+# 
+# Actually only the first two lines above are run as a superuser to install into the R libraries that are shared by all users on the machine
+# 
+# First the tools install
+# 
+# ![](en22tools1.png)
+# 
+# Then the reader install
+# 
+# ![](en22tools2.png)
+# 
+# Then switch to a regular user and run the remainder of the example
+# 
+# ![](en22tools3.png)
+# 
+# **Why this matters**
+# 
+# We now have a working shared object library in `usr/local/lib/R/site-library/epanet2toolkit/libs` One can copy or symbolic link to this library instead of building from the original EPANET source.
+# 
+# :::{note}
+# Obviously, building from original source is best, but on my computer it kept throwing an exception and ignoring the compiler directives to treat warnings as warnings - annoying to say the least.  I know the **R** implementation works, so just modified things a bit to use that library - A hack, why YES!  Necessary?  Also YES.  I am sure its a matter of a switch in the setup.py for epanettools or the config file - but I was desparate and it seemed to work.
 
 # In[ ]:
 

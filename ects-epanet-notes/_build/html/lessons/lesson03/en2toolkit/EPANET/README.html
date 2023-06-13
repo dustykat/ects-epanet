@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OWA-EPANET &#8212; Hydraulic Network Simulation with EPANET and Python</title>
+    
+  <link href="../../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Hydraulic Network Simulation with EPANET and Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../intro.html">
+   About this book
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../lesson01/introduction.html">
+   1 Hydraulic Networks and Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/hydraulic-networks.html">
+     1.2 Network Hydraulics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/pythonjupyter.html">
+     1.3 Python/Jupyter Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/pythonhydraulics.html">
+     1.4 Hydraulics in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/pythonhydraulicsmodule.html">
+     1.5 The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pipenet
+      </span>
+     </code>
+     module
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/pythonpumpingmodule.html">
+     1.6 Pumps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../lesson02/epanet-classic.html">
+   2 EPANET Intro/Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson02/epanet-gui.html">
+     2.2 EPANET GUI Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson02/epanet-eps.html">
+     2.3 Extended period simulation (EPS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson02/epanet-watq.html">
+     2.4 Water Quality Simulation in EPANET
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson02/epanet-rules.html">
+     2.5 EPANET Control Rules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../epanet-toolkit.html">
+   3 EPANET Programmers Toolkit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../epanet-rulesGUI.html">
+     3.2 EPANET example using
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../epanet-rulesCLI.html">
+     3.3 EPANET example using the Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../epanet-rulesAPI.html">
+     3.4 EPANET example using the Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../epanet-sensors.html">
+     3.5 EPANET Sensors integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../lesson04/epanet-future-CandC1.html">
+   4 Command and Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson04/epanet-future-CandC2.html">
+     4.2 CandC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson04/epanet-future-CandC3.html">
+     4.X Build Notes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson04/epanet-future.html">
+     4.4 Unsolved Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson04/epanet-exam.html">
+     4.5 EPANET Exam
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/lessons/lesson03/en2toolkit/EPANET/README.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flessons/lesson03/en2toolkit/EPANET/README.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-status">
+   Build Status
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#description">
+   DESCRIPTION
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#installation">
+   INSTALLATION
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage">
+   USAGE
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#contributing">
+   CONTRIBUTING
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#credits">
+   CREDITS
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#disclaimer">
+   DISCLAIMER
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="owa-epanet">
+<h1>OWA-EPANET<a class="headerlink" href="#owa-epanet" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="build-status">
+<h2>Build Status<a class="headerlink" href="#build-status" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://ci.appveyor.com/project/OpenWaterAnalytics/epanet"><img alt="Build status" src="https://ci.appveyor.com/api/projects/status/19wpg4g2cmj3oihl?svg=true" /></a></p>
+<p><a class="reference external" href="https://codecov.io/gh/OpenWaterAnalytics/EPANET"><img alt="codecov" src="https://codecov.io/gh/OpenWaterAnalytics/EPANET/branch/master/graph/badge.svg" /></a></p>
+<p><a class="reference external" href="https://github.com/OpenWaterAnalytics/EPANET/actions/workflows/ccpp.yml"><img alt="linux" src="https://github.com/OpenWaterAnalytics/EPANET/actions/workflows/ccpp.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/OpenWaterAnalytics/EPANET/actions/workflows/win32.yml"><img alt="epanet2-win32" src="https://github.com/OpenWaterAnalytics/EPANET/actions/workflows/win32.yml/badge.svg" /></a>
+<a class="reference external" href="https://github.com/OpenWaterAnalytics/EPANET/actions/workflows/win64.yml"><img alt="epanet2-win64" src="https://github.com/OpenWaterAnalytics/EPANET/actions/workflows/win64.yml/badge.svg" /></a></p>
+</div>
+<div class="section" id="description">
+<h2>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><strong>EPANET</strong> is an industry-standard program for modeling the hydraulic and water quality behavior of water distribution system pipe networks. The EPANET Programmer’s Toolkit is a library of functions (or API) written in C that allow programmers to customize the use of EPANET’s solution engine for their own applications. Both EPANET and its toolkit were originally developed by the U.S. Environmental Protection Agency (USEPA). If you are interested in using/extending the EPANET engine and its API for academic, personal, or commercial use, then you’ve come to the right place. <a class="reference external" href="https://en.wikipedia.org/wiki/EPANET">Read more about EPANET on Wikipedia</a>. (Please note that this project covers only the EPANET hydraulic and water quality solver engine, not the graphical user interface.)</p>
+</div>
+<div class="section" id="installation">
+<h2>INSTALLATION<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Instructions for building the OWA-EPANET Toolkit’s function library as well as its command line executable from the source files in this repository can be found <a class="reference external" href="https://github.com/OpenWaterAnalytics/EPANET/blob/master/BUILDING.md">here</a>.</p>
+</div>
+<div class="section" id="usage">
+<h2>USAGE<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>See the <a class="reference external" href="http://wateranalytics.org/EPANET/">full documentation</a> of the OWA-EPANET API, along with examples of how to use the toolkit for water distribution system analysis. Additional information may be found on this project’s <a class="reference external" href="https://github.com/openwateranalytics/epanet/wiki">Wiki</a>.</p>
+</div>
+<div class="section" id="contributing">
+<h2>CONTRIBUTING<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<p>Everyone is welcome to participate in this project. Whether you are helping others to resolve issues, reporting a new issue that hasn’t yet been discovered, suggesting a new feature that would benefit your workflow, or writing code (or tests, or scripts, or …), we value your time and effort. The path for contribution starts with the <a class="reference external" href="https://github.com/OpenWaterAnalytics/EPANET/issues">Issues</a>. Look around at open Issues and the conversation around them, get engaged by commenting on an outstanding Issue or creating a new one. If you want to contribute code, it helps to give the community time to discuss the ideas you present and offer constructive feedback. Once you get a clear path forward, Fork this repo to your own account. Make your commits on your dev branch (or one based on dev). Once you are finished, you can open a Pull Request to test the code and discuss merging your changes back into the community repository. A <a class="reference external" href="http://www.slideshare.net/demetriseliades/contributing-to-epanet-using-github-in-windows">step-by-step tutorial</a> on how to contribute to OWA-EPANET using GitHub is also available.</p>
+</div>
+<div class="section" id="credits">
+<h2>CREDITS<a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Open Water Analytics</strong> (OWA) Community is an international group of EPANET developers and users, whose objective is to provide group interaction and coordinated development of the EPANET codebase, to ensure that important new user interface and algorithmic features are identified and that these features progress efficiently from prototype code to production implementations. OWA is actively maintaining OWA-EPANET, a community-supported branch of USEPA EPANET, since May 2014. The full list of individuals contributing to this project can be found <a class="reference external" href="https://github.com/OpenWaterAnalytics/EPANET/blob/dev/AUTHORS">here</a>.</p>
+</div>
+<div class="section" id="disclaimer">
+<h2>DISCLAIMER<a class="headerlink" href="#disclaimer" title="Permalink to this headline">¶</a></h2>
+<p>Although OWA is not formally affiliated with nor endorsed by USEPA, this project has been a collaborative effort between the two that builds upon and extends the USEPA’s legacy EPANET 2.0 code base. For the last “official” release of EPANET please go to the <a class="reference external" href="http://www2.epa.gov/water-research/epanet">USEPA website</a>.</p>
+<p>For more general community discussion, FAQ, and roadmapping of the project, please go to the <a class="reference external" href="http://community.wateranalytics.org">Community Forum</a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons/lesson03/en2toolkit/EPANET"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, Ph.D., P.E., M.ASCE, F.EWRI<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

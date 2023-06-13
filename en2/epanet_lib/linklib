@@ -1,0 +1,1 @@
+gcc -shared -fPIC -Wl,-soname,libqux.so.1 -o libqux.so.1.5.0 epanet.o hash.o hydraul.o inpfile.o input1.o input2.o input3.o mempool.o output.o quality.o report.o rules.o smatrix.o -lc

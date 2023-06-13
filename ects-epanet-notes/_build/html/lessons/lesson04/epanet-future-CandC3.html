@@ -354,6 +354,23 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#epanet2toolkit-r-package">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     epanet2toolkit
+    </span>
+   </code>
+   (R package)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installing-on-my-rpi">
+     Installing on my RPi
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -414,6 +431,42 @@
 </div>
 <div class="section" id="files">
 <h3>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="epanet2toolkit-r-package">
+<h2><code class="docutils literal notranslate"><span class="pre">epanet2toolkit</span></code> (R package)<a class="headerlink" href="#epanet2toolkit-r-package" title="Permalink to this headline">¶</a></h2>
+<p>This section documents that the R package functions on RPi, which provides two pieces of information:</p>
+<ol class="simple">
+<li><p>The .so library can be extracted from its store in the R library</p></li>
+<li><p>The toolkit can be accessed on a RPi (so we are not constrained to intel hardware)</p></li>
+</ol>
+<div class="section" id="installing-on-my-rpi">
+<h3>Installing on my RPi<a class="headerlink" href="#installing-on-my-rpi" title="Permalink to this headline">¶</a></h3>
+<p>I already have R installed. To install the epanet2toolkit onto my machine the following <strong>R</strong> script is run as superuser.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># script to install epanet2toolkit and epanetReader</span>
+<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;epanet2toolkit&quot;</span><span class="p">,</span> <span class="n">INSTALL_opts</span> <span class="o">=</span> <span class="s2">&quot;--install-tests&quot;</span><span class="p">)</span>
+<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;epanetReader&quot;</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">epanet2toolkit</span><span class="p">)</span>
+<span class="n">library</span><span class="p">(</span><span class="n">epanetReader</span><span class="p">)</span>
+<span class="n">inp</span> <span class="o">&lt;-</span> <span class="n">file</span><span class="o">.</span><span class="n">path</span><span class="p">(</span> <span class="n">find</span><span class="o">.</span><span class="n">package</span><span class="p">(</span><span class="s2">&quot;epanet2toolkit&quot;</span><span class="p">),</span> <span class="s2">&quot;extdata&quot;</span><span class="p">,</span><span class="s2">&quot;Net1.inp&quot;</span><span class="p">)</span>
+<span class="n">ENepanet</span><span class="p">(</span> <span class="n">inp</span><span class="p">,</span> <span class="s2">&quot;Net1.rpt&quot;</span><span class="p">)</span> 
+<span class="n">myRpt</span> <span class="o">&lt;-</span> <span class="n">epanetReader</span><span class="p">::</span><span class="n">read</span><span class="o">.</span><span class="n">rpt</span><span class="p">(</span><span class="s2">&quot;Net1.rpt&quot;</span><span class="p">)</span>
+<span class="n">summary</span><span class="p">(</span><span class="n">myRpt</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Actually only the first two lines above are run as a superuser to install into the R libraries that are shared by all users on the machine</p>
+<p>First the tools install</p>
+<p><img alt="" src="../../_images/en22tools1.png" /></p>
+<p>Then the reader install</p>
+<p><img alt="" src="../../_images/en22tools2.png" /></p>
+<p>Then switch to a regular user and run the remainder of the example</p>
+<p><img alt="" src="../../_images/en22tools3.png" /></p>
+<p><strong>Why this matters</strong></p>
+<p>We now have a working shared object library in <code class="docutils literal notranslate"><span class="pre">usr/local/lib/R/site-library/epanet2toolkit/libs</span></code> One can copy or symbolic link to this library instead of building from the original EPANET source.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Obviously, building from original source is best, but on my computer it kept throwing an exception and ignoring the compiler directives to treat warnings as warnings - annoying to say the least.  I know the <strong>R</strong> implementation works, so just modified things a bit to use that library - A hack, why YES!  Necessary?  Also YES.  I am sure its a matter of a switch in the <a class="reference external" href="http://setup.py">setup.py</a> for epanettools or the config file - but I was desparate and it seemed to work.</p>
+</div>
 </div>
 </div>
 </div>

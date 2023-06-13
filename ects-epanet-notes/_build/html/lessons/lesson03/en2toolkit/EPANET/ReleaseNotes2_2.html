@@ -1,0 +1,960 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Release Notes for EPANET 2.2 &#8212; Hydraulic Network Simulation with EPANET and Python</title>
+    
+  <link href="../../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/togglebutton.js"></script>
+    <script src="../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Hydraulic Network Simulation with EPANET and Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../intro.html">
+   About this book
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../lesson01/introduction.html">
+   1 Hydraulic Networks and Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/hydraulic-networks.html">
+     1.2 Network Hydraulics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/pythonjupyter.html">
+     1.3 Python/Jupyter Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/pythonhydraulics.html">
+     1.4 Hydraulics in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/pythonhydraulicsmodule.html">
+     1.5 The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pipenet
+      </span>
+     </code>
+     module
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson01/pythonpumpingmodule.html">
+     1.6 Pumps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../lesson02/epanet-classic.html">
+   2 EPANET Intro/Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson02/epanet-gui.html">
+     2.2 EPANET GUI Examples
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson02/epanet-eps.html">
+     2.3 Extended period simulation (EPS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson02/epanet-watq.html">
+     2.4 Water Quality Simulation in EPANET
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson02/epanet-rules.html">
+     2.5 EPANET Control Rules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../epanet-toolkit.html">
+   3 EPANET Programmers Toolkit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../epanet-rulesGUI.html">
+     3.2 EPANET example using
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../epanet-rulesCLI.html">
+     3.3 EPANET example using the Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../epanet-rulesAPI.html">
+     3.4 EPANET example using the Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../epanet-sensors.html">
+     3.5 EPANET Sensors integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../lesson04/epanet-future-CandC1.html">
+   4 Command and Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson04/epanet-future-CandC2.html">
+     4.2 CandC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson04/epanet-future-CandC3.html">
+     4.X Build Notes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson04/epanet-future.html">
+     4.4 Unsolved Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../lesson04/epanet-exam.html">
+     4.5 EPANET Exam
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../../_sources/lessons/lesson03/en2toolkit/EPANET/ReleaseNotes2_2.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flessons/lesson03/en2toolkit/EPANET/ReleaseNotes2_2.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#thread-safe-api-functions">
+   Thread-Safe API Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#network-building-by-code">
+   Network Building By Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-convergence-parameters">
+   Additional Convergence Parameters
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-efficient-node-re-ordering">
+   More Efficient Node Re-ordering
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#improved-handling-of-near-zero-flows">
+   Improved Handling of Near-Zero Flows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pressure-dependent-demands">
+   Pressure Dependent Demands
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tank-overflows">
+   Tank Overflows
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#improved-water-quality-mass-balance">
+   Improved Water Quality Mass Balance
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#new-api-functions">
+   New API functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#new-api-constants">
+   New API Constants
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#node-value-types">
+     Node value types:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#link-value-types">
+     Link value types:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#count-types">
+     Count types:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#head-loss-formula">
+     Head loss formula:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hydraulic-option-types">
+     Hydraulic option types:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#quality-option-types">
+     Quality option types:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simulation-statistic-types">
+     Simulation statistic types:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#action-code-types">
+     Action code types:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#curve-types">
+     Curve types:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#demand-model-types">
+     Demand model types:
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentation">
+   Documentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#authors-contributing-to-this-release">
+   Authors contributing to this release:
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="release-notes-for-epanet-2-2">
+<h1>Release Notes for EPANET 2.2<a class="headerlink" href="#release-notes-for-epanet-2-2" title="Permalink to this headline">¶</a></h1>
+<p>This document describes the changes and updates that have been made in version 2.2 of EPANET.</p>
+<div class="section" id="thread-safe-api-functions">
+<h2>Thread-Safe API Functions<a class="headerlink" href="#thread-safe-api-functions" title="Permalink to this headline">¶</a></h2>
+<p>A duplicate set of API functions has been provided that allow multiple EPANET projects to be analyzed concurrently in a thread-safe manner. These functions maintain the same name as the original but use a <code class="docutils literal notranslate"><span class="pre">EN_</span></code> prefix instead of <code class="docutils literal notranslate"><span class="pre">EN</span></code>. In addition, the first argument to each of these functions is a handle that identifies the particular project being analyzed. For example, instead of writing:</p>
+<p><code class="docutils literal notranslate"><span class="pre">ENgetnodevalue(nodeIndex,</span> <span class="pre">EN_ELEVATION,</span> <span class="pre">&amp;elev)</span></code></p>
+<p>one would use:</p>
+<p><code class="docutils literal notranslate"><span class="pre">EN_getnodevalue(ph,</span> <span class="pre">nodeIndex,</span> <span class="pre">EN_ELEVATION,</span> <span class="pre">&amp;elev)</span></code></p>
+<p>where <code class="docutils literal notranslate"><span class="pre">ph</span></code> is the handle assigned to the project.</p>
+<p>Two new functions have been added to the API to manage the creation and deletion of project handles. <code class="docutils literal notranslate"><span class="pre">EN_createproject</span></code> creates a new project along with its handle, while <code class="docutils literal notranslate"><span class="pre">EN_deleteproject</span></code> deletes a project. An example of using the thread-safe version of the API is shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &quot;epanet2_2.h&quot;
+int runEpanet(char *finp, char *frpt)
+{
+    EN_Project ph = 0;
+    int err;
+    err = EN_createproject(&amp;ph);
+    if (err) return err;
+    err = EN_open(ph, finp, frpt, &quot;&quot;);
+    if (!err) err = EN_solveH(ph);
+    if (!err) err = EN_report(ph);
+    EN_close(ph);
+    EN_deleteproject(ph);
+    return err;
+}
+</pre></div>
+</div>
+<p>Prototypes of the thread-safe functions appear in the <code class="docutils literal notranslate"><span class="pre">epanet2_2.h</span></code> header file while <code class="docutils literal notranslate"><span class="pre">epanet2.h</span></code> contains prototypes of the legacy-style API functions. The enumerated constants used with both types of functions have been moved to <code class="docutils literal notranslate"><span class="pre">epanet2_enums.h</span></code>.</p>
+</div>
+<div class="section" id="network-building-by-code">
+<h2>Network Building By Code<a class="headerlink" href="#network-building-by-code" title="Permalink to this headline">¶</a></h2>
+<p>API users now have the ability to build a complete EPANET network model using just function calls, without the need to open an EPANET-formatted input file. All types of network objects can be created and have their properties set using these calls, including both simple and rule-based controls.  Here is an example of building a simple 2-node, 1-pipe network just through code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#include &quot;epanet2_2.h&quot;
+int buildandrunEpanet(char *rptfile)
+{
+    // Create and initialize a project using gpm for flow
+    // units and the Hazen-Williams formula for head loss
+    EN_Project ph = 0;
+    int err, index;
+    err = EN_createproject(&amp;ph);
+    if (err) return err;
+    EN_init(ph, rptfile, &quot;&quot;, EN_GPM, EN_HW);
+
+    //Add a junction node with 710 ft elevation and 500 gpm demand
+    EN_addnode(ph, &quot;J1&quot;, EN_JUNCTION, &amp;index);
+    EN_setjuncdata(ph, index, 710, 500, &quot;&quot;);
+
+    // Add a reservoir node at 800 ft elevation
+    EN_addnode(ph, &quot;R1&quot;, EN_RESERVOIR, &amp;index);
+    EN_setnodevalue(ph, index, EN_ELEVATION, 800);
+
+    // Add a 5280 ft long, 14-inch pipe with C-factor of 100
+    // from the reservoir to the demand node
+    EN_addlink(ph, &quot;P1&quot;, EN_PIPE, &quot;R1&quot;, &quot;J1&quot;, &amp;index);
+    EN_setpipedata(ph, index, 5280, 14, 100, 0);
+
+    // Solve for hydraulics and report nodal results
+    EN_setreport(ph, &quot;NODES ALL&quot;);
+    err = EN_solveH(ph);
+    if (!err) err = EN_report(ph);
+
+    // Close and delete the project
+    EN_close(ph);
+    EN_deleteproject(ph);
+    return err;
+}
+</pre></div>
+</div>
+<p>Instead of using <code class="docutils literal notranslate"><span class="pre">EN_open</span></code> to load data from a file, <code class="docutils literal notranslate"><span class="pre">EN_init</span></code> is used to initialize a project with the names of its report and binary files, and its flow units and head loss formula. The legacy-style API has a complementary set of functions for building networks from code.</p>
+</div>
+<div class="section" id="additional-convergence-parameters">
+<h2>Additional Convergence Parameters<a class="headerlink" href="#additional-convergence-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Two new analysis options have been added to provide more rigorous convergence criteria for EPANET’s hydraulic solver. In the API they are named <code class="docutils literal notranslate"><span class="pre">EN_HEADERROR</span></code> and <code class="docutils literal notranslate"><span class="pre">EN_FLOWCHANGE</span></code> while in the <code class="docutils literal notranslate"><span class="pre">[OPTIONS]</span></code> section of an EPANET input file they are named <code class="docutils literal notranslate"><span class="pre">HEADERROR</span></code> and <code class="docutils literal notranslate"><span class="pre">FLOWCHANGE</span></code>, respectively.</p>
+<p><code class="docutils literal notranslate"><span class="pre">EN_HEADERROR</span></code> is the maximum head loss error that any network link can have for hydraulic convergence to occur. A link’s head loss error is the difference between the head loss found as a function of computed flow in the link (such as by the Hazen-Williams equation for a pipe) and the difference in computed heads for the link’s end nodes. The units of this parameter are feet (or meters for SI units). The default value of 0 indicates that no head error limit applies.</p>
+<p><code class="docutils literal notranslate"><span class="pre">EN_FLOWCHANGE</span></code> is the largest change in flow that any network element (link, emitter, or pressure-dependent demand) can have for hydraulic convergence to occur. It is specified in whatever flow units the project is using. The default value of 0 indicates that no flow change limit applies.</p>
+<p>These new parameters augment the current <code class="docutils literal notranslate"><span class="pre">EN_ACCURACY</span></code> option which always remains in effect. In addition, both <code class="docutils literal notranslate"><span class="pre">EN_HEADERROR</span></code> and <code class="docutils literal notranslate"><span class="pre">EN_FLOWCHANGE</span></code> can be used as parameters in the <code class="docutils literal notranslate"><span class="pre">EN_getstatistic</span></code> (or <code class="docutils literal notranslate"><span class="pre">ENgetstatistic</span></code>) function to retrieve their computed values (even when their option values are 0) after a hydraulic solution has been completed.</p>
+</div>
+<div class="section" id="more-efficient-node-re-ordering">
+<h2>More Efficient Node Re-ordering<a class="headerlink" href="#more-efficient-node-re-ordering" title="Permalink to this headline">¶</a></h2>
+<p>EPANET’s hydraulic solver requires solving a system of linear equations over a series of iterations until a set of convergence criteria are met. The coefficient matrix of this linear system is square and symmetric. It has a row for each network node and a non-zero off-diagonal coefficient for each link. The numerical effort needed to solve the linear system can be reduced if the nodes are re-ordered so that the non-zero coefficients cluster more tightly around the diagonal.</p>
+<p>EPANET’s original node re-ordering scheme has been replaced by the more efficient <strong>Multiple Minimum Degree (MMD)</strong> algorithm. On a series of eight networks ranging in size from 7,700 to 100,000 nodes MMD reduced the solution time for a single period (steady state) hydraulic analysis, where most of the work is for node-reordering, by an average of 55%. Since MMD did not reduce the time needed to solve the linear equations generated at each iteration of the hydraulic solver longer extended period simulations will not exhibit a similar speedup.</p>
+</div>
+<div class="section" id="improved-handling-of-near-zero-flows">
+<h2>Improved Handling of Near-Zero Flows<a class="headerlink" href="#improved-handling-of-near-zero-flows" title="Permalink to this headline">¶</a></h2>
+<p>EPANET’s hydraulic solver can generate an ill-conditioned solution matrix when pipe flows approach zero unless some adjustment is made (i.e., as a pipe’s flow approaches 0 its head loss gradient also approaches 0 causing its reciprocal, which is used to form the solution matrix’s coefficients, to approach infinity). EPANET 2.0 used an arbitrary cutoff on head loss gradient to prevent it from becoming 0. This approach doesn’t allow a pipe to follow any head loss v. flow relation in the region below the cutoff and can produce incorrect solutions for some networks (see <a class="reference external" href="https://ascelibrary.org/doi/full/10.1061/%28ASCE%29IR.1943-4774.0000100">Estrada et al., 2009</a>).</p>
+<p>The hydraulic solver has been modified to use a linear head loss v. flow relation for flows approaching zero. For the Darcy-Weisbach equation, the linear Hagen-Poiseuille formula is used for laminar flow where the Reynolds Number is &lt;= 2000. For the Hazen-Williams and Chezy-Manning equations, if the head loss gradient at a given flow is below the EPANET 2.0 gradient cutoff then a linear head loss relation is used whose slope equals the cutoff. EPANET 2.2 is now able to correctly solve the examples presented in Estrada et al. (2009) as well as those in <a class="reference external" href="https://ascelibrary.org/doi/10.1061/%28ASCE%29HY.1943-7900.0000694">Gorev et al., (2013)</a> and <a class="reference external" href="https://ascelibrary.org/doi/10.1061/%28ASCE%29HY.1943-7900.0000411">Elhay and Simpson (2011)</a>.</p>
+</div>
+<div class="section" id="pressure-dependent-demands">
+<h2>Pressure Dependent Demands<a class="headerlink" href="#pressure-dependent-demands" title="Permalink to this headline">¶</a></h2>
+<p>EPANET has always employed a Demand Driven Analysis (<strong>DDA</strong>) when modeling network hydraulics. Under this approach nodal demands at a given point in time are fixed values that must be delivered no matter what nodal heads and link flows are produced by a hydraulic solution. This can result in situations where required demands are satisfied at nodes that have negative pressures - a physical impossibility.</p>
+<p>To address this issue EPANET has been extended to use a Pressure Driven Analysis (<strong>PDA</strong>) if so desired. Under <strong>PDA</strong>, the demand D delivered at a node depends on the node’s available pressure P according to:</p>
+<p>D = Dfull * [ (P - Pmin) / (Preq - Pmin) ]^Pexp</p>
+<p>where Dfull is the full demand required, Pmin is the pressure below which demand is zero, Preq is the pressure required to deliver the full required demand and Pexp is an exponent. When P &lt; Pmin demand is 0 and when P &gt; Preq demand equals Dfull.</p>
+<p>To implement pressure driven analysis four new parameters have been added to the [OPTIONS] section of the EPANET input file:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Default</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DEMAND</span> <span class="pre">MODEL</span></code></p></td>
+<td><p>either DDA or PDA</p></td>
+<td><p>DDA</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MINIMUM</span> <span class="pre">PRESSURE</span></code></p></td>
+<td><p>value for Pmin</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">REQUIRED</span> <span class="pre">PRESSURE</span></code></p></td>
+<td><p>value for Preq</p></td>
+<td><p>0.1</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">PRESSURE</span> <span class="pre">EXPONENT</span></code></p></td>
+<td><p>value for Pexp</p></td>
+<td><p>0.5</p></td>
+</tr>
+</tbody>
+</table>
+<p>These parameters can also be set and retrieved in code using the following API functions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">ENsetdemandmodel</span><span class="p">(</span><span class="nb">int</span> <span class="n">modelType</span><span class="p">,</span> <span class="n">double</span> <span class="n">pMin</span><span class="p">,</span> <span class="n">double</span> <span class="n">pReq</span><span class="p">,</span> <span class="n">double</span> <span class="n">pExp</span><span class="p">);</span>
+<span class="nb">int</span> <span class="n">ENgetdemandmodel</span><span class="p">(</span><span class="nb">int</span> <span class="o">*</span><span class="n">modelType</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">pMin</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">pReq</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">pExp</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>for the legacy API and</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">EN_setdemandmodel</span><span class="p">(</span><span class="n">EN_Project</span> <span class="n">ph</span><span class="p">,</span> <span class="nb">int</span> <span class="n">modelType</span><span class="p">,</span> <span class="n">double</span> <span class="n">pMin</span><span class="p">,</span> <span class="n">double</span> <span class="n">pReq</span><span class="p">,</span> <span class="n">double</span> <span class="n">pExp</span><span class="p">);</span>
+<span class="nb">int</span> <span class="n">EN_getdemandmodel</span><span class="p">(</span><span class="n">EN_Project</span> <span class="n">ph</span><span class="p">,</span> <span class="nb">int</span> <span class="o">*</span><span class="n">modelType</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">pMin</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">pReq</span><span class="p">,</span> <span class="n">double</span> <span class="o">*</span><span class="n">pExp</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>for the thread-safe API. Some additional points regarding the new <strong>PDA</strong> option are:</p>
+<ul class="simple">
+<li><p>If no DEMAND  MODEL and its parameters are specified then the analysis defaults to being demand driven (<strong>DDA</strong>).</p></li>
+<li><p>This implementation of <strong>PDA</strong> assumes that the same parameters apply to all nodes in the network. Extending the framework to allow different parameters for specific nodes is left as a future feature to implement.</p></li>
+<li><p>Preq must be at least 0.1 (either psi or m) higher than Pmin to avoid numerical issues caused by having too steep a demand curve.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">EN_DEFICIENTNODES</span></code> as the argument to <code class="docutils literal notranslate"><span class="pre">EN_getstatistic</span></code> (or <code class="docutils literal notranslate"><span class="pre">ENgetstatistic</span></code>) will retrieve the number of nodes that are pressure deficient. These are nodes with positive required demand whose pressure is below 0 under <strong>DDA</strong>  or below Preq under <strong>PDA</strong>.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">EN_DEMANDREDUCTION</span></code> as an argument will retrieve the total percent reduction of demands at pressure deficient nodes under <strong>PDA</strong>.</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">EN_DEMANDDEFICIT</span></code> with the <code class="docutils literal notranslate"><span class="pre">EN_getnodevalue</span></code> (or <code class="docutils literal notranslate"><span class="pre">ENgetnodevalue</span></code>) function will return the amount of demand reduction produced by a <strong>PDA</strong> at any particular node.</p></li>
+</ul>
+</div>
+<div class="section" id="tank-overflows">
+<h2>Tank Overflows<a class="headerlink" href="#tank-overflows" title="Permalink to this headline">¶</a></h2>
+<p>EPANET has always prevented tanks from overflowing by closing any links that supply inflow to a full tank. A new option <code class="docutils literal notranslate"><span class="pre">EN_CANOVERFLOW</span></code>, has been added to the list of Tank node properties. When set to 1 it will allow its tank to overflow when it becomes full. The spillage rate is returned in the tank’s EN_DEMAND property. The default value for <code class="docutils literal notranslate"><span class="pre">EN_CANOVERFLOW</span></code> is 0 indicating that the tank cannot overflow.</p>
+<p>For the input file, a new field has been appended to the data supplied for each tank in the <code class="docutils literal notranslate"><span class="pre">[TANKS]</span></code> section of the file. A value of <strong>YES</strong> indicates that the tank can over flow while <strong>NO</strong> (the default) indicates that it cannot. For the volume curve field that precedes it, an asterisk (*) can be used if the tank does not utilize a volume curve.</p>
+</div>
+<div class="section" id="improved-water-quality-mass-balance">
+<h2>Improved Water Quality Mass Balance<a class="headerlink" href="#improved-water-quality-mass-balance" title="Permalink to this headline">¶</a></h2>
+<p>As described by <a class="reference external" href="https://www.drink-water-eng-sci.net/11/25/2018/dwes-11-25-2018.pdf">Davis et al. (2018)</a> EPANET’s water quality simulations can result in some significant mass balance errors when modeling short term mass injections (errors are much smaller for continuous source flows). The entire water quality engine has been re-written to eliminate these errors. It still uses the Lagrangian Time Driven transport method but now analyzes each network node in topologically sorted order rather than in arbitrary order.</p>
+<p>A Mass Balance Report now appears the end of a simulation’s Status Report that lists the various components (inflow, outflow, reaction) that comprise the network’s overall mass balance. In addition <code class="docutils literal notranslate"><span class="pre">EN_MASSBALANCE</span></code> can be used as a parameter in the <code class="docutils literal notranslate"><span class="pre">EN_getstatistic</span></code> (or <code class="docutils literal notranslate"><span class="pre">ENgetstatistic</span></code>) function to retrieve the Mass Balance Ratio (Total Outflow Mass / Total Inflow Mass) at any point during a water quality simulation.</p>
+<p>With this change EPANET 2.2 now produces perfect mass balances when tested against the networks used in Davis et al. (2018).</p>
+</div>
+<div class="section" id="new-api-functions">
+<h2>New API functions<a class="headerlink" href="#new-api-functions" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Function</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_createproject</span></code></p></td>
+<td><p>Creates a new EPANET project</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_deleteproject</span></code></p></td>
+<td><p>Deletes an EPANET project</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_init</span></code></p></td>
+<td><p>Initializes an EPANET project</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setflowunits</span></code></p></td>
+<td><p>Sets the project’s flow units</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_addnode</span></code></p></td>
+<td><p>Adds a new node to a project</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_addlink</span></code></p></td>
+<td><p>Adds a new link to a project</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_addcontrol</span></code></p></td>
+<td><p>Adds a new simple control to a project</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_addrule</span></code></p></td>
+<td><p>Adds a new control rule to a project</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_deletenode</span></code></p></td>
+<td><p>Deletes a node from the project</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_deletelink</span></code></p></td>
+<td><p>Deletes a link from the project</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_deletepattern</span></code></p></td>
+<td><p>Deletes a time pattern from the project</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_deletecurve</span></code></p></td>
+<td><p>Deletes a data curve from the project</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_deletecontrol</span></code></p></td>
+<td><p>Deletes a simple control from the project</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_deleterule</span></code></p></td>
+<td><p>Deletes a rule-based control from the project</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setnodeid</span></code></p></td>
+<td><p>Changes the ID name for a node</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setjuncdata</span></code></p></td>
+<td><p>Sets values for a junction’s parameters</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_settankdata</span></code></p></td>
+<td><p>Sets values for a tank’s parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setlinkid</span></code></p></td>
+<td><p>Changes the ID name for a link</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setlinknodes</span></code></p></td>
+<td><p>Sets a link’s start- and end-nodes</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setlinktype</span></code></p></td>
+<td><p>Changes the type of a specific link</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setpipedata</span></code></p></td>
+<td><p>Sets values for a pipe’s parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getdemandmodel</span></code></p></td>
+<td><p>Retrieves the type of demand model in use</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setdemandmodel</span></code></p></td>
+<td><p>Sets the type of demand model to use</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_adddemand</span></code></p></td>
+<td><p>Adds a new demand category to a node</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_deletedemand</span></code></p></td>
+<td><p>Deletes a demand category from a node</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getdemandindex</span></code></p></td>
+<td><p>Finds a demand category’s index given its name</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getdemandname</span></code></p></td>
+<td><p>Gets the name of a node’s demand category</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setdemandname</span></code></p></td>
+<td><p>Sets the name of a node’s demand category</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setdemandpattern</span></code></p></td>
+<td><p>Assigns a time pattern to a node’s demand category</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setpatternid</span></code></p></td>
+<td><p>Changes the ID name of a time pattern</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setcurveid</span></code></p></td>
+<td><p>Changes the ID name of a data curve</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getcurvetype</span></code></p></td>
+<td><p>Gets a curve’s type</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setheadcurveindex</span></code></p></td>
+<td><p>Sets the index of a head curve used by a pump</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getruleinfo</span></code></p></td>
+<td><p>Gets the number of elements in a rule-based control</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getruleid</span></code></p></td>
+<td><p>Gets the name assigned to a rule-based control</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getpremise</span></code></p></td>
+<td><p>Gets the contents of a premise in a rule-based control</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setpremise</span></code></p></td>
+<td><p>Sets the contents of a premise in a rule-based control</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setpremiseindex</span></code></p></td>
+<td><p>Sets the index of an object in a premise of a rule-based control</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setpremisestatus</span></code></p></td>
+<td><p>Sets the status of an object in a premise of a rule-based control</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setpremisevalue</span></code></p></td>
+<td><p>Sets the value of a property in a premise of a rule-based control</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getthenaction</span></code></p></td>
+<td><p>Gets the contents of a THEN action in a rule-based control</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setthenaction</span></code></p></td>
+<td><p>Sets the contents of a THEN action in a rule-based control</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getelseaction</span></code></p></td>
+<td><p>Gets the contents of an ELSE action in a rule-based control</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setelseaction</span></code></p></td>
+<td><p>Sets the contents of an ELSE action in a rule-based control</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setrulepriority</span></code></p></td>
+<td><p>Sets the priority of a rule-based control</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_gettitle</span></code></p></td>
+<td><p>Gets a project’s title</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_settitle</span></code></p></td>
+<td><p>Sets a project’s title</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getcomment</span></code></p></td>
+<td><p>Gets the descriptive comment assigned to an object</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setcomment</span></code></p></td>
+<td><p>Assigns a descriptive comment to an object</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_clearreport</span></code></p></td>
+<td><p>Clears the contents of a project’s report file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_copyreport</span></code></p></td>
+<td><p>Copies the contents of a project’s report file</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getresultindex</span></code></p></td>
+<td><p>Gets the order in which a node or link was saved to file</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getvertexcount</span></code></p></td>
+<td><p>Gets the number of vertex points in a link</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EN_getvertex</span></code></p></td>
+<td><p>Gets the coordinates of a vertex point in a link</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EN_setvertices</span></code></p></td>
+<td><p>Assigns a new set of vertex points to a link</p></td>
+</tr>
+</tbody>
+</table>
+<p>In addition to these new functions, a tank’s volume curve <code class="docutils literal notranslate"><span class="pre">EN_VOLCURVE</span></code> can be set using <code class="docutils literal notranslate"><span class="pre">EN_setnodevalue</span></code> and <code class="docutils literal notranslate"><span class="pre">EN_setlinkvalue</span></code> can now be used to set the following pump properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_POWER</span></code> (constant power rating)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_HCURVE</span></code> (head characteristic curve)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_ECURVE</span></code> (efficiency curve)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_ECOST</span></code> (average energy price)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_EPAT</span></code> (energy pricing pattern)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_LINKPATTERN</span></code> (speed setting pattern)</p></li>
+</ul>
+<p>Access to the following global energy options have been added to  <code class="docutils literal notranslate"><span class="pre">EN_getoption</span></code> and <code class="docutils literal notranslate"><span class="pre">EN_setoption</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_GLOBALEFFIC</span></code> (global pump efficiency)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_GLOBALPRICE</span></code> (global average energy price per kW-Hour)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_GLOBALPATTERN</span></code>	(global energy price pattern)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_DEMANDCHARGE</span></code> (price per maximum kW of energy consumption)</p></li>
+</ul>
+</div>
+<div class="section" id="new-api-constants">
+<h2>New API Constants<a class="headerlink" href="#new-api-constants" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="node-value-types">
+<h3>Node value types:<a class="headerlink" href="#node-value-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_CANOVERFLOW</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_DEMANDDEFICIT</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="link-value-types">
+<h3>Link value types:<a class="headerlink" href="#link-value-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_STATE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_EFFIC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_POWER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_HCURVE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_ECURVE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_ECOST</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_EPAT</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="count-types">
+<h3>Count types:<a class="headerlink" href="#count-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_RULECOUNT</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="head-loss-formula">
+<h3>Head loss formula:<a class="headerlink" href="#head-loss-formula" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_HW</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_DW</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_CM</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="hydraulic-option-types">
+<h3>Hydraulic option types:<a class="headerlink" href="#hydraulic-option-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_HEADERROR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_FLOWCHANGE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_HEADLOSSFORM</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_GLOBALEFFIC</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_GLOBALPRICE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_GLOBALPATTERN</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_DEMANDCHARGE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_SP_GRAVITY</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_SP_VISCOS</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_EXTRA_ITER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_CHECKFREQ</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_MAXCHECK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_DAMPLIMIT</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="quality-option-types">
+<h3>Quality option types:<a class="headerlink" href="#quality-option-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_SP_DIFFUS</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_BULKORDER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_WALLORDER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_TANKORDER</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_CONCENLIMIT</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="simulation-statistic-types">
+<h3>Simulation statistic types:<a class="headerlink" href="#simulation-statistic-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_MAXHEADERROR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_MAXFLOWCHANGE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_MASSBALANCE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_DEFICIENTNODES</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_DEMANDREDUCTION</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="action-code-types">
+<h3>Action code types:<a class="headerlink" href="#action-code-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_UNCONDITIONAL</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_CONDITIONAL</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="curve-types">
+<h3>Curve types:<a class="headerlink" href="#curve-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_VOLUME_CURVE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PUMP_CURVE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_EFFIC_CURVE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_HLOSS_CURVE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_GENERIC_CURVE</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="demand-model-types">
+<h3>Demand model types:<a class="headerlink" href="#demand-model-types" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_DDA</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EN_PDA</span></code></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Doxygen files have been created to generate a complete Users Guide for version 2.2’s API. The guide’s format is similar to the original EPANET Programmer’s Toolkit help file and can be produced as a set of HTML pages, a Windows help file or a PDF document.</p>
+</div>
+<div class="section" id="authors-contributing-to-this-release">
+<h2>Authors contributing to this release:<a class="headerlink" href="#authors-contributing-to-this-release" title="Permalink to this headline">¶</a></h2>
+<p>(In alphabetical order)</p>
+<ul class="simple">
+<li><p>Demetrios Eliades</p></li>
+<li><p>Sam Hatchett</p></li>
+<li><p>Abel Heinsbroek</p></li>
+<li><p>Marios Kyriakou</p></li>
+<li><p>Lewis Rossman</p></li>
+<li><p>Elad Salomons</p></li>
+<li><p>Markus Sunela</p></li>
+<li><p>Michael Tryby</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons/lesson03/en2toolkit/EPANET"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, Ph.D., P.E., M.ASCE, F.EWRI<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
