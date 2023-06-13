@@ -9,8 +9,14 @@
 # 
 # ## Examples
 # 
+# The examples below are copied from
+# [Cleveland, T.G., Tay, C.C., and Neale, C.M. (2015) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University.](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/EPANETbyExampleV1.pdf)
+# 
+# 
 # 
 
+# <hr>
+# 
 # ### Example 1
 # 
 # A simple model to consider is a single pipe connecting two reservoirs.
@@ -127,6 +133,8 @@
 # 2. [EX1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX1.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.inp) An EPANET network input file (ASCII .inp file, readable by the toolkit)
 
+# <hr>
+# 
 # ### Example 2
 # 
 # This example represents the situation where the total head is known at two points on a pipeline, and one wishes to determine the flow rate (or specify a flow rate and solve for a pipe diameter). Like the prior example it is contrived, but follows the same general modeling process.
@@ -175,6 +183,8 @@
 # 2. [EX2-JB.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex2/EX2-JB.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX2-JB.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex2/EX2-JB.inp) An EPANET network input file (ASCII .inp file, readable by the toolkit)
 
+# <hr>
+# 
 # ### Example 3 : Three-Reservoir-Problem
 # 
 # This example is a pretty classic hydraulics problem, that appears in some form in most if not all hydraulics textbooks.  Here it is useful to introduce the concept of a basemap (image) to help draw the network. 
@@ -242,6 +252,12 @@
 
 # ### Example 5
 
+# ### Exercises
+# 
+# 1.
+# 
+# 2.
+# 
 # 
 
 # 
