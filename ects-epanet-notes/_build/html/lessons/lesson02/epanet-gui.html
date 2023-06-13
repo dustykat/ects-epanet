@@ -365,6 +365,13 @@
     <a class="reference internal nav-link" href="#example-2">
      Example 2
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Files
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-3-three-reservoir-problem">
@@ -372,7 +379,7 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id1">
+      <a class="reference internal nav-link" href="#id2">
        Files
       </a>
      </li>
@@ -492,12 +499,55 @@ if we wished to adjust the model to agree with some other known friction factor.
 <ol class="simple">
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.bmp">EX1.bmp</a> The base image file</p></li>
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net">EX1.net</a> An EPANET input file (binary .net file, readable by the GUI)</p></li>
-<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net">EX1.net</a> A different EPANET input file (binary .net file, readable by the GUI)</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.inp">EX1.inp</a> An EPANET network input file (ASCII .inp file, readable by the toolkit)</p></li>
 </ol>
 </div>
 </div>
 <div class="section" id="example-2">
 <h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>This example represents the situation where the total head is known at two points on a pipeline, and one wishes to determine the flow rate (or specify a flow rate and solve for a pipe diameter). Like the prior example it is contrived, but follows the same general modeling process.</p>
+<p>As in the prior example, we will use EPANET to solve a problem we have already solved by hand.</p>
+<p>The <strong>problem statement</strong> is:</p>
+<blockquote>
+<div><p>Using the Moody chart, and the energy equation, estimate the diameter
+of a cast-iron pipe needed to carry 60oF water at a discharge of 10 cubic-
+feet per second (cfs) between two reservoirs 2 miles apart. The elevation
+difference between the water surfaces in the two reservoirs is 20 feet.
+A sketch of the situation is <img alt="" src="../../_images/EX2.bmp" /></p>
+</div></blockquote>
+<p>As in the prior example, we will need to specify the pipe roughness terms, then solve
+by trial-and-error for the diameter required to carry the water at the desired
+owrate.
+Page 31 of the EPANET manual suggests that the roughness height for cast iron is
+0.85 millifeet.</p>
+<p>As before the steps to model the situation are:</p>
+<ol class="simple">
+<li><p>Start EPANET</p></li>
+<li><p>Set defaults</p></li>
+<li><p>Select the reservoir tool. Put two reservoirs on the map.</p></li>
+<li><p>Select the node tool, put a node on the map. EPANET needs one node!</p></li>
+<li><p>Select the link (pipe) tool, connect the two reservoirs to the node. One link is the 2 mile pipe, the other is a short large diameter pipe (negligible head loss).</p></li>
+<li><p>Set the total head each reservoir.</p></li>
+<li><p>Set the pipe length and roughness height in the 2 mile pipe.</p></li>
+<li><p>Guess a diameter.</p></li>
+<li><p>Save the input file.</p></li>
+<li><p>Run the program. Query the pipe and find the computed flow. If the flow is too large reduce the pipe diameter, if too small increase the pipe diameter. Stop when within a few percent of the desired flow rate. Use commercially available diameters in the trial-and-error process, so exact match is not anticipated.</p></li>
+</ol>
+<p>Figure 56 is a screen capture after the model is built and some trial-and-error diameter
+selection.</p>
+<p><img alt="" src="../../_images/ex2ss1.png" /></p>
+<p>Of importance is the node and the “short pipe” that connects the second
+reservoir. By changing the diameter (inches) in the dialog box and re-running the
+program we can find a solution (diameter) that produces 10 cfs in the system for the
+given elevation differences.</p>
+<div class="section" id="id1">
+<h4>Files<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex2/EX2.bmp">EX2.bmp</a> The base image file</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex2/EX2-JB.net">EX2-JB.net</a> An EPANET input file (binary .net file, readable by the GUI)</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex2/EX2-JB.inp">EX2-JB.inp</a> An EPANET network input file (ASCII .inp file, readable by the toolkit)</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="example-3-three-reservoir-problem">
 <h3>Example 3 : Three-Reservoir-Problem<a class="headerlink" href="#example-3-three-reservoir-problem" title="Permalink to this headline">¶</a></h3>
@@ -539,10 +589,10 @@ LPS (liters per second). The roughness height is about 0.26 millimeters (if conv
 <p>The results should be identical.  The video was not made at the same time as the screen capture, so there may be slight differences.  The input files are pre-loaded onto the webserver implementation.  In the face-to-face course, the actual modeling building process will be deomnstrated.</p>
 </div>
 <p>The requestite files are listed below.</p>
-<div class="section" id="id1">
-<h4>Files<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id2">
+<h4>Files<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
-<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp">EX3.bmp</a> The base image file</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp">EX3.bmp</a> The base image file (it is not activated in the example)</p></li>
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.net">EX3.net</a> An EPANET input file (binary .net file, readable by the GUI)</p></li>
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3-1.net">EX3-1.net</a> A different EPANET input file (binary .net file, readable by the GUI)</p></li>
 </ol>

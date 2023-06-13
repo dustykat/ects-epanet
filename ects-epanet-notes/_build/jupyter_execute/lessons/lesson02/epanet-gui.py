@@ -125,9 +125,55 @@
 # 
 # 1. [EX1.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.bmp) The base image file
 # 2. [EX1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net) An EPANET input file (binary .net file, readable by the GUI)
-# 3. [EX1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net) A different EPANET input file (binary .net file, readable by the GUI)
+# 3. [EX1.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.inp) An EPANET network input file (ASCII .inp file, readable by the toolkit)
 
 # ### Example 2
+# 
+# This example represents the situation where the total head is known at two points on a pipeline, and one wishes to determine the flow rate (or specify a flow rate and solve for a pipe diameter). Like the prior example it is contrived, but follows the same general modeling process.
+# 
+# As in the prior example, we will use EPANET to solve a problem we have already solved by hand.
+# 
+# The **problem statement** is:
+# >Using the Moody chart, and the energy equation, estimate the diameter
+# of a cast-iron pipe needed to carry 60oF water at a discharge of 10 cubic-
+# feet per second (cfs) between two reservoirs 2 miles apart. The elevation
+# difference between the water surfaces in the two reservoirs is 20 feet.
+# > A sketch of the situation is ![](./ex2/EX2.bmp)
+# 
+# As in the prior example, we will need to specify the pipe roughness terms, then solve
+# by trial-and-error for the diameter required to carry the water at the desired 
+# owrate.
+# Page 31 of the EPANET manual suggests that the roughness height for cast iron is
+# 0.85 millifeet.
+# 
+# As before the steps to model the situation are:
+# 
+# 1. Start EPANET
+# 2. Set defaults
+# 3. Select the reservoir tool. Put two reservoirs on the map.
+# 4. Select the node tool, put a node on the map. EPANET needs one node!
+# 5. Select the link (pipe) tool, connect the two reservoirs to the node. One link is the 2 mile pipe, the other is a short large diameter pipe (negligible head loss).
+# 6. Set the total head each reservoir.
+# 7. Set the pipe length and roughness height in the 2 mile pipe.
+# 8. Guess a diameter.
+# 9. Save the input file.
+# 10. Run the program. Query the pipe and find the computed flow. If the flow is too large reduce the pipe diameter, if too small increase the pipe diameter. Stop when within a few percent of the desired flow rate. Use commercially available diameters in the trial-and-error process, so exact match is not anticipated.
+# 
+# Figure 56 is a screen capture after the model is built and some trial-and-error diameter
+# selection. 
+# 
+# ![](./ex2/ex2ss1.png)
+# 
+# Of importance is the node and the "short pipe" that connects the second
+# reservoir. By changing the diameter (inches) in the dialog box and re-running the
+# program we can find a solution (diameter) that produces 10 cfs in the system for the
+# given elevation differences.
+# 
+# #### Files
+# 
+# 1. [EX2.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex2/EX2.bmp) The base image file
+# 2. [EX2-JB.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex2/EX2-JB.net) An EPANET input file (binary .net file, readable by the GUI)
+# 3. [EX2-JB.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex2/EX2-JB.inp) An EPANET network input file (ASCII .inp file, readable by the toolkit)
 
 # ### Example 3 : Three-Reservoir-Problem
 # 
@@ -182,7 +228,7 @@
 # 
 # #### Files
 # 
-# 1. [EX3.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp) The base image file
+# 1. [EX3.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp) The base image file (it is not activated in the example)
 # 2. [EX3.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX3-1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3-1.net) A different EPANET input file (binary .net file, readable by the GUI)
 
