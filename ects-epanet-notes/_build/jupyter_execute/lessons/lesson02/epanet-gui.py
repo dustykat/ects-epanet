@@ -17,7 +17,7 @@
 
 # <hr>
 # 
-# ### Example 1
+# ### Example 1 - Head Loss in a Pipeline 
 # 
 # A simple model to consider is a single pipe connecting two reservoirs.
 # 
@@ -129,13 +129,12 @@
 # 
 # #### Files
 # 
-# 1. [EX1.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.bmp) The base image file
-# 2. [EX1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net) An EPANET input file (binary .net file, readable by the GUI)
+# 1. [EX1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX1.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.inp) An EPANET network input file (ASCII .inp file, readable by the toolkit)
 
 # <hr>
 # 
-# ### Example 2
+# ### Example 2 Flow Rate in a Pipeline
 # 
 # This example represents the situation where the total head is known at two points on a pipeline, and one wishes to determine the flow rate (or specify a flow rate and solve for a pipe diameter). Like the prior example it is contrived, but follows the same general modeling process.
 # 
@@ -238,17 +237,49 @@
 # 
 # #### Files
 # 
-# 1. [EX3.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp) The base image file (it is not activated in the example)
+# 1. [EX3.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp) The base image file 
 # 2. [EX3.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX3-1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3-1.net) A different EPANET input file (binary .net file, readable by the GUI)
 
-# In[ ]:
-
-
-
-
-
-# ### Example 4
+# <hr>
+# 
+# ### Example 4 - A simple looped network
+# 
+# Expanding the examples, we will next consider a looped network. As before we will use an exercise as the motivating example.
+# 
+# **Problem Statement**
+# > The water-supply network shown in Figure 61 has constant-head elevated storage tanks at A and C, with inflow and outflow at B and D. ![](./ex4/ex4.png) The network is on flat terrain with node elevations all equal to 50 meters. If all pipes are ductile iron, compute the inflows/outflows to the storage tanks. Assume that 
+# flow in all pipes are fully turbulent.
+# 
+# As before we will follow the modeling protocol but add demand at the nodes.
+# The steps to model the situation are:
+# 1. Convert the image into a bitmap, place the bitmap into a directory where the model input file will be stored.
+# 2. Start EPANET
+# 3. Set defaults
+# 4. Import the background.
+# 5. Select the reservoir tool. Put two reservoirs on the map.
+# 6. Select the node tool, put 4 nodes on the map.
+# 7. Select the link (pipe) tool, connect the reservoirs to their nearest nodes. Connect the nodes to each other.
+# 8. Set the total head each reservoir.
+# 9. Set the pipe length, roughness height, and diameter in each pipe. The pipes that connect to the reservoirs should be set as short and large diameter, we want negligible head loss in these pipes so that the reservoir head represents the node heads at these locations.
+# 10. Save the input file.
+# 11. Run the program.
+# 
+# In this case the key issues are the units (liters per second) and roughness height (0.26 millimeters). Figure 62 is a screen capture of a completed model using a laptop computer (conventional application)
+# 
+# ![](./ex4/ex4-laptop.png)
+# 
+# A you-tube video [FREESWMM-EPANET-EX4](https://youtu.be/wKERQwFDA9I) shows the example run on the (freeswmm.ddns.net) web interface.  A screen capture of the result is below: 
+# 
+# ![](./ex4/ex4-freeswmm.png)
+# 
+# The results (laptop vs. `freeswmm` are functionally identical (as they should be!)
+# 
+# #### Files
+# 
+# 1. [EX4.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.bmp) The base image file 
+# 2. [EX4.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.net) An EPANET input file (binary .net file, readable by the GUI)
+# 3. [EX4.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.inp) An EPANET input file (ASCII .inp file, readable by the GUI, CLI or the toolkit)
 
 # ### Example 5
 

@@ -350,8 +350,8 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-1">
-     Example 1
+    <a class="reference internal nav-link" href="#example-1-head-loss-in-a-pipeline">
+     Example 1 - Head Loss in a Pipeline
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -362,8 +362,8 @@
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-2">
-     Example 2
+    <a class="reference internal nav-link" href="#example-2-flow-rate-in-a-pipeline">
+     Example 2 Flow Rate in a Pipeline
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
@@ -386,9 +386,16 @@
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-4">
-     Example 4
+    <a class="reference internal nav-link" href="#example-4-a-simple-looped-network">
+     Example 4 - A simple looped network
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Files
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-5">
@@ -424,8 +431,8 @@
 <p>The examples below are copied from
 <a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/EPANETbyExampleV1.pdf">Cleveland, T.G., Tay, C.C., and Neale, C.M. (2015) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University.</a></p>
 <hr>
-<div class="section" id="example-1">
-<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-1-head-loss-in-a-pipeline">
+<h3>Example 1 - Head Loss in a Pipeline<a class="headerlink" href="#example-1-head-loss-in-a-pipeline" title="Permalink to this headline">¶</a></h3>
 <p>A simple model to consider is a single pipe connecting two reservoirs.</p>
 <p>A <strong>problem statement</strong> might be something like:</p>
 <blockquote>
@@ -505,15 +512,14 @@ if we wished to adjust the model to agree with some other known friction factor.
 <div class="section" id="files">
 <h4>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
-<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.bmp">EX1.bmp</a> The base image file</p></li>
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net">EX1.net</a> An EPANET input file (binary .net file, readable by the GUI)</p></li>
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.inp">EX1.inp</a> An EPANET network input file (ASCII .inp file, readable by the toolkit)</p></li>
 </ol>
 <hr>
 </div>
 </div>
-<div class="section" id="example-2">
-<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-2-flow-rate-in-a-pipeline">
+<h3>Example 2 Flow Rate in a Pipeline<a class="headerlink" href="#example-2-flow-rate-in-a-pipeline" title="Permalink to this headline">¶</a></h3>
 <p>This example represents the situation where the total head is known at two points on a pipeline, and one wishes to determine the flow rate (or specify a flow rate and solve for a pipe diameter). Like the prior example it is contrived, but follows the same general modeling process.</p>
 <p>As in the prior example, we will use EPANET to solve a problem we have already solved by hand.</p>
 <p>The <strong>problem statement</strong> is:</p>
@@ -602,14 +608,49 @@ LPS (liters per second). The roughness height is about 0.26 millimeters (if conv
 <div class="section" id="id2">
 <h4>Files<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
-<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp">EX3.bmp</a> The base image file (it is not activated in the example)</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.bmp">EX3.bmp</a> The base image file</p></li>
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3.net">EX3.net</a> An EPANET input file (binary .net file, readable by the GUI)</p></li>
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex3/EX3-1.net">EX3-1.net</a> A different EPANET input file (binary .net file, readable by the GUI)</p></li>
 </ol>
+<hr>
 </div>
 </div>
-<div class="section" id="example-4">
-<h3>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-4-a-simple-looped-network">
+<h3>Example 4 - A simple looped network<a class="headerlink" href="#example-4-a-simple-looped-network" title="Permalink to this headline">¶</a></h3>
+<p>Expanding the examples, we will next consider a looped network. As before we will use an exercise as the motivating example.</p>
+<p><strong>Problem Statement</strong></p>
+<blockquote>
+<div><p>The water-supply network shown in Figure 61 has constant-head elevated storage tanks at A and C, with inflow and outflow at B and D. <img alt="" src="../../_images/ex4.png" /> The network is on flat terrain with node elevations all equal to 50 meters. If all pipes are ductile iron, compute the inflows/outflows to the storage tanks. Assume that
+flow in all pipes are fully turbulent.</p>
+</div></blockquote>
+<p>As before we will follow the modeling protocol but add demand at the nodes.
+The steps to model the situation are:</p>
+<ol class="simple">
+<li><p>Convert the image into a bitmap, place the bitmap into a directory where the model input file will be stored.</p></li>
+<li><p>Start EPANET</p></li>
+<li><p>Set defaults</p></li>
+<li><p>Import the background.</p></li>
+<li><p>Select the reservoir tool. Put two reservoirs on the map.</p></li>
+<li><p>Select the node tool, put 4 nodes on the map.</p></li>
+<li><p>Select the link (pipe) tool, connect the reservoirs to their nearest nodes. Connect the nodes to each other.</p></li>
+<li><p>Set the total head each reservoir.</p></li>
+<li><p>Set the pipe length, roughness height, and diameter in each pipe. The pipes that connect to the reservoirs should be set as short and large diameter, we want negligible head loss in these pipes so that the reservoir head represents the node heads at these locations.</p></li>
+<li><p>Save the input file.</p></li>
+<li><p>Run the program.</p></li>
+</ol>
+<p>In this case the key issues are the units (liters per second) and roughness height (0.26 millimeters). Figure 62 is a screen capture of a completed model using a laptop computer (conventional application)</p>
+<p><img alt="" src="../../_images/ex4-laptop.png" /></p>
+<p>A you-tube video <a class="reference external" href="https://youtu.be/wKERQwFDA9I">FREESWMM-EPANET-EX4</a> shows the example run on the (<a class="reference external" href="http://freeswmm.ddns.net">freeswmm.ddns.net</a>) web interface.  A screen capture of the result is below:</p>
+<p><img alt="" src="../../_images/ex4-freeswmm.png" /></p>
+<p>The results (laptop vs. <code class="docutils literal notranslate"><span class="pre">freeswmm</span></code> are functionally identical (as they should be!)</p>
+<div class="section" id="id3">
+<h4>Files<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.bmp">EX4.bmp</a> The base image file</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.net">EX4.net</a> An EPANET input file (binary .net file, readable by the GUI)</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.inp">EX4.inp</a> An EPANET input file (ASCII .inp file, readable by the GUI, CLI or the toolkit)</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="example-5">
 <h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h3>
