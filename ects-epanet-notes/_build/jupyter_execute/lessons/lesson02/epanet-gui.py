@@ -280,8 +280,103 @@
 # 1. [EX4.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.bmp) The base image file 
 # 2. [EX4.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX4.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.inp) An EPANET input file (ASCII .inp file, readable by the GUI, CLI or the toolkit)
+# 
+# <hr>
+# 
+# ### Example 5 - Simulating a Pump
+# 
+# This example illustrates how to model a pump in EPANET. A pump is a special "link" in EPANET. This link causes a negative head loss (adds head) according to a pump curve. 
+# 
+# :::{note}
+# In addition to a pump curve there are three other ways to model added
+# head | these are discussed in the user manual and are left for the reader to explore
+# on their own.
+# :::
+# 
+# Figure XX is a conceptual model of a pump lifting water through a 100 mm diameter, 100 meter long, ductile iron pipe from a lower elevation reservoir to an upper reservoir. 
+# 
+# The suction side of the pump is a 100 mm diameter, 4-meter long ductile iron pipe. The difference in reservoir free-surface elevations is 10 meters. 
+# 
+# The pump performance curve is given
+# as 
+# $$hp = 15.0-0.1Q^2 $$
+# where the added head is in meters and the flow rate is in liters per second (lps). 
+# The analysis goal is to estimate the flow rate in the system.
+# 
+# ![](./ex5/P2-39.png)
+# 
+# To model this situation, the engineer follows the modeling protocol already outlined, only adding the special link.
+# 1. Convert the image into a bitmap, place the bitmap into a directory where the model input file will be stored.
+# 2. Start EPANET
+# 3. Set defaults (hydraulics = D-W, units = LPS)
+# 4. Import the background.
+# 5. Select the reservoir tool. Put two reservoirs on the map.
+# 6. Select the node tool, put 2 nodes on the map, these represent the suction and discharge side of the pump.
+# 7. Select the link (pipe) tool, connect the reservoirs to their nearest nodes.
+# 8. Select the pump tool.
+# 9. Connect the nodes to each other using the pump link.
+# 10. Set the total head each reservoir.
+# 11. Set the pipe length, roughness height, and diameter in each pipe.
+# 12. On the Data menu, select Curves. Here is where we create the pump curve. :::{note}This problem gives the curve as an equation, we will need three points to define the curve. Shutoff (Q = 0), and simple to compute points make the most sense.:::
+# 13. Set the simulation duration to 1:00 hours (same as the hydraulic time step).
+# 14. Save the input file.
+# 15. Run the program.
+# Again as
+# 
+# Figure XX is a screen capture of loading the background image.
+# 
+# ![](./ex5/pump-background.png)
+# 
+# After the image is loaded, we can then build the hydraulic model. The next step is to place the reservoirs.
+# 
+# Figure XX is a screen capture of the reservoirs after they have been placed. 
+# 
+# ![](./ex5/pump-reservoirs.png)
+# 
+# The upper reservoir will be assigned a total head 10 meters larger than the lower reservoir - a reasonable conceptual model is to use the lower reservoir as the datum.  Then we add the pipes (not shown) from lower reservoir to suction-side node and from the discharge node to the upper reservoir.
+# 
+# Next we add the actual pump; Figure XX is a screen capture of model just after the pump is added. 
+# 
+# ![](./ex5/pump-pump.png)
+# 
+# The next steps are to set the pipe lengths (not shown) and the reservoir elevations (not shown).
+# 
+# Finally, the engineer must specify the pump curve.
+# 
+# Figure XX is a screen capture of the pump curve data entry dialog box, accessed from the browser tool under the category "curves".
+# 
+# ![](./ex5/pump-curve.png)
+# 
+# Three points on the curve were selected and entered into the tabular entry area on the left of the dialog box, then the curve is created by the program. The equation created by the program is the same as that of the problem - hence we have the anticipated pump curve.
+# 
+# :::{note}
+# The pump performance is supplied by the table entries, curves need not be simplistic 3-point representations; EPANET will interpolate during computation to stay on the curve (if possible); if departure is required a warning is issued by the program.
+# :::
+# 
+# Next the engineer associates the pump curve with the pump as shown in Figure XX.
+# 
+# ![](./ex5/set-curve.png)
+# 
+# :::{warning}
+# This step is crucial, until a curve is associated with a pump the program won't run too well.
+# :::
+# 
+# Upon completion of this step, the program is run to estimate the flow rate in the
+# system.
+# 
+# A you-tube video [FREESWMM-EPANET-EX5](https://youtu.be/4AkPUWf_hWg) shows the example run on the (freeswmm.ddns.net) web interface.  A screen capture of the result is below: 
+# 
+# ![](./ex5/ex5-freeswmm.png)
+# 
+# The results (laptop vs. `freeswmm` are functionally identical (as they should be!)
+# 
+# #### Files
+# 
+# 1. [EX5.bmp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/EX5.bmp) The base image file 
+# 2. [EX5-JB.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/EX5-JB.net) An EPANET input file (binary .net file, readable by the GUI)
+# 3. [EX5-JB.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/EX5-JB.inp) An EPANET input file (ASCII .inp file, readable by the GUI, CLI or the toolkit)
 
-# ### Example 5
+# 
 
 # ### Exercises
 # 

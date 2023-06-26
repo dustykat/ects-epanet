@@ -398,9 +398,16 @@
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-5">
-     Example 5
+    <a class="reference internal nav-link" href="#example-5-simulating-a-pump">
+     Example 5 - Simulating a Pump
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Files
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exercises">
@@ -650,10 +657,81 @@ The steps to model the situation are:</p>
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.net">EX4.net</a> An EPANET input file (binary .net file, readable by the GUI)</p></li>
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex4/EX4.inp">EX4.inp</a> An EPANET input file (ASCII .inp file, readable by the GUI, CLI or the toolkit)</p></li>
 </ol>
+<hr>
 </div>
 </div>
-<div class="section" id="example-5">
-<h3>Example 5<a class="headerlink" href="#example-5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="example-5-simulating-a-pump">
+<h3>Example 5 - Simulating a Pump<a class="headerlink" href="#example-5-simulating-a-pump" title="Permalink to this headline">¶</a></h3>
+<p>This example illustrates how to model a pump in EPANET. A pump is a special “link” in EPANET. This link causes a negative head loss (adds head) according to a pump curve.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In addition to a pump curve there are three other ways to model added
+head | these are discussed in the user manual and are left for the reader to explore
+on their own.</p>
+</div>
+<p>Figure XX is a conceptual model of a pump lifting water through a 100 mm diameter, 100 meter long, ductile iron pipe from a lower elevation reservoir to an upper reservoir.</p>
+<p>The suction side of the pump is a 100 mm diameter, 4-meter long ductile iron pipe. The difference in reservoir free-surface elevations is 10 meters.</p>
+<p>The pump performance curve is given
+as
+$<span class="math notranslate nohighlight">\(hp = 15.0-0.1Q^2 \)</span>$
+where the added head is in meters and the flow rate is in liters per second (lps).
+The analysis goal is to estimate the flow rate in the system.</p>
+<p><img alt="" src="../../_images/P2-39.png" /></p>
+<p>To model this situation, the engineer follows the modeling protocol already outlined, only adding the special link.</p>
+<ol class="simple">
+<li><p>Convert the image into a bitmap, place the bitmap into a directory where the model input file will be stored.</p></li>
+<li><p>Start EPANET</p></li>
+<li><p>Set defaults (hydraulics = D-W, units = LPS)</p></li>
+<li><p>Import the background.</p></li>
+<li><p>Select the reservoir tool. Put two reservoirs on the map.</p></li>
+<li><p>Select the node tool, put 2 nodes on the map, these represent the suction and discharge side of the pump.</p></li>
+<li><p>Select the link (pipe) tool, connect the reservoirs to their nearest nodes.</p></li>
+<li><p>Select the pump tool.</p></li>
+<li><p>Connect the nodes to each other using the pump link.</p></li>
+<li><p>Set the total head each reservoir.</p></li>
+<li><p>Set the pipe length, roughness height, and diameter in each pipe.</p></li>
+<li><p>On the Data menu, select Curves. Here is where we create the pump curve. :::{note}This problem gives the curve as an equation, we will need three points to define the curve. Shutoff (Q = 0), and simple to compute points make the most sense.:::</p></li>
+<li><p>Set the simulation duration to 1:00 hours (same as the hydraulic time step).</p></li>
+<li><p>Save the input file.</p></li>
+<li><p>Run the program.
+Again as</p></li>
+</ol>
+<p>Figure XX is a screen capture of loading the background image.</p>
+<p><img alt="" src="../../_images/pump-background.png" /></p>
+<p>After the image is loaded, we can then build the hydraulic model. The next step is to place the reservoirs.</p>
+<p>Figure XX is a screen capture of the reservoirs after they have been placed.</p>
+<p><img alt="" src="../../_images/pump-reservoirs.png" /></p>
+<p>The upper reservoir will be assigned a total head 10 meters larger than the lower reservoir - a reasonable conceptual model is to use the lower reservoir as the datum.  Then we add the pipes (not shown) from lower reservoir to suction-side node and from the discharge node to the upper reservoir.</p>
+<p>Next we add the actual pump; Figure XX is a screen capture of model just after the pump is added.</p>
+<p><img alt="" src="../../_images/pump-pump.png" /></p>
+<p>The next steps are to set the pipe lengths (not shown) and the reservoir elevations (not shown).</p>
+<p>Finally, the engineer must specify the pump curve.</p>
+<p>Figure XX is a screen capture of the pump curve data entry dialog box, accessed from the browser tool under the category “curves”.</p>
+<p><img alt="" src="../../_images/pump-curve.png" /></p>
+<p>Three points on the curve were selected and entered into the tabular entry area on the left of the dialog box, then the curve is created by the program. The equation created by the program is the same as that of the problem - hence we have the anticipated pump curve.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The pump performance is supplied by the table entries, curves need not be simplistic 3-point representations; EPANET will interpolate during computation to stay on the curve (if possible); if departure is required a warning is issued by the program.</p>
+</div>
+<p>Next the engineer associates the pump curve with the pump as shown in Figure XX.</p>
+<p><img alt="" src="../../_images/set-curve.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This step is crucial, until a curve is associated with a pump the program won’t run too well.</p>
+</div>
+<p>Upon completion of this step, the program is run to estimate the flow rate in the
+system.</p>
+<p>A you-tube video <a class="reference external" href="https://youtu.be/4AkPUWf_hWg">FREESWMM-EPANET-EX5</a> shows the example run on the (<a class="reference external" href="http://freeswmm.ddns.net">freeswmm.ddns.net</a>) web interface.  A screen capture of the result is below:</p>
+<p><img alt="" src="../../_images/ex5-freeswmm.png" /></p>
+<p>The results (laptop vs. <code class="docutils literal notranslate"><span class="pre">freeswmm</span></code> are functionally identical (as they should be!)</p>
+<div class="section" id="id4">
+<h4>Files<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/EX5.bmp">EX5.bmp</a> The base image file</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/EX5-JB.net">EX5-JB.net</a> An EPANET input file (binary .net file, readable by the GUI)</p></li>
+<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/EX5-JB.inp">EX5-JB.inp</a> An EPANET input file (ASCII .inp file, readable by the GUI, CLI or the toolkit)</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="exercises">
 <h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
