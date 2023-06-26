@@ -89,7 +89,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   Welcome to your Jupyter Book
+   About this book
   </a>
  </li>
 </ul>
@@ -218,7 +218,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson04/epanet-future-CandC3.html">
-     4.3 Unsolved Problems
+     4.X Build Notes
     </a>
    </li>
    <li class="toctree-l2">
@@ -341,6 +341,13 @@
   <a class="reference internal nav-link" href="#purpose">
    Purpose
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     Background
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples">
@@ -367,13 +374,23 @@
 <h1>2.3 Extended period simulation (EPS)<a class="headerlink" href="#extended-period-simulation-eps" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>EPS is a representation iused to mimic dynamic behavior in a system.  Not strictly transient, but changes are tracked to approximate filling/draining of tanks and discharge moving along a pump curve.  EPS is also the fundamental concept needed to allow for water quality simulations in EPANET.</p>
+<p>EPS is a representation is used to mimic dynamic behavior in a system.  Not strictly transient, but changes are tracked to approximate filling/draining of tanks and discharge moving along a pump curve.  EPS is also the fundamental concept needed to allow for water quality simulations in EPANET.</p>
+<div class="section" id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+<p>Quoting from <a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/(ASCE)0733-9372(1988)114-5(1146).pdf">Bhave, P. R. (1988)</a></p>
+<blockquote>
+<div><p>The common practice  of analyzing  flow  in water-distribution  systems  is to model the flow to be in a steady-state condition. This is “static  analysis.”  However,  neither  the nodal demands nor the reservoir water levels  remain  constant  over  a period  of time.  To  ensure  an  adequate  level  of  service  to  the  consumers  under  varying  conditions  of  demands  and  reservoir  water  levels, proper  operation  of the  distribution  system  is  necessary.  From  an  operational  point  of  view,  it  is necessary  to  adequately  maintain  the  flow  rates  and pressures  (residual  heads) at  all nodes  at various times; it  is also necessary  to  manage  the  storage  to  balance  the  supply  and  distribution.  These  objectives   can  be  achieved  by  carrying  out  the  analysis  of  the  network  over  a  period  of  24-48  hr  under  varying  nodal  demands  and  reservoir  water  levels.  Such  an  analysis  of  the  distribution  system  is  an  <strong>extended  period  simulation</strong>  or  simply  a  “dynamic  analysis.”</p>
+</div></blockquote>
+</div>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://ascelibrary.org/doi/epdf/10.1061/%28ASCE%290733-9372%281988%29114%3A5%281146%29">Bhave, P. R. (1988)”Extended Period Simulation of Water Systems—Direct Solution.” Journal of Environmental Engineering Vol. 114, No. 5, pp.1146-1159 (doi:10.1061/(ASCE)0733-9372(1988)114:5(1146))</a></p></li>
+</ol>
 </div>
 </div>
 
