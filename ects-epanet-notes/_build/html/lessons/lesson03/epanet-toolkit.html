@@ -51,7 +51,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.2 EPANET example using" href="epanet-rulesGUI.html" />
+    <link rel="next" title="3.2 EPANET example using Toolkit" href="epanet-rulesGUI.html" />
     <link rel="prev" title="2.5 EPANET Control Rules" href="../lesson02/epanet-rules.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -181,7 +181,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="epanet-rulesGUI.html">
-     3.2 EPANET example using
+     3.2 EPANET example using Toolkit
     </a>
    </li>
    <li class="toctree-l2">
@@ -435,12 +435,13 @@
 <p>After that completes then the library is found in the <code class="docutils literal notranslate"><span class="pre">\lib</span></code> directory.  Simply copy it into the work directory where you want to model.  A symbolic link added into the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable is another way to proceede.</p>
 <p><img alt="" src="../../_images/buildtools2of2.png" /></p>
 <p>Now to test the build of the shared object modules.  Import the interface module (listing below) which is stored as a file in our workspace.</p>
-<p><span class="xref myst">epamodule.py (from OWA GitHub)</span></p>
+<p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson01/pipenet.py">epamodule.py (from OWA GitHub)</a> This is a copy from my server - specificially modified for my Raspberry Pi - the mods are in the first few lines; i left notes!</p>
+<p><a class="reference external" href="https://github.com/OpenWaterAnalytics">link to OWA GitHub</a> you may find you can get the <code class="docutils literal notranslate"><span class="pre">EPyT</span></code> repository to work or you - it essentially is aimed at same end goal as this course, but has some of the graphics details better worked out.</p>
 </div>
 <div class="section" id="copy-the-library-to-the-working-directory">
 <h3>Copy the library to the working directory<a class="headerlink" href="#copy-the-library-to-the-working-directory" title="Permalink to this headline">¶</a></h3>
 <p>For my example herein, I copied the build into:
-<code class="docutils literal notranslate"><span class="pre">/home/sensei/ects-epanet/ects-epanet-notes/lessons/lesson03/</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">http://ects-epanet/ects-epanet-notes/lessons/lesson03/</span></code></p>
 <p>I also copied two EPANET input files <code class="docutils literal notranslate"><span class="pre">Net1.inp</span></code> and <code class="docutils literal notranslate"><span class="pre">Net1g.inp</span></code></p>
 <p>The listing below shows the directory, you can see the shared object library at the end of the listing, as well as the two input files for subsequent examples.  Also note the presence of a file named <code class="docutils literal notranslate"><span class="pre">epamodule.py</span></code> which is used below to access the toolkit.</p>
 <div class="cell docutils container">
@@ -450,25 +451,28 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 1436
-drwxrwxr-x 4 sensei sensei   4096 Jun 13 16:28 .
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 1464
+drwxrwxr-x 5 sensei sensei   4096 Jul 28 19:24 .
 drwxrwxr-x 8 sensei sensei   4096 Jun  9 17:22 ..
 drwxrwxr-x 2 sensei sensei   4096 Jun 13 00:27 .ipynb_checkpoints
 -rw-rw-r-- 1 sensei sensei   6304 Jun 13 00:23 Net1.inp
 -rw-rw-r-- 1 sensei sensei  46587 Jun 13 00:22 Net1.out
--rw-rw-r-- 1 sensei sensei  46673 Jun 13 00:39 Net1.rpt
+-rw-rw-r-- 1 sensei sensei  46673 Jul 28 18:54 Net1.rpt
 -rw-rw-r-- 1 sensei sensei   6305 Jun 13 00:28 Net1g.inp
--rw-rw-r-- 1 sensei sensei  46674 Jun 13 00:39 Net1g.rpt
+-rw-rw-r-- 1 sensei sensei  46674 Jul 28 18:54 Net1g.rpt
 drwxrwxr-x 2 sensei sensei   4096 Jun 12 23:25 __pycache__
 -rw-rw-r-- 1 sensei sensei 387806 Jun 12 23:33 buildtools1of2.png
 -rw-rw-r-- 1 sensei sensei 402767 Jun 12 23:33 buildtools2of2.png
--rw-rw-r-- 1 sensei sensei  32588 Jun 12 23:24 epamodule.py
+-rw-rw-r-- 1 sensei sensei     69 Jul 28 18:44 ensYZnxU
+-rw-rw-r-- 1 sensei sensei     69 Jul 28 18:41 enxPe9Sj
+-rw-rw-r-- 1 sensei sensei  32610 Jul 28 19:24 epamodule.py
 -rw-rw-r-- 1 sensei sensei   5227 Jun  8 17:22 epanet-rules.ipynb.bak
 -rw-rw-r-- 1 sensei sensei    785 Jun  1 16:54 epanet-rulesAPI.ipynb
 -rw-rw-r-- 1 sensei sensei    785 Jun  1 16:53 epanet-rulesCLI.ipynb
--rw-rw-r-- 1 sensei sensei    774 Jun  1 16:53 epanet-rulesGUI.ipynb
+-rw-rw-r-- 1 sensei sensei  18766 Jul 28 19:08 epanet-rulesGUI.ipynb
 -rw-rw-r-- 1 sensei sensei    779 Jun  1 16:54 epanet-sensors.ipynb
--rw-rw-r-- 1 sensei sensei  12698 Jun 13 16:28 epanet-toolkit.ipynb
+-rw-rw-r-- 1 sensei sensei  13148 Jul 28 19:22 epanet-toolkit.ipynb
+drwxrwxr-x 3 sensei sensei   4096 Jul 28 19:08 ex1-tk
 -rw-rw-r-- 1 sensei sensei  15189 Jun 12 23:26 example2.inp
 -rw-rw-r-- 1 sensei sensei    572 Jun 13 00:02 example2.rpt
 -rwxr-xr-x 1 sensei sensei 400904 Jun 12 23:22 libepanet2.so
@@ -579,7 +583,7 @@ drwxrwxr-x 2 sensei sensei   4096 Jun 12 23:25 __pycache__
         <a class="right-next" href="epanet-rulesGUI.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">3.2 EPANET example using</p>
+                <p class="prevnext-title">3.2 EPANET example using Toolkit</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

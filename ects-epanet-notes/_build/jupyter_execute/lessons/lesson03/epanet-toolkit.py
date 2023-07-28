@@ -55,12 +55,14 @@
 # 
 # Now to test the build of the shared object modules.  Import the interface module (listing below) which is stored as a file in our workspace.
 # 
-# [epamodule.py (from OWA GitHub)](epamodule.py) 
+# [epamodule.py (from OWA GitHub)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson01/pipenet.py) This is a copy from my server - specificially modified for my Raspberry Pi - the mods are in the first few lines; i left notes!
+# 
+# [link to OWA GitHub](https://github.com/OpenWaterAnalytics) you may find you can get the `EPyT` repository to work or you - it essentially is aimed at same end goal as this course, but has some of the graphics details better worked out.
 # 
 # ### Copy the library to the working directory
 # 
 # For my example herein, I copied the build into:
-# `/home/sensei/ects-epanet/ects-epanet-notes/lessons/lesson03/`
+# `http://ects-epanet/ects-epanet-notes/lessons/lesson03/`
 # 
 # I also copied two EPANET input files `Net1.inp` and `Net1g.inp`  
 # 

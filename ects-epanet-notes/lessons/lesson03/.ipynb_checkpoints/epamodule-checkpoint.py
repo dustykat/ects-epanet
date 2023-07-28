@@ -9,7 +9,7 @@ import datetime
 
 _plat= platform.system()
 if _plat=='Linux':
-  _lib = ctypes.CDLL("./libepanet2.so")
+  _lib = ctypes.CDLL("./libepanet2.so") # For My Raspberry Pi
 ##  _lib = ctypes.CDLL("./en2tools.so.1.5.0")
 ##  _lib = ctypes.CDLL("./epanet2toolkit.so")
 elif _plat=='Windows':

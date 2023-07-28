@@ -421,7 +421,7 @@ if verbose == 'true' :
     writeM(augmentedMat,rowNumA,colNumA,"augmented matrix")
 
 
-# #### Stopping Criteria, and Solution Report:
+# ### Stopping Criteria, and Solution Report:
 # 
 # You will need some way to stop the process -- the three most obvious (borrowed from Newton's method) are:
 # 
