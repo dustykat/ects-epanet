@@ -149,6 +149,112 @@ get_ipython().system(' cat ./ex1-tk/EX1-1tk.rpt')
 
 # That concludes this simple (not intrinsicly usefull just yet) example.  Lets continue with another one from our GUI cases.
 
+# ### Example 2 Flow Rate in a Pipeline
+# 
+# This example represents the situation where the total head is known at two points on a pipeline, and one wishes to determine the flow rate (or specify a flow rate and solve for a pipe diameter). Like the prior example it is contrived, but follows the same general modeling process.
+# 
+# As in the prior example, we will use EPANET to solve a problem we have already solved by hand.
+# 
+# The **problem statement** is:
+# >Using the Moody chart, and the energy equation, estimate the diameter
+# of a cast-iron pipe needed to carry 60oF water at a discharge of 10 cubic-
+# feet per second (cfs) between two reservoirs 2 miles apart. The elevation
+# difference between the water surfaces in the two reservoirs is 20 feet.
+# > A sketch of the situation is ![](./ex2/EX2.bmp)
+# 
+# As in the prior example, we will start with the ASCII input file and manipulate the model with the Toolkit.  The default input file will produce very little output other than to acknowledge the simulation ran to completion.  So we will manipulate the output instructions.  First we start with the input file, in this case it is named `EX2-JB-Copy1.inp`
+
+# In[9]:
+
+
+get_ipython().system(' cat ./ex2-tk/EX2-JB-Copy1.inp')
+
+
+# Now lets examine the section regarding the report.
+# 
+# ```
+# [REPORT]
+#  Status             	No
+#  Summary            	No
+#  Page               	0
+# ```
+# 
+# This pretty much says report nothing - we can see the impact by running the model and examining the output report.
+
+# In[10]:
+
+
+import epamodule as em  # import the package
+#Open the EPANET toolkit & hydraulics solver   
+em.ENopen("./ex2-tk/EX2-JB-Copy1.inp", "./ex2-tk/EX2-JB-Copy1.rpt")
+em.ENopenH()
+em.ENsolveH()
+em.ENsaveH() # need to save to a binary file before write
+em.ENcloseH()
+em.ENopenQ()
+em.ENsolveQ()
+em.ENreport() # now write report
+# Close hydraulics solver & toolkit */
+em.ENclose()
+
+
+# Examine the output file
+
+# In[11]:
+
+
+get_ipython().system(' cat ./ex2-tk/EX2-JB-Copy1.rpt')
+
+
+# Observe not much of a report.  Lets use the toolkit to enhance the report output.
+
+# In[12]:
+
+
+import epamodule as em  # import the package
+#Open the EPANET toolkit & hydraulics solver   
+em.ENopen("./ex2-tk/EX2-JB-Copy1.inp", "./ex2-tk/EX2-JB-Copy1.rpt")
+# build report command strings Keyword  Action see user manual
+#command0 = "Status     Yes"
+command1 = "Summary            	Yes"
+command2 = "Nodes            	ALL"
+command3 = "Links            	ALL"
+em.ENsetstatusreport(2) # full status report
+em.ENsetreport(command0)
+em.ENsetreport(command1)
+em.ENsetreport(command2)
+em.ENsetreport(command3)
+em.ENsaveinpfile("./ex2-tk/EX2-tkmodify.inp") #write to a new file
+em.ENclose()
+# now run from the new file
+em.ENopen("./ex2-tk/EX2-tkmodify.inp", "./ex2-tk/EX2-tkmodify.rpt")
+em.ENopenH()
+em.ENsolveH()
+em.ENsaveH() # need to save to a binary file before write
+em.ENcloseH()
+em.ENopenQ()
+em.ENsolveQ()
+em.ENreport() # now write report
+# Close hydraulics solver & toolkit */
+em.ENclose()
+
+
+# In[42]:
+
+
+# The old file
+get_ipython().system(' cat ./ex2-tk/EX2-JB-Copy1.rpt')
+
+
+# In[43]:
+
+
+# The new file
+get_ipython().system(' cat ./ex2-tk/EX2-tkmodify.rpt')
+
+
+# So we have the ability to modify important parts of input files to meet our needs.  We could have also overwritten to the original file and juct run everything in a single pass, but for clarity we have kept the files separate.  Naturally, we are now responsible for our own "graphics" if thats of interest (later on we can try to adapt EPyT scripts)
+
 # In[ ]:
 
 

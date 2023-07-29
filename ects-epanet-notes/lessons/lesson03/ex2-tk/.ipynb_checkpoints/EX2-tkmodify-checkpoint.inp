@@ -1,0 +1,126 @@
+[TITLE]
+
+[JUNCTIONS]
+ 2                                    70.0000
+
+[RESERVOIRS]
+ 1                                   100.0000                                
+ 3                                    80.0000                                
+
+[TANKS]
+
+[PIPES]
+ 1                               1                               2                                 10560.0000      22.4700       0.8500       0.0000       
+ 2                               2                               3                                    10.0000     120.0000       0.0500       0.0000       
+
+[PUMPS]
+
+[VALVES]
+
+[DEMANDS]
+ 2                                   295.000000                                
+
+[EMITTERS]
+
+[STATUS]
+
+[PATTERNS]
+
+[CURVES]
+
+[CONTROLS]
+
+[RULES]
+
+[QUALITY]
+
+[SOURCES]
+
+[MIXING]
+
+[REACTIONS]
+ ORDER  BULK            1.00
+ ORDER  WALL            1
+ ORDER  TANK            1.00
+ GLOBAL BULK            0.000000
+ GLOBAL WALL            0.000000
+
+[ENERGY]
+ GLOBAL EFFIC        75.0000
+ DEMAND CHARGE       0.0000
+
+[TIMES]
+ DURATION            0:00:00
+ HYDRAULIC TIMESTEP  1:00:00
+ QUALITY TIMESTEP    0:05:00
+ REPORT TIMESTEP     1:00:00
+ REPORT START        0:00:00
+ PATTERN TIMESTEP    1:00:00
+ PATTERN START       0:00:00
+ RULE TIMESTEP       0:06:00
+ START CLOCKTIME     0:00:00
+ STATISTIC           NONE
+
+[OPTIONS]
+ UNITS               CFS
+ PRESSURE            PSI
+ HEADLOSS            D-W
+ UNBALANCED          CONTINUE 10
+ QUALITY             NONE
+ DEMAND MULTIPLIER   1.0000
+ EMITTER EXPONENT    0.5000
+ EMITTER BACKFLOW    YES
+ VISCOSITY           1.000000
+ DIFFUSIVITY         1.000000
+ SPECIFIC GRAVITY    1.000000
+ TRIALS              40
+ ACCURACY            0.00100000
+ TOLERANCE           0.01000000
+ CHECKFREQ           2
+ MAXCHECK            10
+ DAMPLIMIT           0.00000000
+
+[REPORT]
+ PAGESIZE            0
+ STATUS              YES
+ SUMMARY             YES
+ ENERGY              NO
+ MESSAGES            YES
+ NODES               ALL
+ LINKS               ALL
+ Elevation           NO
+ Demand              PRECISION 2
+ Head                PRECISION 2
+ Pressure            PRECISION 2
+ Quality             NO
+ Length              NO
+ Diameter            NO
+ Flow                PRECISION 2
+ Velocity            PRECISION 2
+ Headloss            PRECISION 2
+ Quality             NO
+ State               NO
+ Setting             NO
+ Reaction            NO
+
+[COORDINATES]
+ 2                                  8015.152000    6606.061000
+ 1                                  1075.758000    8818.182000
+ 3                                  9045.455000    6606.061000
+
+[VERTICES]
+
+[TAGS]
+
+[LABELS]
+;X-Coord             Y-Coord             Label & Anchor Node
+-1045.455         	9969.697          	"Reservoir Node"	
+6924.242          	5787.879          	"Inlet Node"	
+
+[BACKDROP]
+  DIMENSIONS  	0.000             	0.000             	10000.000         	10000.000         
+ UNITS          	None
+ FILE           	C:\users\antares\Desktop\EPANET-Files\EX2\EX2.bmp
+ OFFSET         	0.00            	0.00            
+
+[END]
