@@ -1,0 +1,88 @@
+  Page 1                                    Sat Jul 29 08:54:37 2023
+
+  ******************************************************************
+  *                           E P A N E T                          *
+  *                   Hydraulic and Water Quality                  *
+  *                   Analysis for Pipe Networks                   *
+  *                         Version 2.2                            *
+  ******************************************************************
+  
+   
+      Input Data File ................... ./ex3-tk/EX3-tk.inp
+      Number of Junctions................ 4
+      Number of Reservoirs............... 3
+      Number of Tanks ................... 0
+      Number of Pipes ................... 6
+      Number of Pumps ................... 0
+      Number of Valves .................. 0
+      Headloss Formula .................. Hazen-Williams
+      Nodal Demand Model ................ DDA
+      Hydraulic Timestep ................ 1.00 hrs
+      Hydraulic Accuracy ................ 0.001000
+      Status Check Frequency ............ 2
+      Maximum Trials Checked ............ 10
+      Damping Limit Threshold ........... 0.000000
+      Maximum Trials .................... 40
+      Quality Analysis .................. None
+      Specific Gravity .................. 1.00
+      Relative Kinematic Viscosity ...... 1.00
+      Relative Chemical Diffusivity ..... 1.00
+      Demand Multiplier ................. 1.00
+      Total Duration .................... 0.00 hrs
+      Reporting Criteria:
+         All Nodes
+         All Links
+   
+  Analysis begun Sat Jul 29 08:54:37 2023
+
+   
+  Hydraulic Status:
+  -----------------------------------------------------------------------
+     0:00:00: Balancing the network:
+
+              Trial  1: relative flow change = 10.124589
+              Trial  2: relative flow change = 1.170853
+              Trial  3: relative flow change = 1.161766
+              Trial  4: relative flow change = 1.124854
+              Trial  5: relative flow change = 0.990238
+              Trial  6: relative flow change = 0.644312
+              Trial  7: relative flow change = 0.226544
+              Trial  8: relative flow change = 0.048396
+              Trial  9: relative flow change = 0.002497
+              Trial 10: relative flow change = 0.000007
+                        maximum  flow change = 0.0000 for Link PBJ
+                        maximum  head error  = 0.0000 for Link PBJ
+
+     0:00:00: Balanced after 10 trials
+     0:00:00: Reservoir A is emptying
+     0:00:00: Reservoir B is emptying
+     0:00:00: Reservoir C is filling
+   
+   
+  Node Results:
+  ----------------------------------------------
+                     Demand      Head  Pressure
+  Node                  L/s         m         m
+  ----------------------------------------------
+  NodeA                0.00    100.00    100.00
+  NodeB                0.00     80.00     80.00
+  NodeC                0.00     60.00     60.00
+  J                    0.00     79.63    -30.37
+  A                   -2.35    100.00     -0.00  Reservoir
+  B                   -0.29     80.00      0.00  Reservoir
+  C                    2.64     60.00     -0.00  Reservoir
+   
+   
+  Link Results:
+  ----------------------------------------------
+                       Flow  Velocity  Headloss
+  Link                  L/s       m/s    /1000m
+  ----------------------------------------------
+  PAJ                  2.35      0.00     22.63
+  PBJ                  0.29      0.00      0.46
+  PJC                  2.64      0.00     28.04
+  4                    2.35      0.00      0.14
+  5                    0.29      0.00      0.00
+  6                   -2.64      0.00      0.18
+   
+  Analysis ended Sat Jul 29 08:54:37 2023

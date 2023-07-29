@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 3.2 EPANET example using Toolkit
+# # 3.2 EPANET (Examples 1 and 2) using the Toolkit
 # 
 # ## Purpose
 # This section demonstrates the various previous examples using the Toolkit to run the example and make changes to inputs and rerun the examples.  The main concept is that the Toolkit allows manipulation of models independent of a GUI which when combined with either Toolkit supplied control rules, or external "control" lets one model and interpret (assuming IF-THEN interpretation is amenable) many changes automatically.
@@ -83,7 +83,7 @@ em.ENclose()
 get_ipython().system(' cat ./ex1-tk/EX1tk.rpt')
 
 
-# Now to manipulate the model, we will make the link twice as long.
+# Now to manipulate the model, we will make the link half as long.
 # 
 # 
 # :::{note}
@@ -160,7 +160,7 @@ get_ipython().system(' cat ./ex1-tk/EX1-1tk.rpt')
 # of a cast-iron pipe needed to carry 60oF water at a discharge of 10 cubic-
 # feet per second (cfs) between two reservoirs 2 miles apart. The elevation
 # difference between the water surfaces in the two reservoirs is 20 feet.
-# > A sketch of the situation is ![](./ex2/EX2.bmp)
+# > A sketch of the situation is ![](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex2/EX2.bmp)
 # 
 # As in the prior example, we will start with the ASCII input file and manipulate the model with the Toolkit.  The default input file will produce very little output other than to acknowledge the simulation ran to completion.  So we will manipulate the output instructions.  First we start with the input file, in this case it is named `EX2-JB-Copy1.inp`
 
@@ -215,7 +215,7 @@ import epamodule as em  # import the package
 #Open the EPANET toolkit & hydraulics solver   
 em.ENopen("./ex2-tk/EX2-JB-Copy1.inp", "./ex2-tk/EX2-JB-Copy1.rpt")
 # build report command strings Keyword  Action see user manual
-#command0 = "Status     Yes"
+command0 = "Status     Yes"
 command1 = "Summary            	Yes"
 command2 = "Nodes            	ALL"
 command3 = "Links            	ALL"
@@ -239,14 +239,14 @@ em.ENreport() # now write report
 em.ENclose()
 
 
-# In[42]:
+# In[13]:
 
 
 # The old file
 get_ipython().system(' cat ./ex2-tk/EX2-JB-Copy1.rpt')
 
 
-# In[43]:
+# In[14]:
 
 
 # The new file
@@ -255,8 +255,6 @@ get_ipython().system(' cat ./ex2-tk/EX2-tkmodify.rpt')
 
 # So we have the ability to modify important parts of input files to meet our needs.  We could have also overwritten to the original file and juct run everything in a single pass, but for clarity we have kept the files separate.  Naturally, we are now responsible for our own "graphics" if thats of interest (later on we can try to adapt EPyT scripts)
 
-# In[ ]:
+# ## References
 
-
-
-
+# ## Exercises

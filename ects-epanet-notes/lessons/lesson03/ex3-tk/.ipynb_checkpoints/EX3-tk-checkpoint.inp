@@ -1,0 +1,143 @@
+[TITLE]
+
+[JUNCTIONS]
+ NodeA                                 0.0000
+ NodeB                                 0.0000
+ NodeC                                 0.0000
+ J                                   110.0000
+
+[RESERVOIRS]
+ A                                   100.0000                                
+ B                                    80.0000                                
+ C                                    60.0000                                
+
+[TANKS]
+
+[PIPES]
+ PAJ                             NodeA                           J                                   900.0000     850.0000       0.1000       0.0000       
+ PBJ                             NodeB                           J                                   800.0000     850.0000       0.1000       0.0000       
+ PJC                             J                               NodeC                               700.0000     850.0000       0.1000       0.0000       
+ 4                               A                               NodeA                                10.0000    2400.0000       0.1000       0.0000       
+ 5                               B                               NodeB                                10.0000    2400.0000       0.1000       0.0000       
+ 6                               C                               NodeC                                10.0000    2400.0000       0.1000       0.0000       
+
+[PUMPS]
+
+[VALVES]
+
+[DEMANDS]
+
+[EMITTERS]
+
+[STATUS]
+
+[PATTERNS]
+
+[CURVES]
+
+[CONTROLS]
+
+[RULES]
+
+[QUALITY]
+
+[SOURCES]
+
+[MIXING]
+
+[REACTIONS]
+ ORDER  BULK            1.00
+ ORDER  WALL            1
+ ORDER  TANK            1.00
+ GLOBAL BULK            0.000000
+ GLOBAL WALL            0.000000
+
+[ENERGY]
+ GLOBAL EFFIC        75.0000
+ DEMAND CHARGE       0.0000
+
+[TIMES]
+ DURATION            0:00:00
+ HYDRAULIC TIMESTEP  1:00:00
+ QUALITY TIMESTEP    0:05:00
+ REPORT TIMESTEP     1:00:00
+ REPORT START        0:00:00
+ PATTERN TIMESTEP    1:00:00
+ PATTERN START       0:00:00
+ RULE TIMESTEP       0:06:00
+ START CLOCKTIME     0:00:00
+ STATISTIC           NONE
+
+[OPTIONS]
+ UNITS               LPS
+ PRESSURE            METERS
+ HEADLOSS            H-W
+ UNBALANCED          CONTINUE 10
+ QUALITY             NONE
+ DEMAND MULTIPLIER   1.0000
+ EMITTER EXPONENT    0.5000
+ EMITTER BACKFLOW    YES
+ VISCOSITY           1.000000
+ DIFFUSIVITY         1.000000
+ SPECIFIC GRAVITY    1.000000
+ TRIALS              40
+ ACCURACY            0.00100000
+ TOLERANCE           0.01000000
+ CHECKFREQ           2
+ MAXCHECK            10
+ DAMPLIMIT           0.00000000
+
+[REPORT]
+ PAGESIZE            0
+ STATUS              FULL
+ SUMMARY             YES
+ ENERGY              NO
+ MESSAGES            YES
+ NODES               ALL
+ LINKS               ALL
+ Elevation           NO
+ Demand              PRECISION 2
+ Head                PRECISION 2
+ Pressure            PRECISION 2
+ Quality             NO
+ Length              NO
+ Diameter            NO
+ Flow                PRECISION 2
+ Velocity            PRECISION 2
+ Headloss            PRECISION 2
+ Quality             NO
+ State               NO
+ Setting             NO
+ Reaction            NO
+
+[COORDINATES]
+ NodeA                              1177.043000    8793.774000
+ NodeB                              5340.467000    7782.101000
+ NodeC                              8200.389000    5719.844000
+ J                                  4659.533000    6186.770000
+ A                                   457.198000    9046.693000
+ B                                  4659.533000    8093.385000
+ C                                  8375.486000    6089.494000
+
+[VERTICES]
+ PAJ                                1643.969000    8618.677000
+ PAJ                                2149.805000    8307.393000
+ PAJ                                2519.455000    7762.646000
+ PAJ                                2947.471000    7198.444000
+ PAJ                                3161.479000    6809.339000
+ PAJ                                3492.218000    6536.965000
+ PAJ                                3822.957000    6361.868000
+ PAJ                                4309.339000    6206.226000
+ PBJ                                5749.027000    7762.646000
+ PBJ                                6060.311000    7723.735000
+ PBJ                                6215.953000    7607.004000
+ PBJ                                6196.498000    7431.907000
+ PBJ                                5787.938000    7062.257000
+ PBJ                                5301.556000    6673.152000
+ PJC                                5340.467000    6167.315000
+ PJC                                6118.677000    6050.584000
+ PJC                                6702.335000    5856.031000
+ PJC                                7227.626000    5700.389000
+ PJC                                7636.187000    5680.934000
+
+[END]
