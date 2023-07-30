@@ -341,30 +341,30 @@
   <a class="reference internal nav-link" href="#purpose">
    Purpose
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installation">
-   Installation
-  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-1-head-loss-in-a-pipeline">
-     Example 1 - Head Loss in a Pipeline
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#copy-the-library">
-       Copy the library
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-2-flow-rate-in-a-pipeline">
-     Example 2 Flow Rate in a Pipeline
+    <a class="reference internal nav-link" href="#installation-notes">
+     Installation Notes
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1-head-loss-in-a-pipeline">
+   Example 1 - Head Loss in a Pipeline
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#path-to-the-library">
+     Path to the library
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-2-flow-rate-in-a-pipeline">
+   Example 2 Flow Rate in a Pipeline
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
@@ -392,12 +392,13 @@
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
 <p>This section demonstrates the various previous examples using the Toolkit to run the example and make changes to inputs and rerun the examples.  The main concept is that the Toolkit allows manipulation of models independent of a GUI which when combined with either Toolkit supplied control rules, or external “control” lets one model and interpret (assuming IF-THEN interpretation is amenable) many changes automatically.</p>
-</div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation-notes">
+<h3>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h3>
 <p>The examples herein are on the developmental computer (a Raspberry Pi).  The scripts should work fine on another computer with the toolkit installed (Windows probably takes a bit more fussing to get the Linux subsystem to call to the Toolkit).</p>
+</div>
+</div>
 <div class="section" id="example-1-head-loss-in-a-pipeline">
-<h3>Example 1 - Head Loss in a Pipeline<a class="headerlink" href="#example-1-head-loss-in-a-pipeline" title="Permalink to this headline">¶</a></h3>
+<h2>Example 1 - Head Loss in a Pipeline<a class="headerlink" href="#example-1-head-loss-in-a-pipeline" title="Permalink to this headline">¶</a></h2>
 <p>A simple model to consider is a single pipe connecting two reservoirs.</p>
 <p>A <strong>problem statement</strong> might be something like:</p>
 <blockquote>
@@ -409,9 +410,9 @@ the head loss in a 10,000 foot length of this pipe.</p>
 <p class="admonition-title">Note</p>
 <p>This example is verbatim from the previous sections, here the examples are presented using the Toolkit interface.  The ASCII (.net) input file is taken from the previous section. Then manipulated in the example - it is the essence of the Toolkit.  Many of the steps below, are repetitive so I don’t forget the steps myself. As one gets familiar with the process, I would suspect it becomes second nature.</p>
 </div>
-<div class="section" id="copy-the-library">
-<h4>Copy the library<a class="headerlink" href="#copy-the-library" title="Permalink to this headline">¶</a></h4>
-<p>Copy the library into the working directory which on the development machine is <code class="docutils literal notranslate"><span class="pre">ects-epanet/ects-epanet-notes/lessons/lesson03/ex1-tk</span></code> or adapt the path to the already installed working directory, in this example we will take the second approach.  Here is the directory listing before running the example .</p>
+<div class="section" id="path-to-the-library">
+<h3>Path to the library<a class="headerlink" href="#path-to-the-library" title="Permalink to this headline">¶</a></h3>
+<p>Either copy the library into the working directory which on the development machine is <code class="docutils literal notranslate"><span class="pre">ects-epanet/ects-epanet-notes/lessons/lesson03/ex1-tk</span></code> or adapt the path to the already installed working directory, in this example we will take the second approach.  Here is the directory listing before running the example .</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The file removal step is to delete any existing output files.  Its not necessary except to ensure this notebook builds in a fashion that tells the manipulation story well.</p>
@@ -425,8 +426,8 @@ the head loss in a 10,000 foot length of this pipe.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>total 16
-drwxrwxr-x 3 sensei sensei 4096 Jul 29 11:05 .
-drwxrwxr-x 9 sensei sensei 4096 Jul 29 11:05 ..
+drwxrwxr-x 3 sensei sensei 4096 Jul 30 16:25 .
+drwxrwxr-x 9 sensei sensei 4096 Jul 30 16:24 ..
 drwxrwxr-x 2 sensei sensei 4096 Jul 28 18:19 .ipynb_checkpoints
 -rw-rw-r-- 1 sensei sensei 2911 Jul 28 17:37 EX1tk.inp
 </pre></div>
@@ -736,7 +737,7 @@ drwxrwxr-x 2 sensei sensei 4096 Jul 28 18:19 .ipynb_checkpoints
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sat Jul 29 11:05:19 2023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:25:00 2023
 
   ******************************************************************
   *                           E P A N E T                          *
@@ -771,7 +772,7 @@ drwxrwxr-x 2 sensei sensei 4096 Jul 28 18:19 .ipynb_checkpoints
          All Nodes
          All Links
    
-  Analysis begun Sat Jul 29 11:05:19 2023
+  Analysis begun Sun Jul 30 16:25:00 2023
 
    
   Node Results:
@@ -790,7 +791,7 @@ drwxrwxr-x 2 sensei sensei 4096 Jul 28 18:19 .ipynb_checkpoints
   ----------------------------------------------
   frenchy            295.00     15.02      7.31
    
-  Analysis ended Sat Jul 29 11:05:19 2023
+  Analysis ended Sun Jul 30 16:25:00 2023
 </pre></div>
 </div>
 </div>
@@ -866,7 +867,7 @@ new link length is: 5000.0 feet
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sat Jul 29 11:05:19 2023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:25:00 2023
 
   ******************************************************************
   *                           E P A N E T                          *
@@ -901,7 +902,7 @@ new link length is: 5000.0 feet
          All Nodes
          All Links
    
-  Analysis begun Sat Jul 29 11:05:19 2023
+  Analysis begun Sun Jul 30 16:25:00 2023
 
    
   Node Results:
@@ -920,7 +921,7 @@ new link length is: 5000.0 feet
   ----------------------------------------------
   frenchy            295.00     15.02      7.36
    
-  Analysis ended Sat Jul 29 11:05:19 2023
+  Analysis ended Sun Jul 30 16:25:00 2023
 </pre></div>
 </div>
 </div>
@@ -929,7 +930,7 @@ new link length is: 5000.0 feet
 </div>
 </div>
 <div class="section" id="example-2-flow-rate-in-a-pipeline">
-<h3>Example 2 Flow Rate in a Pipeline<a class="headerlink" href="#example-2-flow-rate-in-a-pipeline" title="Permalink to this headline">¶</a></h3>
+<h2>Example 2 Flow Rate in a Pipeline<a class="headerlink" href="#example-2-flow-rate-in-a-pipeline" title="Permalink to this headline">¶</a></h2>
 <p>This example represents the situation where the total head is known at two points on a pipeline, and one wishes to determine the flow rate (or specify a flow rate and solve for a pipe diameter). Like the prior example it is contrived, but follows the same general modeling process.</p>
 <p>As in the prior example, we will use EPANET to solve a problem we have already solved by hand.</p>
 <p>The <strong>problem statement</strong> is:</p>
@@ -1243,7 +1244,7 @@ A sketch of the situation is <img alt="" src="http://freeswmm.ddns.net/ects-epan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sat Jul 29 11:05:20 2023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:25:01 2023
 
   ******************************************************************
   *                           E P A N E T                          *
@@ -1252,9 +1253,9 @@ A sketch of the situation is <img alt="" src="http://freeswmm.ddns.net/ects-epan
   *                         Version 2.2                            *
   ******************************************************************
   
-  Analysis begun Sat Jul 29 11:05:20 2023
+  Analysis begun Sun Jul 30 16:25:01 2023
 
-  Analysis ended Sat Jul 29 11:05:20 2023
+  Analysis ended Sun Jul 30 16:25:01 2023
 </pre></div>
 </div>
 </div>
@@ -1300,7 +1301,7 @@ A sketch of the situation is <img alt="" src="http://freeswmm.ddns.net/ects-epan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sat Jul 29 11:05:20 2023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:25:01 2023
 
   ******************************************************************
   *                           E P A N E T                          *
@@ -1309,9 +1310,9 @@ A sketch of the situation is <img alt="" src="http://freeswmm.ddns.net/ects-epan
   *                         Version 2.2                            *
   ******************************************************************
   
-  Analysis begun Sat Jul 29 11:05:20 2023
+  Analysis begun Sun Jul 30 16:25:01 2023
 
-  Analysis ended Sat Jul 29 11:05:20 2023
+  Analysis ended Sun Jul 30 16:25:01 2023
 </pre></div>
 </div>
 </div>
@@ -1324,7 +1325,7 @@ A sketch of the situation is <img alt="" src="http://freeswmm.ddns.net/ects-epan
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sat Jul 29 11:05:20 2023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:25:01 2023
 
   ******************************************************************
   *                           E P A N E T                          *
@@ -1359,7 +1360,7 @@ A sketch of the situation is <img alt="" src="http://freeswmm.ddns.net/ects-epan
          All Nodes
          All Links
    
-  Analysis begun Sat Jul 29 11:05:20 2023
+  Analysis begun Sun Jul 30 16:25:01 2023
 
    
   Hydraulic Status:
@@ -1387,13 +1388,12 @@ A sketch of the situation is <img alt="" src="http://freeswmm.ddns.net/ects-epan
   1                   10.01      3.63      1.89
   2                 -284.99      3.63      0.20
    
-  Analysis ended Sat Jul 29 11:05:20 2023
+  Analysis ended Sun Jul 30 16:25:01 2023
 </pre></div>
 </div>
 </div>
 </div>
 <p>So we have the ability to modify important parts of input files to meet our needs.  We could have also overwritten to the original file and juct run everything in a single pass, but for clarity we have kept the files separate.  Naturally, we are now responsible for our own “graphics” if thats of interest (later on we can try to adapt EPyT scripts)</p>
-</div>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>

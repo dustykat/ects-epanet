@@ -345,45 +345,38 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#installation">
-   Installation
+  <a class="reference internal nav-link" href="#installation-notes">
+   Installation Notes
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples">
-   Examples
+  <a class="reference internal nav-link" href="#example-3-three-reservoir-problem">
+   Example 3 : Three-Reservoir-Problem
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-3-three-reservoir-problem">
-     Example 3 : Three-Reservoir-Problem
+    <a class="reference internal nav-link" href="#exercise">
+     Exercise
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercise">
-   Exercise
+  <a class="reference internal nav-link" href="#example-4-a-simple-looped-network">
+   Example 4 - A simple looped network
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-4-a-simple-looped-network">
-     Example 4 - A simple looped network
+    <a class="reference internal nav-link" href="#id1">
+     Exercise
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Exercise
+  <a class="reference internal nav-link" href="#example-5-simulating-a-pump">
+   Example 5 - Simulating a Pump
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-5-simulating-a-pump">
-     Example 5 - Simulating a Pump
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
@@ -420,14 +413,14 @@
 <h1>3.3 EPANET (Examples 3-5) using the Toolkit<a class="headerlink" href="#epanet-examples-3-5-using-the-toolkit" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p>This section continues the demonstration of the various previous examples using the Toolkit to run the example and make changes to inputs and rerun the examples.  The main concept is that the Toolkit allows manipulation of models independent of a GUI which when combined with either Toolkit supplied control rules, or external “control” lets one model and interpret (assuming IF-THEN interpretation is amenable) many changes automatically.</p>
 </div>
-<div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="installation-notes">
+<h2>Installation Notes<a class="headerlink" href="#installation-notes" title="Permalink to this headline">¶</a></h2>
+<p>The examples herein are run on the developmental computer (a Raspberry Pi).  The scripts should work fine on another computer with the toolkit installed (Windows probably takes a bit more fussing to get the Linux subsystem to call to the Toolkit).</p>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="example-3-three-reservoir-problem">
-<h3>Example 3 : Three-Reservoir-Problem<a class="headerlink" href="#example-3-three-reservoir-problem" title="Permalink to this headline">¶</a></h3>
+<h2>Example 3 : Three-Reservoir-Problem<a class="headerlink" href="#example-3-three-reservoir-problem" title="Permalink to this headline">¶</a></h2>
 <p>This example is a the classic hydraulics problem, that appears in some form in most if not all hydraulics textbooks; here we will use the already built input file - and note we wont use any of the basemap capabilities, as the Toolkit is not really intended for such direct graphics.</p>
 <p>Recall the <strong>problem statement</strong>:</p>
 <p>Reservoirs A, B, and C are connected as shown.
@@ -806,7 +799,7 @@ PJC             	7636.187          	5680.934
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:15:44 2023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:24:56 2023
 
   ******************************************************************
   *                           E P A N E T                          *
@@ -841,7 +834,7 @@ PJC             	7636.187          	5680.934
          All Nodes
          All Links
    
-  Analysis begun Sun Jul 30 16:15:44 2023
+  Analysis begun Sun Jul 30 16:24:56 2023
 
    
   Hydraulic Status:
@@ -893,7 +886,7 @@ PJC             	7636.187          	5680.934
   5                    0.29      0.00      0.00
   6                   -2.64      0.00      0.18
    
-  Analysis ended Sun Jul 30 16:15:44 2023
+  Analysis ended Sun Jul 30 16:24:56 2023
 </pre></div>
 </div>
 </div>
@@ -1016,14 +1009,14 @@ tolerance met 318
 </div>
 </div>
 </div>
-</div>
-</div>
 <div class="section" id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<h3>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h3>
 <p>A better way for the example above would be some version of bisection. Modify the script to search for the desired elevation using bisection; select a reasonable tolerance to stop.  You may find Chat-GPT 4.0 useful to construct a working script.</p>
 <p>A bisection solver could be adapted from <a class="reference external" href="http://54.243.252.9/ce-4353-webroot/ce4353jb/ce4353workbook/_build/html/lessons/specificenergy/specificenergy1.html">Cleveland, T.G. (2022) Hydraulic System Design JupyterBook notes to accompany CE 4353/CE 5360 at TTU; Example 1 in specific energy section</a></p>
+</div>
+</div>
 <div class="section" id="example-4-a-simple-looped-network">
-<h3>Example 4 - A simple looped network<a class="headerlink" href="#example-4-a-simple-looped-network" title="Permalink to this headline">¶</a></h3>
+<h2>Example 4 - A simple looped network<a class="headerlink" href="#example-4-a-simple-looped-network" title="Permalink to this headline">¶</a></h2>
 <p>Expanding the examples, we will next consider a looped network. As before we will use an exercise as the motivating example.</p>
 <p><strong>Problem Statement</strong></p>
 <blockquote>
@@ -1065,7 +1058,7 @@ flow in all pipes are fully turbulent.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:15:44 2023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:24:56 2023
 
   ******************************************************************
   *                           E P A N E T                          *
@@ -1100,7 +1093,7 @@ flow in all pipes are fully turbulent.</p>
          All Nodes
          All Links
    
-  Analysis begun Sun Jul 30 16:15:44 2023
+  Analysis begun Sun Jul 30 16:24:56 2023
 
    
   Hydraulic Status:
@@ -1135,7 +1128,7 @@ flow in all pipes are fully turbulent.</p>
   5                   15.34      0.16      0.09
   6                  184.66      1.47      5.10
    
-  Analysis ended Sun Jul 30 16:15:44 2023
+  Analysis ended Sun Jul 30 16:24:56 2023
 </pre></div>
 </div>
 </div>
@@ -1221,13 +1214,13 @@ Link :6 Head loss (m/1000m) : 5.1024
 </div>
 </div>
 </div>
-</div>
-</div>
 <div class="section" id="id1">
-<h2>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h3>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Change the parameter code to recover flow instead of head loss and rerun the example, what effect does shrinking pipe 4 have on flow rate?</p>
+</div>
+</div>
 <div class="section" id="example-5-simulating-a-pump">
-<h3>Example 5 - Simulating a Pump<a class="headerlink" href="#example-5-simulating-a-pump" title="Permalink to this headline">¶</a></h3>
+<h2>Example 5 - Simulating a Pump<a class="headerlink" href="#example-5-simulating-a-pump" title="Permalink to this headline">¶</a></h2>
 <p>This example repeats the same problem as before, but using the Toolkit to load and run the model.  A bit of the earlier example is replicated below:</p>
 <blockquote>
 <div><p>Figure XX is a conceptual model of a pump lifting water through a 100 mm diameter, 100 meter long, ductile iron pipe from a lower elevation reservoir to an upper reservoir. <br><br><img alt="" src="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/P2-39.png" /><br><br>The suction side of the pump is a 100 mm diameter, 4-meter long ductile iron pipe. The difference in reservoir free-surface elevations is 10 meters. <br><br>The pump performance curve is given
@@ -1248,7 +1241,7 @@ The analysis goal is to estimate the flow rate in the system.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:15:44 2023
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:24:57 2023
 
   ******************************************************************
   *                           E P A N E T                          *
@@ -1257,11 +1250,10 @@ The analysis goal is to estimate the flow rate in the system.</p>
   *                         Version 2.2                            *
   ******************************************************************
   
-  Analysis begun Sun Jul 30 16:15:44 2023
+  Analysis begun Sun Jul 30 16:24:57 2023
 
-  Analysis ended Sun Jul 30 16:15:44 2023
+  Analysis ended Sun Jul 30 16:24:57 2023
 </pre></div>
-</div>
 </div>
 </div>
 </div>
@@ -1269,198 +1261,48 @@ The analysis goal is to estimate the flow rate in the system.</p>
 <div class="section" id="id2">
 <h2>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>Use the Toolkit to modify the input file (EX5-tk) to produce a more useful output file.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># one possible solution</span>
-<span class="kn">import</span> <span class="nn">epamodule</span> <span class="k">as</span> <span class="nn">em</span>  <span class="c1"># import the package</span>
-<span class="c1">#Open the EPANET toolkit &amp; hydraulics solver   </span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENopen</span><span class="p">(</span><span class="s2">&quot;./ex5-tk/EX5-tk.inp&quot;</span><span class="p">,</span> <span class="s2">&quot;./ex5-tk/EX5-tk.rpt&quot;</span><span class="p">)</span>
-<span class="c1"># build report command strings Keyword  Action see user manual</span>
-<span class="n">command0</span> <span class="o">=</span> <span class="s2">&quot;Status     Yes&quot;</span>
-<span class="n">command1</span> <span class="o">=</span> <span class="s2">&quot;Summary            	Yes&quot;</span>
-<span class="n">command2</span> <span class="o">=</span> <span class="s2">&quot;Nodes            	ALL&quot;</span>
-<span class="n">command3</span> <span class="o">=</span> <span class="s2">&quot;Links            	ALL&quot;</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENsetstatusreport</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># full status report</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENsetreport</span><span class="p">(</span><span class="n">command0</span><span class="p">)</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENsetreport</span><span class="p">(</span><span class="n">command1</span><span class="p">)</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENsetreport</span><span class="p">(</span><span class="n">command2</span><span class="p">)</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENsetreport</span><span class="p">(</span><span class="n">command3</span><span class="p">)</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENsaveinpfile</span><span class="p">(</span><span class="s2">&quot;./ex5-tk/EX5-tkmod.inp&quot;</span><span class="p">)</span> <span class="c1">#overwrite the input file</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENclose</span><span class="p">()</span>
-<span class="c1"># now run from the new file</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENepanet</span><span class="p">(</span><span class="s2">&quot;./ex5-tk/EX5-tkmod.inp&quot;</span><span class="p">,</span> <span class="s2">&quot;./ex5-tk/EX5-tkmod.rpt&quot;</span><span class="p">)</span>
-<span class="o">!</span> cat ./ex5-tk/EX5-tkmod.rpt
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># one possible solution
+import epamodule as em  # import the package
+#Open the EPANET toolkit &amp; hydraulics solver   
+em.ENopen(&quot;./ex5-tk/EX5-tk.inp&quot;, &quot;./ex5-tk/EX5-tk.rpt&quot;)
+# build report command strings Keyword  Action see user manual
+command0 = &quot;Status     Yes&quot;
+command1 = &quot;Summary            	Yes&quot;
+command2 = &quot;Nodes            	ALL&quot;
+command3 = &quot;Links            	ALL&quot;
+em.ENsetstatusreport(2) # full status report
+em.ENsetreport(command0)
+em.ENsetreport(command1)
+em.ENsetreport(command2)
+em.ENsetreport(command3)
+em.ENsaveinpfile(&quot;./ex5-tk/EX5-tkmod.inp&quot;) #overwrite the input file
+em.ENclose()
+# now run from the new file
+em.ENepanet(&quot;./ex5-tk/EX5-tkmod.inp&quot;, &quot;./ex5-tk/EX5-tkmod.rpt&quot;)
+! cat ./ex5-tk/EX5-tkmod.rpt
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Page 1                                    Sun Jul 30 16:15:44 2023
-
-  ******************************************************************
-  *                           E P A N E T                          *
-  *                   Hydraulic and Water Quality                  *
-  *                   Analysis for Pipe Networks                   *
-  *                         Version 2.2                            *
-  ******************************************************************
-  
-   
-      Input Data File ................... ./ex5-tk/EX5-tkmod.inp
-      Number of Junctions................ 2
-      Number of Reservoirs............... 2
-      Number of Tanks ................... 0
-      Number of Pipes ................... 2
-      Number of Pumps ................... 1
-      Number of Valves .................. 0
-      Headloss Formula .................. Darcy-Weisbach
-      Nodal Demand Model ................ DDA
-      Hydraulic Timestep ................ 1.00 hrs
-      Hydraulic Accuracy ................ 0.001000
-      Status Check Frequency ............ 2
-      Maximum Trials Checked ............ 10
-      Damping Limit Threshold ........... 0.000000
-      Maximum Trials .................... 40
-      Quality Analysis .................. None
-      Specific Gravity .................. 1.00
-      Relative Kinematic Viscosity ...... 1.00
-      Relative Chemical Diffusivity ..... 1.00
-      Demand Multiplier ................. 1.00
-      Total Duration .................... 0.00 hrs
-      Reporting Criteria:
-         All Nodes
-         All Links
-   
-  Analysis begun Sun Jul 30 16:15:44 2023
-
-   
-  Hydraulic Status:
-  -----------------------------------------------------------------------
-     0:00:00: Balanced after 6 trials
-     0:00:00: Reservoir 1 is emptying
-     0:00:00: Reservoir 2 is filling
-   
-   
-  Node Results:
-  ----------------------------------------------
-                     Demand      Head  Pressure
-  Node                  L/s         m         m
-  ----------------------------------------------
-  3                    0.00      9.96      9.96
-  4                    0.00     20.90     20.90
-  1                   -6.37     10.00      0.00  Reservoir
-  2                    6.37     20.00      0.00  Reservoir
-   
-   
-  Link Results:
-  ----------------------------------------------
-                       Flow  Velocity  Headloss
-  Link                  L/s       m/s    /1000m
-  ----------------------------------------------
-  1                    6.37      0.81      9.03
-  2                    6.37      0.81      9.03
-  3                    6.37      0.00    -10.94  Pump
-   
-  Analysis ended Sun Jul 30 16:15:44 2023
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="id3">
 <h2>Exercise<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Modify the upstream pool elevation so it is at 14.999 meters.  The pump flowrate should go down a lot (but not to zero).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># one possible solution</span>
-<span class="kn">import</span> <span class="nn">epamodule</span> <span class="k">as</span> <span class="nn">em</span>  <span class="c1"># import the package</span>
-<span class="c1">#Open the EPANET toolkit &amp; hydraulics solver   </span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENopen</span><span class="p">(</span><span class="s2">&quot;./ex5-tk/EX5-tkmod.inp&quot;</span><span class="p">,</span> <span class="s2">&quot;./ex5-tk/EX5-tkmod.rpt&quot;</span><span class="p">)</span>
-<span class="c1"># The upper reservoir is Node 2 in the input file</span>
-<span class="n">nodej</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">ENgetnodeindex</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span> <span class="c1"># Get the index of Node 2 in the internal database</span>
-<span class="n">elevj</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">ENgetnodevalue</span><span class="p">(</span><span class="n">nodej</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Get the elevation and check</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Internal Node: &quot;</span><span class="p">,</span><span class="n">nodej</span><span class="p">,</span><span class="s2">&quot; Initial Head: &quot;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">elevj</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">elevj</span><span class="o">=</span><span class="mf">24.9999</span> <span class="c1"># Change so thet DeltaH is 14.999</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Increase Head to &quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">elevj</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENsetnodevalue</span><span class="p">(</span><span class="n">nodej</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">elevj</span><span class="p">)</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENsaveinpfile</span><span class="p">(</span><span class="s2">&quot;./ex5-tk/EX5-tkmod.inp&quot;</span><span class="p">)</span> <span class="c1">#overwrite the input file</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENclose</span><span class="p">()</span>
-<span class="c1"># now run from the new file</span>
-<span class="n">em</span><span class="o">.</span><span class="n">ENepanet</span><span class="p">(</span><span class="s2">&quot;./ex5-tk/EX5-tkmod.inp&quot;</span><span class="p">,</span> <span class="s2">&quot;./ex5-tk/EX5-tkmod.rpt&quot;</span><span class="p">)</span>
-<span class="o">!</span> cat ./ex5-tk/EX5-tkmod.rpt
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># one possible solution
+import epamodule as em  # import the package
+#Open the EPANET toolkit &amp; hydraulics solver   
+em.ENopen(&quot;./ex5-tk/EX5-tkmod.inp&quot;, &quot;./ex5-tk/EX5-tkmod.rpt&quot;)
+# The upper reservoir is Node 2 in the input file
+nodej = em.ENgetnodeindex(&quot;2&quot;) # Get the index of Node 2 in the internal database
+elevj = em.ENgetnodevalue(nodej,0) # Get the elevation and check
+print(&quot;Internal Node: &quot;,nodej,&quot; Initial Head: &quot;,round(elevj,3))
+elevj=24.9999 # Change so thet DeltaH is 14.999
+print(&quot;Increase Head to &quot;, round(elevj,3))
+em.ENsetnodevalue(nodej,0,elevj)
+em.ENsaveinpfile(&quot;./ex5-tk/EX5-tkmod.inp&quot;) #overwrite the input file
+em.ENclose()
+# now run from the new file
+em.ENepanet(&quot;./ex5-tk/EX5-tkmod.inp&quot;, &quot;./ex5-tk/EX5-tkmod.rpt&quot;)
+! cat ./ex5-tk/EX5-tkmod.rpt
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Internal Node:  4  Initial Head:  20.0
-Increase Head to  25.0
-  Page 1                                    Sun Jul 30 16:15:45 2023
-
-  ******************************************************************
-  *                           E P A N E T                          *
-  *                   Hydraulic and Water Quality                  *
-  *                   Analysis for Pipe Networks                   *
-  *                         Version 2.2                            *
-  ******************************************************************
-  
-   
-      Input Data File ................... ./ex5-tk/EX5-tkmod.inp
-      Number of Junctions................ 2
-      Number of Reservoirs............... 2
-      Number of Tanks ................... 0
-      Number of Pipes ................... 2
-      Number of Pumps ................... 1
-      Number of Valves .................. 0
-      Headloss Formula .................. Darcy-Weisbach
-      Nodal Demand Model ................ DDA
-      Hydraulic Timestep ................ 1.00 hrs
-      Hydraulic Accuracy ................ 0.001000
-      Status Check Frequency ............ 2
-      Maximum Trials Checked ............ 10
-      Damping Limit Threshold ........... 0.000000
-      Maximum Trials .................... 40
-      Quality Analysis .................. None
-      Specific Gravity .................. 1.00
-      Relative Kinematic Viscosity ...... 1.00
-      Relative Chemical Diffusivity ..... 1.00
-      Demand Multiplier ................. 1.00
-      Total Duration .................... 0.00 hrs
-      Reporting Criteria:
-         All Nodes
-         All Links
-   
-  Analysis begun Sun Jul 30 16:15:45 2023
-
-   
-  Hydraulic Status:
-  -----------------------------------------------------------------------
-     0:00:00: Balanced after 8 trials
-     0:00:00: Reservoir 1 is closed
-     0:00:00: Reservoir 2 is closed
-   
-   
-  Node Results:
-  ----------------------------------------------
-                     Demand      Head  Pressure
-  Node                  L/s         m         m
-  ----------------------------------------------
-  3                    0.00     10.00     10.00
-  4                    0.00     25.00     25.00
-  1                   -0.02     10.00      0.00  Reservoir
-  2                    0.02     25.00     -0.00  Reservoir
-   
-   
-  Link Results:
-  ----------------------------------------------
-                       Flow  Velocity  Headloss
-  Link                  L/s       m/s    /1000m
-  ----------------------------------------------
-  1                    0.02      0.00      0.00
-  2                    0.02      0.00      0.00
-  3                    0.02      0.00    -15.00  Pump
-   
-  Analysis ended Sun Jul 30 16:15:45 2023
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 <div class="section" id="id4">

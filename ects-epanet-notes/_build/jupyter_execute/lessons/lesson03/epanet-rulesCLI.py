@@ -4,14 +4,12 @@
 # # 3.3 EPANET (Examples 3-5) using the Toolkit
 # 
 # ## Purpose
+# This section continues the demonstration of the various previous examples using the Toolkit to run the example and make changes to inputs and rerun the examples.  The main concept is that the Toolkit allows manipulation of models independent of a GUI which when combined with either Toolkit supplied control rules, or external "control" lets one model and interpret (assuming IF-THEN interpretation is amenable) many changes automatically.
 # 
-# ## Installation
-# 
-# ## Examples
-# 
-# 
+# ## Installation Notes
+# The examples herein are run on the developmental computer (a Raspberry Pi).  The scripts should work fine on another computer with the toolkit installed (Windows probably takes a bit more fussing to get the Linux subsystem to call to the Toolkit).
 
-# ### Example 3 : Three-Reservoir-Problem
+# ## Example 3 : Three-Reservoir-Problem
 # 
 # This example is a the classic hydraulics problem, that appears in some form in most if not all hydraulics textbooks; here we will use the already built input file - and note we wont use any of the basemap capabilities, as the Toolkit is not really intended for such direct graphics.
 # 
@@ -177,12 +175,12 @@ em.ENreport() # now write report
 em.ENclose()
 
 
-# ## Exercise
+# ### Exercise
 # A better way for the example above would be some version of bisection. Modify the script to search for the desired elevation using bisection; select a reasonable tolerance to stop.  You may find Chat-GPT 4.0 useful to construct a working script.
 # 
 # A bisection solver could be adapted from [Cleveland, T.G. (2022) Hydraulic System Design JupyterBook notes to accompany CE 4353/CE 5360 at TTU; Example 1 in specific energy section](http://54.243.252.9/ce-4353-webroot/ce4353jb/ce4353workbook/_build/html/lessons/specificenergy/specificenergy1.html)
 
-# ### Example 4 - A simple looped network
+# ## Example 4 - A simple looped network
 # 
 # Expanding the examples, we will next consider a looped network. As before we will use an exercise as the motivating example.
 # 
@@ -272,10 +270,10 @@ em.ENreport() # now write report
 em.ENclose()
 
 
-# ## Exercise
+# ### Exercise
 # Change the parameter code to recover flow instead of head loss and rerun the example, what effect does shrinking pipe 4 have on flow rate?
 
-# ### Example 5 - Simulating a Pump
+# ## Example 5 - Simulating a Pump
 # 
 # This example repeats the same problem as before, but using the Toolkit to load and run the model.  A bit of the earlier example is replicated below:
 # 
@@ -300,53 +298,49 @@ get_ipython().system('cat ./ex5-tk/EX5-tk.rpt')
 # ## Exercise
 # Use the Toolkit to modify the input file (EX5-tk) to produce a more useful output file.
 
-# In[9]:
-
-
-# one possible solution
-import epamodule as em  # import the package
-#Open the EPANET toolkit & hydraulics solver   
-em.ENopen("./ex5-tk/EX5-tk.inp", "./ex5-tk/EX5-tk.rpt")
-# build report command strings Keyword  Action see user manual
-command0 = "Status     Yes"
-command1 = "Summary            	Yes"
-command2 = "Nodes            	ALL"
-command3 = "Links            	ALL"
-em.ENsetstatusreport(2) # full status report
-em.ENsetreport(command0)
-em.ENsetreport(command1)
-em.ENsetreport(command2)
-em.ENsetreport(command3)
-em.ENsaveinpfile("./ex5-tk/EX5-tkmod.inp") #overwrite the input file
-em.ENclose()
-# now run from the new file
-em.ENepanet("./ex5-tk/EX5-tkmod.inp", "./ex5-tk/EX5-tkmod.rpt")
-get_ipython().system(' cat ./ex5-tk/EX5-tkmod.rpt')
-
+# ```
+# # one possible solution
+# import epamodule as em  # import the package
+# #Open the EPANET toolkit & hydraulics solver   
+# em.ENopen("./ex5-tk/EX5-tk.inp", "./ex5-tk/EX5-tk.rpt")
+# # build report command strings Keyword  Action see user manual
+# command0 = "Status     Yes"
+# command1 = "Summary            	Yes"
+# command2 = "Nodes            	ALL"
+# command3 = "Links            	ALL"
+# em.ENsetstatusreport(2) # full status report
+# em.ENsetreport(command0)
+# em.ENsetreport(command1)
+# em.ENsetreport(command2)
+# em.ENsetreport(command3)
+# em.ENsaveinpfile("./ex5-tk/EX5-tkmod.inp") #overwrite the input file
+# em.ENclose()
+# # now run from the new file
+# em.ENepanet("./ex5-tk/EX5-tkmod.inp", "./ex5-tk/EX5-tkmod.rpt")
+# ! cat ./ex5-tk/EX5-tkmod.rpt
+# ```
 
 # ## Exercise
 # Modify the upstream pool elevation so it is at 14.999 meters.  The pump flowrate should go down a lot (but not to zero).  
 
-# In[10]:
-
-
-# one possible solution
-import epamodule as em  # import the package
-#Open the EPANET toolkit & hydraulics solver   
-em.ENopen("./ex5-tk/EX5-tkmod.inp", "./ex5-tk/EX5-tkmod.rpt")
-# The upper reservoir is Node 2 in the input file
-nodej = em.ENgetnodeindex("2") # Get the index of Node 2 in the internal database
-elevj = em.ENgetnodevalue(nodej,0) # Get the elevation and check
-print("Internal Node: ",nodej," Initial Head: ",round(elevj,3))
-elevj=24.9999 # Change so thet DeltaH is 14.999
-print("Increase Head to ", round(elevj,3))
-em.ENsetnodevalue(nodej,0,elevj)
-em.ENsaveinpfile("./ex5-tk/EX5-tkmod.inp") #overwrite the input file
-em.ENclose()
-# now run from the new file
-em.ENepanet("./ex5-tk/EX5-tkmod.inp", "./ex5-tk/EX5-tkmod.rpt")
-get_ipython().system(' cat ./ex5-tk/EX5-tkmod.rpt')
-
+# ```
+# # one possible solution
+# import epamodule as em  # import the package
+# #Open the EPANET toolkit & hydraulics solver   
+# em.ENopen("./ex5-tk/EX5-tkmod.inp", "./ex5-tk/EX5-tkmod.rpt")
+# # The upper reservoir is Node 2 in the input file
+# nodej = em.ENgetnodeindex("2") # Get the index of Node 2 in the internal database
+# elevj = em.ENgetnodevalue(nodej,0) # Get the elevation and check
+# print("Internal Node: ",nodej," Initial Head: ",round(elevj,3))
+# elevj=24.9999 # Change so thet DeltaH is 14.999
+# print("Increase Head to ", round(elevj,3))
+# em.ENsetnodevalue(nodej,0,elevj)
+# em.ENsaveinpfile("./ex5-tk/EX5-tkmod.inp") #overwrite the input file
+# em.ENclose()
+# # now run from the new file
+# em.ENepanet("./ex5-tk/EX5-tkmod.inp", "./ex5-tk/EX5-tkmod.rpt")
+# ! cat ./ex5-tk/EX5-tkmod.rpt
+# ```
 
 # ## Exercise
 # Now modify the pump curve to approximately recover the flowrate.
