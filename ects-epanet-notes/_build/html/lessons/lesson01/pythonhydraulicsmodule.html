@@ -183,22 +183,22 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesGUI.html">
-     3.2 EPANET example using Toolkit
+     3.2 EPANET (Examples 1 and 2) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesCLI.html">
-     3.3 EPANET example using the Toolkit
+     3.3 EPANET (Examples 3-5) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesAPI.html">
-     3.4 EPANET example using the Toolkit
+     3.4 EPANET Control Rules using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-sensors.html">
-     3.5 EPANET Sensors integration
+     3.5 EPANET Sensors Integration
     </a>
    </li>
   </ul>
@@ -534,7 +534,7 @@ pipe id: 6 , diameter (feet) :  0.5 , distance (feet) :  600.0 , friction factor
 <p>For the given source and loads shown, how will the flow be distributed in the network, and what will be the pressures at the nodes, if the source pressure is <span class="math notranslate nohighlight">\(60~psi\)</span>.  The pipes are all horizontal, and the pipes are HDPE?</p>
 <div class="figure align-default" id="example2-15">
 <a class="reference internal image-reference" href="../../_images/example2-15.png"><img alt="../../_images/example2-15.png" src="../../_images/example2-15.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Pipe network for Example 2</span><a class="headerlink" href="#example2-15" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Pipe network for Example 2</span><a class="headerlink" href="#example2-15" title="Permalink to this image">¶</a></p>
 </div>
 <div class="section" id="known">
 <h3>Known<a class="headerlink" href="#known" title="Permalink to this headline">¶</a></h3>
@@ -568,7 +568,7 @@ pipe id: 6 , diameter (feet) :  0.5 , distance (feet) :  600.0 , friction factor
 <h4>Build Input File<a class="headerlink" href="#build-input-file" title="Permalink to this headline">¶</a></h4>
 <div class="figure align-default" id="img-6194">
 <a class="reference internal image-reference" href="../../_images/IMG-6194.png"><img alt="../../_images/IMG-6194.png" src="../../_images/IMG-6194.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Pipe network notations for Example 2 input file build</span><a class="headerlink" href="#img-6194" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Pipe network notations for Example 2 input file build</span><a class="headerlink" href="#img-6194" title="Permalink to this image">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>5 nodes (plus a 6-th supply node in this example it is node 0)</p></li>
@@ -599,7 +599,7 @@ pipe id: 6 , diameter (feet) :  0.5 , distance (feet) :  600.0 , friction factor
 </ul>
 <div class="figure align-default" id="hdpe-roughness">
 <a class="reference internal image-reference" href="../../_images/HDPE-roughness.png"><img alt="../../_images/HDPE-roughness.png" src="../../_images/HDPE-roughness.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Source for HDPE roughness approximation</span><a class="headerlink" href="#hdpe-roughness" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Source for HDPE roughness approximation</span><a class="headerlink" href="#hdpe-roughness" title="Permalink to this image">¶</a></p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.00001</span> <span class="mf">0.00001</span> <span class="mf">0.00001</span> <span class="mf">0.00001</span> <span class="mf">0.00001</span> <span class="mf">0.00001</span> <span class="mf">0.00001</span>
 </pre></div>
@@ -750,7 +750,7 @@ pipe id: 7 , diameter (feet) :  10.0 , distance (feet) :  10.0 , friction factor
 <p>The script handles calculations, the designer has to set-up the input file and create a naming convention for building the input file.  Typically would transfer output back to a visual representation as below:</p>
 <div class="figure align-default" id="img-6195">
 <a class="reference internal image-reference" href="../../_images/IMG-6195.png"><img alt="../../_images/IMG-6195.png" src="../../_images/IMG-6195.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Pipe network solution for Example 2</span><a class="headerlink" href="#img-6195" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Pipe network solution for Example 2</span><a class="headerlink" href="#img-6195" title="Permalink to this image">¶</a></p>
 </div>
 <p>Professional network software makes building the input file a matter of selecting elements from a menu (i.e. nodes = hamburgers, pipes = fries) and laying them out on a table.  The FGN is a soft drink piped into the network either by a straw or a french fry.</p>
 </div>
@@ -760,12 +760,12 @@ pipe id: 7 , diameter (feet) :  10.0 , distance (feet) :  10.0 , friction factor
 <p>This example is just another case.</p>
 <div class="figure align-default" id="example3-15">
 <a class="reference internal image-reference" href="../../_images/Example3-15.png"><img alt="../../_images/Example3-15.png" src="../../_images/Example3-15.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Pipe network data for Example 3</span><a class="headerlink" href="#example3-15" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Pipe network data for Example 3</span><a class="headerlink" href="#example3-15" title="Permalink to this image">¶</a></p>
 </div>
 <p>The engineer sets up the problem</p>
 <div class="figure align-default" id="example3-15-setup">
 <a class="reference internal image-reference" href="../../_images/example3-15-setup.png"><img alt="../../_images/example3-15-setup.png" src="../../_images/example3-15-setup.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Pipe network worksheet for Example 3 (US Units)</span><a class="headerlink" href="#example3-15-setup" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Pipe network worksheet for Example 3 (US Units)</span><a class="headerlink" href="#example3-15-setup" title="Permalink to this image">¶</a></p>
 </div>
 <p>Following the same protocol as prior examples, build an input file</p>
 <blockquote>
@@ -889,7 +889,7 @@ pipe id: 8 , diameter (feet) :  1.0 , distance (feet) :  300.0 , friction factor
 <p>The script handles calculations, the designer has to set-up the input file and create a naming convention for building the input file.  Typically would transfer output back to a visual representation as below:</p>
 <div class="figure align-default" id="example3-15solve">
 <a class="reference internal image-reference" href="../../_images/example3-15solve.png"><img alt="../../_images/example3-15solve.png" src="../../_images/example3-15solve.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Pipe network solution for Example 3</span><a class="headerlink" href="#example3-15solve" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Pipe network solution for Example 3</span><a class="headerlink" href="#example3-15solve" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>

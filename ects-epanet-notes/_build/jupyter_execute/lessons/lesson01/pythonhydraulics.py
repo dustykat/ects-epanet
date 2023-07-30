@@ -12,6 +12,17 @@
 # ## Method and Scripts
 # A script (program) will need to accomplish several tasks including reading the node-arc incidence matrix supplied as a file and convert the strings into numeric values.  The script will also need some support functions defined before constructing the matrix. 
 # 
+# ## Example 1-1
+# A simple example is illustrated below 
+# 
+# ```{figure} SimpleNetwork.png
+# ---
+# width: 400px
+# name: SimpleNetwork
+# ---
+# Pipe network for Example 1-1
+# ```
+# 
 # First the file for the example is:
 # 
 # > PipeNetworkExample1.txt
@@ -30,6 +41,9 @@
 # 0 0 1 0 1 0
 # 0 4 3 1 -300 0 0 0 0 0 
 # ```
+# :::{note}
+# The input file above is for a case where the demand at node N1 is zero; the blue arrow at Node N1 in the picture is non-existent - otherwise the set-up is identical to that in the picture.
+# :::
 # 
 # The rows of the input file are:
 # - The node count, in this case 4.
@@ -671,7 +685,7 @@ if verbose == 'true' :
 
 # **Ta da!** a homebrew network simulator.  Now if we trust our work, we can handle lots of different networks simply by changing the contents of the input file.  EPANET handles this is a similar fashion, in fact the GUI is mostly dedicated to helping build the input file and query the results to produce tabular and graphical outputs.  The underlying computation engine is not a whole lot more complicated than the crude script above.
 
-# ## Example 2:
+# ## Example 1-2:
 # 
 # This example is a simple modification of the previous example, involving some minor input file content changes, and a bit of trial and error.  It is presented as a typical **homework** type problem one would encounter in a Civil Engineering hydraulics course.
 # 
@@ -679,12 +693,12 @@ if verbose == 'true' :
 # 
 # {numref}`SimpleNetwork` is a five-pipe network with a water supply source at Node 1, and demands at Nodes 1-4.  The pipe dimensions are shown in  the figure.
 # 
-# ```{figure} SimpleNetwork.png
+# ```{figure} SimpleNetwork1-2.png
 # ---
 # width: 400px
-# name: SimpleNetwork
+# name: SimpleNetwork1-2
 # ---
-# Pipe network for 
+# Pipe network for Example 1-2
 # ```
 # 
 # 1.  Make a table that lists each node name, node elevation, and the resultant pressure in U.S. Customary units.

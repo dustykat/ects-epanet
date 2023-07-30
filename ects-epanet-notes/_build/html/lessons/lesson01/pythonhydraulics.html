@@ -183,22 +183,22 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesGUI.html">
-     3.2 EPANET example using Toolkit
+     3.2 EPANET (Examples 1 and 2) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesCLI.html">
-     3.3 EPANET example using the Toolkit
+     3.3 EPANET (Examples 3-5) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesAPI.html">
-     3.4 EPANET example using the Toolkit
+     3.4 EPANET Control Rules using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-sensors.html">
-     3.5 EPANET Sensors integration
+     3.5 EPANET Sensors Integration
     </a>
    </li>
   </ul>
@@ -348,6 +348,11 @@
   <a class="reference internal nav-link" href="#method-and-scripts">
    Method and Scripts
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1-1">
+   Example 1-1
+  </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#support-functions">
@@ -374,8 +379,8 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-2">
-   Example 2:
+  <a class="reference internal nav-link" href="#example-1-2">
+   Example 1-2:
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -444,6 +449,14 @@
 <div class="section" id="method-and-scripts">
 <h2>Method and Scripts<a class="headerlink" href="#method-and-scripts" title="Permalink to this headline">¶</a></h2>
 <p>A script (program) will need to accomplish several tasks including reading the node-arc incidence matrix supplied as a file and convert the strings into numeric values.  The script will also need some support functions defined before constructing the matrix.</p>
+</div>
+<div class="section" id="example-1-1">
+<h2>Example 1-1<a class="headerlink" href="#example-1-1" title="Permalink to this headline">¶</a></h2>
+<p>A simple example is illustrated below</p>
+<div class="figure align-default" id="simplenetwork">
+<a class="reference internal image-reference" href="../../_images/SimpleNetwork.png"><img alt="../../_images/SimpleNetwork.png" src="../../_images/SimpleNetwork.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Pipe network for Example 1-1</span><a class="headerlink" href="#simplenetwork" title="Permalink to this image">¶</a></p>
+</div>
 <p>First the file for the example is:</p>
 <blockquote>
 <div><p>PipeNetworkExample1.txt</p>
@@ -462,6 +475,10 @@
 <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span>
 <span class="mi">0</span> <span class="mi">4</span> <span class="mi">3</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">300</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> 
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The input file above is for a case where the demand at node N1 is zero; the blue arrow at Node N1 in the picture is non-existent - otherwise the set-up is identical to that in the picture.</p>
 </div>
 <p>The rows of the input file are:</p>
 <ul class="simple">
@@ -1139,15 +1156,15 @@ pipe id: 5 , diameter :  0.5 , distance :  600.0 , roughness :  1e-05 , flow  : 
 <p><strong>Ta da!</strong> a homebrew network simulator.  Now if we trust our work, we can handle lots of different networks simply by changing the contents of the input file.  EPANET handles this is a similar fashion, in fact the GUI is mostly dedicated to helping build the input file and query the results to produce tabular and graphical outputs.  The underlying computation engine is not a whole lot more complicated than the crude script above.</p>
 </div>
 </div>
-<div class="section" id="example-2">
-<h2>Example 2:<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-1-2">
+<h2>Example 1-2:<a class="headerlink" href="#example-1-2" title="Permalink to this headline">¶</a></h2>
 <p>This example is a simple modification of the previous example, involving some minor input file content changes, and a bit of trial and error.  It is presented as a typical <strong>homework</strong> type problem one would encounter in a Civil Engineering hydraulics course.</p>
 <div class="section" id="problem-statement">
 <h3>Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="#simplenetwork"><span class="std std-numref">Fig. 6</span></a> is a five-pipe network with a water supply source at Node 1, and demands at Nodes 1-4.  The pipe dimensions are shown in  the figure.</p>
-<div class="figure align-default" id="simplenetwork">
-<a class="reference internal image-reference" href="../../_images/SimpleNetwork.png"><img alt="../../_images/SimpleNetwork.png" src="../../_images/SimpleNetwork.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Pipe network for</span><a class="headerlink" href="#simplenetwork" title="Permalink to this image">¶</a></p>
+<div class="figure align-default" id="simplenetwork1-2">
+<a class="reference internal image-reference" href="../../_images/SimpleNetwork1-2.png"><img alt="../../_images/SimpleNetwork1-2.png" src="../../_images/SimpleNetwork1-2.png" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Pipe network for Example 1-2</span><a class="headerlink" href="#simplenetwork1-2" title="Permalink to this image">¶</a></p>
 </div>
 <ol class="simple">
 <li><p>Make a table that lists each node name, node elevation, and the resultant pressure in U.S. Customary units.</p></li>

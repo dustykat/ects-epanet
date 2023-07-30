@@ -181,22 +181,22 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesGUI.html">
-     3.2 EPANET example using Toolkit
+     3.2 EPANET (Examples 1 and 2) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesCLI.html">
-     3.3 EPANET example using the Toolkit
+     3.3 EPANET (Examples 3-5) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesAPI.html">
-     3.4 EPANET example using the Toolkit
+     3.4 EPANET Control Rules using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-sensors.html">
-     3.5 EPANET Sensors integration
+     3.5 EPANET Sensors Integration
     </a>
    </li>
   </ul>
@@ -338,8 +338,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scope-and-purpose">
-   Scope and Purpose
+  <a class="reference internal nav-link" href="#purpose-and-scope">
+   Purpose and Scope
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -360,12 +360,22 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="hydraulic-networks-and-python">
 <h1>1 Hydraulic Networks and Python<a class="headerlink" href="#hydraulic-networks-and-python" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="scope-and-purpose">
-<h2>Scope and Purpose<a class="headerlink" href="#scope-and-purpose" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="purpose-and-scope">
+<h2>Purpose and Scope<a class="headerlink" href="#purpose-and-scope" title="Permalink to this headline">¶</a></h2>
+<p>The purpose of the course is demonstrate how to operate predictive tools for pipe network hydraulics; apply these tools to the simulation of distribution and pumping systems; install the tools onto a single board computer and demonstrate distributed automated control of the distribution and pumping system.</p>
+<p>The course is intended for learners who may not have a hydraulics background, but do have an information technology background. The course examines the vital linkage between information technology and physical infrastructure in the built environment.</p>
+<p>This book is simply a collection of the course notes, mostly organized, for documenting the goals outlined above.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>All the examples are in this notebook are run on server that uses the x86 chipset. I working on builds of EPANET and the Toolkit for the aarch (Raspberry Pi, Arduino, etc.) chipset.  Upon success, I will make these available on this server, and deprecate this message.</p>
+<p>All the Toolkit examples are in this notebook are run on builds of EPANET and the Toolkit for the aarch (Raspberry Pi, Arduino, etc.) chipset.  The examples run on a GUI (using http:\<a class="reference external" href="http://freeswmm.ddns.net">freeswmm.ddns.net</a> web access) are using the x86 chipset and I did nothing other than use a WINE application layer to make the server provide a desktop to the web interface.</p>
 </div>
+<p>The layout of the notebook is the course scope.</p>
+<ul class="simple">
+<li><p>Part 1 is an introduction to hydraulics as applied to networks of conduits (pipes).  For many participants it will be a refresher, for some entirely new material - but the concepts are straightforward.  Networks have links (flow paths, roads, etc ..) and junctions (nodes, intersections, etc.).  It takes energy to move along links, and we can only enter and leave the network at junctions.  From here some relatively mature physics is used to describe behavior.  After the introduction to hydraulics, we spend some time on Jupyter (yes thats a pun!) and python mostly a very cursory overview, then onward to implementing network hydraulics in DIY python, creation of a module, incorporating pumps.  At this point we could quit, but the point is to illustrate what is going on to some extent in the EPANET program.</p></li>
+<li><p>Part 2 Introduction to the EPANET program, and an online implementation with the EPA supplied interface. Then a series of examples.  After the first five examples, we examine the concept of extended period simulation, constituient transport (water quality), and finally control rules in the simultion.</p></li>
+<li><p>Part 3 Introduces the Toolkit, a way to incorporate EPANET into other programs to use it as a simulator or control guide.</p></li>
+<li><p>Part 4 Continues with examination of ways to use the tools for control or optimization.</p></li>
+</ul>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
