@@ -158,11 +158,11 @@
 # 
 # 5. [https://epanet-matlab-toolkit.readthedocs.io/en/latest/](https://epanet-matlab-toolkit.readthedocs.io/en/latest/) EPANET MatLab toolkit (looks like a work-in-progress; further along than above)
 # 
-# 6. [https://wntr.readthedocs.io/en/stable/overview.html](https://wntr.readthedocs.io/en/stable/overview.html) EPANET Water Network Tool for Resilience (WNTR) python toolkit extensions.
-# <hr>
-# 4. [Cleveland, T.G., Tay, C.C., and Neale, C.M. (2015) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University. (original publication)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/EPANETbyExampleV1.pdf)
+# 6. [https://wntr.readthedocs.io/en/stable/overview.html](https://wntr.readthedocs.io/en/stable/overview.html) EPANET Water Network Tool for Resilience (WNTR) python toolkit extensions. <hr>
 # 
-# 5. [Cleveland, T.G., and Neale, C.M., and Tay, C.C. (2018) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University. (restored publication)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/enbyexample/enbyexample.pdf)  same as above, but different cover graphic.  The files to build the document are contained in the [hosting directory](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/enbyexample/)
+# 7. [Cleveland, T.G., Tay, C.C., and Neale, C.M. (2015) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University. (original publication)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/EPANETbyExampleV1.pdf)
+# 
+# 8. [Cleveland, T.G., and Neale, C.M., and Tay, C.C. (2018) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University. (restored publication)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/enbyexample/enbyexample.pdf)  same as above, but different cover graphic.  The files to build the document are contained in the [hosting directory](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/enbyexample/)
 # 
 # 
 # ## Exercise
