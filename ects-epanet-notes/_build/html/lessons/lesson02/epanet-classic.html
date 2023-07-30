@@ -181,22 +181,22 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesGUI.html">
-     3.2 EPANET example using Toolkit
+     3.2 EPANET (Examples 1 and 2) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesCLI.html">
-     3.3 EPANET example using the Toolkit
+     3.3 EPANET (Examples 3-5) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesAPI.html">
-     3.4 EPANET example using the Toolkit
+     3.4 EPANET Control Rules using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-sensors.html">
-     3.5 EPANET Sensors integration
+     3.5 EPANET Sensors Integration
     </a>
    </li>
   </ul>
@@ -390,8 +390,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
   </a>
  </li>
 </ul>
@@ -407,25 +407,37 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="epanet-intro-examples">
 <h1>2 EPANET Intro/Examples<a class="headerlink" href="#epanet-intro-examples" title="Permalink to this headline">¶</a></h1>
-<p>what is epanet?</p>
+<p>EPANET is a widely used computer software developed by the United States Environmental Protection Agency (EPA) for modeling water distribution systems. It enables engineers and researchers to simulate and analyze the flow of water in pipes, tanks, and other components of a water distribution network. The software helps to assess water quality, identify potential issues such as leaks and pressure deficiencies, and optimize system performance. With its user-friendly interface and powerful capabilities, EPANET plays a crucial role in designing and managing efficient and reliable water supply systems in both urban and rural settings.</p>
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>what is it for?</p>
-<p>versions</p>
+<p>Beyond the purposes alluded to in the previous description, EPANET is used for a variety of other applications, including:</p>
+<ul class="simple">
+<li><p>Water Quality Analysis: EPANET allows for water quality modeling by simulating the transport and fate of contaminants within the distribution system. This helps in evaluating water disinfection processes, predicting water age, and identifying potential issues related to water quality such as the formation of disinfection by-products.</p></li>
+<li><p>System Expansion and Rehabilitation: Engineers use EPANET to assess the impact of system expansion or rehabilitation projects, such as adding new pipes, storage tanks, or pumps. The software helps in evaluating the performance of the modified system and ensures that the changes meet the required demands and constraints.</p></li>
+<li><p>Emergency Response Planning: During emergencies or contamination events, EPANET can be used to model the effects of system disruptions, identify areas vulnerable to water quality degradation, and plan for effective response strategies to safeguard public health.</p></li>
+<li><p>Water Loss Management: EPANET aids in managing and reducing water losses in distribution systems due to leaks and other inefficiencies. By simulating the system under different scenarios, engineers can identify areas with high leakage rates and develop strategies to mitigate water losses.</p></li>
+<li><p>Hydraulic Model Calibration: The software is used to calibrate hydraulic models by comparing simulation results with real-world data. Calibration ensures that the model accurately represents the behavior of the actual water distribution system, enhancing its reliability for decision-making.</p></li>
+<li><p>Optimization Studies: EPANET can be employed for optimizing various aspects of water distribution systems, such as pump scheduling, valve operation, and tank storage levels, with the goal of minimizing energy consumption and operational costs while maintaining system performance.</p></li>
+<li><p>Sustainable Design: Engineers use EPANET to support sustainable design practices by evaluating the impact of green infrastructure, rainwater harvesting systems, and other water conservation measures on the overall performance of the distribution network.</p></li>
+<li><p>Water Resource Planning: EPANET can be utilized in water resource planning to assess the availability and distribution of water resources for a given region, taking into account population growth, climate change, and other factors affecting water demand and supply.</p></li>
+</ul>
+<p>Overall, EPANET is a tool for water utilities, researchers, and policymakers to understand, optimize, and manage water distribution systems in a wide range of scenarios and contexts.</p>
 <div class="section" id="gui-access">
 <h3>GUI Access<a class="headerlink" href="#gui-access" title="Permalink to this headline">¶</a></h3>
-<p>EPANET as supplied by URL also includes a graphical user interface (GUI) that will allow one to quickly build network simulation models, run them, and present results.  The GUI runs on Windows machines using Intel/AMD hardware.  It can be made to run on other operating systems and architectures, but not easily.</p>
+<p>EPANET as supplied by <a class="reference external" href="https://www.epa.gov/water-research/epanet">https://www.epa.gov/water-research/epanet</a> also includes a graphical user interface (GUI) that will allow one to quickly build network simulation models, run them, and present results.  The GUI runs on Windows machines using Intel/AMD hardware.  It can be made to run on other operating systems and architectures, but not easily.</p>
 <div class="admonition-architectures-and-operating-systems admonition">
 <p class="admonition-title">Architectures and Operating Systems</p>
 <p>The EPANET computation engine can be made to work in different operating systems with very little fuss.  In fact the current OWS versions all employ CMAKE to build targets for the big-three Operating Systems (Windows, Mac, Linux).</p>
 <p>Architecture refers to the underlying silicon; x86-64 is an Intel/AMD 64-bit chipset, aarch64 is the ARM 64-bit chipset.</p>
 <p>At the time of this writing builds for aarch64 are kind of up to the end-user;  I have notes herein on how-to do so.  Why anyone would want to make such a build is to leverage embedded systems with intent to use the program to control things.  I am aware most people are going to be using a Windows machine on Intel hardware and special instructions specific to ARM hardware is meaningless.</p>
 </div>
+<p>The EPANET Toolkit used in this notebook was obtained  from <a class="reference external" href="https://github.com/OpenWaterAnalytics">https://github.com/OpenWaterAnalytics</a> and built on a Raspberry Pi 4 for this book; all the GUI examples use the EPA sourced builds.</p>
 </div>
 </div>
 <div class="section" id="installing-epanet">
 <h2>Installing EPANET<a class="headerlink" href="#installing-epanet" title="Permalink to this headline">¶</a></h2>
-<p>Follow the guidelines on the URL or watch</p>
+<p>Follow the guidelines on the <a class="reference external" href="https://www.epa.gov/water-research/epanet">https://www.epa.gov/water-research/epanet</a> or watch <a class="reference external" href="https://www.youtube.com/watch?v=HoZC4FPBQzI">https://www.youtube.com/watch?v=HoZC4FPBQzI</a></p>
+<p>You can also examine <a class="reference external" href="https://epanet22.readthedocs.io/en/latest/2_quickstart.html">https://epanet22.readthedocs.io/en/latest/2_quickstart.html</a></p>
 </div>
 <div class="section" id="installing-the-toolkit">
 <h2>Installing the Toolkit<a class="headerlink" href="#installing-the-toolkit" title="Permalink to this headline">¶</a></h2>
@@ -518,15 +530,22 @@ sudo snap set novnc services.n6082.listen=6082 services.n6082.vnc=localhost:5902
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/EPANETbyExampleV1.pdf">Cleveland, T.G., Tay, C.C., and Neale, C.M. (2015) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University. (original publication)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/OpenWaterAnalytics">https://github.com/OpenWaterAnalytics</a> Open Water Analytics Github Landing Page</p></li>
+<li><p><a class="reference external" href="http://wateranalytics.org/EPANET/">http://wateranalytics.org/EPANET/</a> Open Water Analytics (.org) landing page.</p></li>
+<li><p><a class="reference external" href="https://www.epa.gov/water-research/epanet">https://www.epa.gov/water-research/epanet</a> EPANET landing page.</p></li>
+<li><p><a class="reference external" href="https://epanet-python-toolkit-epyt.readthedocs.io/en/latest/index.html">https://epanet-python-toolkit-epyt.readthedocs.io/en/latest/index.html</a> EPANET python toolkit (looks like a work-in-progress)</p></li>
+<li><p><a class="reference external" href="https://epanet-matlab-toolkit.readthedocs.io/en/latest/">https://epanet-matlab-toolkit.readthedocs.io/en/latest/</a> EPANET MatLab toolkit (looks like a work-in-progress; further along than above)</p></li>
+<li><p><a class="reference external" href="https://wntr.readthedocs.io/en/stable/overview.html">https://wntr.readthedocs.io/en/stable/overview.html</a> EPANET (WNTR) toolkit extensions</p></li>
+</ol>
+<hr>
+4. [Cleveland, T.G., Tay, C.C., and Neale, C.M. (2015) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University. (original publication)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/EPANETbyExampleV1.pdf)
+<ol class="simple">
 <li><p><a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/enbyexample/enbyexample.pdf">Cleveland, T.G., and Neale, C.M., and Tay, C.C. (2018) EPANET by Example. Department of Civil and Environmental Engineering, Texas Tech University. (restored publication)</a>  same as above, but different cover graphic.  The files to build the document are contained in the <a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/enbyexample/">hosting directory</a></p></li>
 </ol>
 </div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Examine the document(s) above familarize yourself with the examples, these are worked in the next section using the On-Line EPANET implementation.  The files are pre-placed in those examples.</p></li>
-</ol>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Examine the last two document(s) above familarize yourself with the examples, these are worked in the next section using the On-Line EPANET implementation.  The files are pre-placed in those examples.</p>
 </div>
 <div class="toctree-wrapper compound">
 </div>
