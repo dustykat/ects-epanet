@@ -179,6 +179,8 @@ em.ENclose()
 
 # ## Exercise
 # A better way for the example above would be some version of bisection. Modify the script to search for the desired elevation using bisection; select a reasonable tolerance to stop.  You may find Chat-GPT 4.0 useful to construct a working script.
+# 
+# A bisection solver could be adapted from [Cleveland, T.G. (2022) Hydraulic System Design JupyterBook notes to accompany CE 4353/CE 5360 at TTU; Example 1 in specific energy section](http://54.243.252.9/ce-4353-webroot/ce4353jb/ce4353workbook/_build/html/lessons/specificenergy/specificenergy1.html)
 
 # ### Example 4 - A simple looped network
 # 
@@ -272,6 +274,114 @@ em.ENclose()
 
 # ## Exercise
 # Change the parameter code to recover flow instead of head loss and rerun the example, what effect does shrinking pipe 4 have on flow rate?
+
+# ### Example 5 - Simulating a Pump
+# 
+# This example repeats the same problem as before, but using the Toolkit to load and run the model.  A bit of the earlier example is replicated below:
+# 
+# >Figure XX is a conceptual model of a pump lifting water through a 100 mm diameter, 100 meter long, ductile iron pipe from a lower elevation reservoir to an upper reservoir. <br><br>![](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/P2-39.png)<br><br>The suction side of the pump is a 100 mm diameter, 4-meter long ductile iron pipe. The difference in reservoir free-surface elevations is 10 meters. <br><br>The pump performance curve is given
+# as 
+# $$hp = 15.0-0.1Q^2 $$
+# where the added head is in meters and the flow rate is in liters per second (lps). 
+# The analysis goal is to estimate the flow rate in the system.
+# 
+# To use the Toolkit we more or less just repeat from the above examples, here I run the entire simulation as some adjustments are left as exercises.
+
+# In[8]:
+
+
+import epamodule as em  # import the package
+# Run a complete simulation. input file must already exist
+em.ENepanet("./ex5-tk/EX5-tk.inp", "./ex5-tk/EX5-tk.rpt") 
+# Print the output report (it will be sparse)
+get_ipython().system('cat ./ex5-tk/EX5-tk.rpt')
+
+
+# ## Exercise
+# Use the Toolkit to modify the input file (EX5-tk) to produce a more useful output file.
+
+# In[9]:
+
+
+# one possible solution
+import epamodule as em  # import the package
+#Open the EPANET toolkit & hydraulics solver   
+em.ENopen("./ex5-tk/EX5-tk.inp", "./ex5-tk/EX5-tk.rpt")
+# build report command strings Keyword  Action see user manual
+command0 = "Status     Yes"
+command1 = "Summary            	Yes"
+command2 = "Nodes            	ALL"
+command3 = "Links            	ALL"
+em.ENsetstatusreport(2) # full status report
+em.ENsetreport(command0)
+em.ENsetreport(command1)
+em.ENsetreport(command2)
+em.ENsetreport(command3)
+em.ENsaveinpfile("./ex5-tk/EX5-tkmod.inp") #overwrite the input file
+em.ENclose()
+# now run from the new file
+em.ENepanet("./ex5-tk/EX5-tkmod.inp", "./ex5-tk/EX5-tkmod.rpt")
+get_ipython().system(' cat ./ex5-tk/EX5-tkmod.rpt')
+
+
+# ## Exercise
+# Modify the upstream pool elevation so it is at 14.999 meters.  The pump flowrate should go down a lot (but not to zero).  
+
+# In[10]:
+
+
+# one possible solution
+import epamodule as em  # import the package
+#Open the EPANET toolkit & hydraulics solver   
+em.ENopen("./ex5-tk/EX5-tkmod.inp", "./ex5-tk/EX5-tkmod.rpt")
+# The upper reservoir is Node 2 in the input file
+nodej = em.ENgetnodeindex("2") # Get the index of Node 2 in the internal database
+elevj = em.ENgetnodevalue(nodej,0) # Get the elevation and check
+print("Internal Node: ",nodej," Initial Head: ",round(elevj,3))
+elevj=24.9999 # Change so thet DeltaH is 14.999
+print("Increase Head to ", round(elevj,3))
+em.ENsetnodevalue(nodej,0,elevj)
+em.ENsaveinpfile("./ex5-tk/EX5-tkmod.inp") #overwrite the input file
+em.ENclose()
+# now run from the new file
+em.ENepanet("./ex5-tk/EX5-tkmod.inp", "./ex5-tk/EX5-tkmod.rpt")
+get_ipython().system(' cat ./ex5-tk/EX5-tkmod.rpt')
+
+
+# ## Exercise
+# Now modify the pump curve to approximately recover the flowrate.
+# 
+# :::{warning}
+# At the time of writing, pump curves are edited outside of the Toolkit - you would search the input file for the section
+# ```
+# [CURVES]
+# ;ID              	X-Value     	Y-Value
+# ;PUMP: 
+#  1               	0           	15          
+#  1               	1           	14.9        
+#  1               	10          	5   
+#  ```
+#  Then edit the indicated curve - for this exercise, manual edits would be OK.
+# :::
+# 
+# :::{note}
+# Probably just do this in class and leave the file on the server
+# :::
+# 
+
+# In[ ]:
+
+
+
+
+
+# ## Files
+# 
+# The files used in the above examples are located at:
+# 
+# 1. [EX3.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex3-tk/EX3.inp)
+# 2. [EX4-JB.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex4-tk/EX4-JB.inp)
+# 3. [EX5-tk.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex5-tk/EX5-tk.inp)
 
 # In[ ]:
 

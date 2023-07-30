@@ -1,4 +1,4 @@
-  Page 1                                    Sun Jul 30 16:15:44 2023
+  Page 1                                    Sun Jul 30 16:15:45 2023
 
   ******************************************************************
   *                           E P A N E T                          *
@@ -8,12 +8,12 @@
   ******************************************************************
   
    
-      Input Data File ................... ./ex4-tk/EX4-tk.inp
-      Number of Junctions................ 4
+      Input Data File ................... ./ex5-tk/EX5-tkmod.inp
+      Number of Junctions................ 2
       Number of Reservoirs............... 2
       Number of Tanks ................... 0
-      Number of Pipes ................... 6
-      Number of Pumps ................... 0
+      Number of Pipes ................... 2
+      Number of Pumps ................... 1
       Number of Valves .................. 0
       Headloss Formula .................. Darcy-Weisbach
       Nodal Demand Model ................ DDA
@@ -33,21 +33,14 @@
          All Nodes
          All Links
    
-  Analysis begun Sun Jul 30 16:15:44 2023
+  Analysis begun Sun Jul 30 16:15:45 2023
 
    
   Hydraulic Status:
   -----------------------------------------------------------------------
-     0:00:00: Balanced after 5 trials
-     0:00:00: Reservoir 1 is emptying
-     0:00:00: Reservoir 2 is filling
-   
-   
-  Hydraulic Status:
-  -----------------------------------------------------------------------
-     0:00:00: Balanced after 5 trials
-     0:00:00: Reservoir 1 is emptying
-     0:00:00: Reservoir 2 is filling
+     0:00:00: Balanced after 8 trials
+     0:00:00: Reservoir 1 is closed
+     0:00:00: Reservoir 2 is closed
    
    
   Node Results:
@@ -55,12 +48,10 @@
                      Demand      Head  Pressure
   Node                  L/s         m         m
   ----------------------------------------------
-  3                    0.00     75.00     25.00
-  4                 -200.00    115.46     65.46
-  5                    0.00     70.00     20.00
-  6                  200.00     69.90     19.90
-  1                   -0.92     75.00     -0.00  Reservoir
-  2                    0.92     70.00      0.00  Reservoir
+  3                    0.00     10.00     10.00
+  4                    0.00     25.00     25.00
+  1                   -0.02     10.00      0.00  Reservoir
+  2                    0.02     25.00     -0.00  Reservoir
    
    
   Link Results:
@@ -68,11 +59,8 @@
                        Flow  Velocity  Headloss
   Link                  L/s       m/s    /1000m
   ----------------------------------------------
-  1                    0.92      0.00      0.00
-  2                   -0.92      0.00      0.00
-  3                 -183.75      3.74     57.79
-  4                   16.25      2.07     56.82
-  5                   15.33      0.16      0.09
-  6                  184.67      1.47      5.10
+  1                    0.02      0.00      0.00
+  2                    0.02      0.00      0.00
+  3                    0.02      0.00    -15.00  Pump
    
-  Analysis ended Sun Jul 30 16:15:44 2023
+  Analysis ended Sun Jul 30 16:15:45 2023
