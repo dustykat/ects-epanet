@@ -42,6 +42,8 @@
     <script src="../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -181,22 +183,22 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesGUI.html">
-     3.2 EPANET example using Toolkit
+     3.2 EPANET (Examples 1 and 2) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesCLI.html">
-     3.3 EPANET example using the Toolkit
+     3.3 EPANET (Examples 3-5) using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-rulesAPI.html">
-     3.4 EPANET example using the Toolkit
+     3.4 EPANET Control Rules using the Toolkit
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../lesson03/epanet-sensors.html">
-     3.5 EPANET Sensors integration
+     3.5 EPANET Sensors Integration
     </a>
    </li>
   </ul>
@@ -348,8 +350,25 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples">
-   Examples
+  <a class="reference internal nav-link" href="#example">
+   Example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#additional-concepts">
+     Additional Concepts
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#files">
+   Files
   </a>
  </li>
 </ul>
@@ -367,12 +386,72 @@
 <h1>2.4 Water Quality Simulation in EPANET<a class="headerlink" href="#water-quality-simulation-in-epanet" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="purpose">
 <h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p>Water quality modeling capabilities allow users to simulate the movement and fate of water quality constituents (such as chlorine, water age (a surrogate), or contaminants) within a water distribution system. These modeling features complement the hydraulic simulation and enable a comprehensive analysis of the water’s chemical and biological characteristics as it travels through the network.</p>
+<p>EPANET’s water quality modeling includes the following key features:</p>
+<ul class="simple">
+<li><p>Contaminant Transport: EPANET can simulate the propagation of contaminants introduced into the system, helping to assess potential risks, identify vulnerable areas, and evaluate the effectiveness of water treatment and disinfection processes.</p></li>
+<li><p>Water Age Analysis: The software can calculate the “water age” at different locations within the distribution system. Water age represents the time taken for water to travel from the source to a specific point, and it is crucial for understanding the potential for stagnation and the deterioration of water quality.</p></li>
+<li><p>Disinfection By-Product (DBP) Formation: EPANET allows for the analysis of disinfection by-product formation within the distribution system. By modeling chlorine reactions, engineers can predict the concentrations of DBPs and take necessary measures to ensure compliance with water quality regulations.</p></li>
+<li><p>Water Quality Monitoring: EPANET supports the simulation of water quality monitoring processes, helping to determine the optimal locations for sampling points and the appropriate frequency of sampling to monitor water quality effectively.</p></li>
+</ul>
+<p>Typical uses of water quality modeling include:</p>
+<ul class="simple">
+<li><p>Compliance Assessment: Water utilities can use EPANET’s water quality modeling to assess compliance with regulatory standards and guidelines for drinking water quality. It aids in identifying potential issues and formulating strategies to maintain water quality within acceptable limits.</p></li>
+<li><p>Source Water Protection: Water quality modeling helps in evaluating the impact of different pollution sources and land use changes on the distribution system. This assists in designing measures to protect the source water from contamination.</p></li>
+<li><p>Emergency Response Planning: During contamination events or accidental spills, EPANET’s water quality modeling can assist in predicting the spread of pollutants, identifying affected areas, and implementing appropriate emergency response measures.</p></li>
+<li><p>Treatment Process Optimization: Engineers can use the modeling capabilities to optimize water treatment processes by assessing the impact of different treatment strategies on water quality parameters.</p></li>
+<li><p>Climate Change Analysis: EPANET’s water quality modeling can be utilized to study the effects of climate change on water distribution systems and their water quality, aiding in adaptation planning.</p></li>
+</ul>
+<p>These water quality modeling capabilities in EPANET provide insight into the behavior of water quality constituents, assisting water utilities and engineers in ensuring the delivery of safe and high-quality drinking water to consumers.</p>
 </div>
 <div class="section" id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>Transport theory in EPANET employs</p>
+<ul class="simple">
+<li><p>Lagrangian Approach (Discrete Parcel Advection) in the links. Advection (convection) is the transport of dissolved or suspended material by motion of the host fluid. Requires knowledge of the fluid velocity field (the velocity of a fluid particle). Velocity is derived from EPANET hydraulics.  The resulting transport equation is similar to the color equation; the equation is solved using transport time steps smaller than the hydraulic time step - adjusted to keep the courant number in each link close to unity.</p></li>
+<li><p>Mixing Approach (in tanks) and at junctions. When parcels (concentration) reaches a node where there are multiple mass fluxes, a flow-weighted mixing model is used to compute the concentration at that node (which will become a new <span class="math notranslate nohighlight">\(C_{out}\)</span> for any downstream links)
+$<span class="math notranslate nohighlight">\( C_{out} = \frac{\sum C_{in}Q_{in}}{Q_{in}}\)</span>$</p></li>
+<li><p>Tank mixing is handled by four possible models:</p>
+<ul>
+<li><p>Completely mixed (CFSTR). All water entering tank instantly and completely mixes.  Reasonable for small tanks, or hydraulic time steps that are long compared to transport time steps <img alt="" src="../../_images/cfstr.png" /></p></li>
+<li><p>Two-Compartment Mixing. Tank storage divided into two compartments: (1) Inlet/Outlet zone (2) Main Zone When Inlet/Outlet zone is filled, then spills into main zone <img alt="" src="../../_images/twoC.png" /></p></li>
+<li><p>FIFO Plug Flow. The first parcel (volume) of water to enter the tank, is first parcel to leave. Essentially plug-flow through the tank <img alt="" src="../../_images/fifo.png" /></p></li>
+<li><p>LIFO Plug Flow. The last (most recent) parcel (volume) of water to enter the tank, is first parcel to leave. Essentially stratified-flow in the tank <img alt="" src="../../_images/lifo.png" /></p></li>
+</ul>
+</li>
+<li><p>Reactions occur in the bulk phase (in the parcel), and the walls (at the parcel, pipe-wall interface) <img alt="" src="../../_images/reactionzones.png" />.  The reaction models are similar in each locale (bulk or wall) with parameters adjusted for their location within a network. <img alt="" src="../../_images/bulkreactions.png" /></p></li>
+</ul>
 </div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p><img alt="" src="../../_images/wqexampleps.png" /></p>
+<p>First build and run the hydraulic model.</p>
+<p><img alt="" src="../../_images/wqexamplehm.png" /></p>
+<p>Then set up the quality simulation (actually do it all at once, but we pretend we are doing it in two parts)</p>
+<p>First identify a
+<img alt="" src="../../_images/wqexamplewqm.png" /></p>
+<p>Then a total simulation duration</p>
+<p><img alt="" src="../../_images/wqexamplewqdur.png" /></p>
+<p>Then supply a source concentration</p>
+<p><img alt="" src="../../_images/wqexamplewqsrc.png" /></p>
+<p>Then run (rerun) the model and interpret the results</p>
+<p><img alt="" src="../../_images/wqexampleres1.png" /></p>
+<div class="section" id="additional-concepts">
+<h3>Additional Concepts<a class="headerlink" href="#additional-concepts" title="Permalink to this headline">¶</a></h3>
+<p>A “tracer” can be used to estimate water age in the system (its treated as a different constituent)</p>
+<ul class="simple">
+<li><p>Use Zero-Order reaction with Kb = 1; resulting “concentration” is water age in Hydraulic Time Steps</p></li>
+<li><p>Multiple sources can be used to estimate mixing in a system (homework)</p></li>
+<li><p>Intrusions of contaminants can be modeled (inject a dose at a node, and see where it arrives).</p></li>
+</ul>
+<p><img alt="" src="../../_images/wqexampleage.png" /></p>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="files">
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
