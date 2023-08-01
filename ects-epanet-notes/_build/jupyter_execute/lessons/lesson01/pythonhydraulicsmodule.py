@@ -226,7 +226,7 @@ pipenet.pipenet('L15-E2.txt')
 # ---
 # Pipe network worksheet for Example 3 (US Units)
 # ```
-# 
+
 # Following the same protocol as prior examples, build an input file
 # 
 # > L15-E3.txt
@@ -250,6 +250,8 @@ pipenet.pipenet('L15-E2.txt')
 # ```
 # 
 # Then run the script
+
+# 
 
 # In[5]:
 

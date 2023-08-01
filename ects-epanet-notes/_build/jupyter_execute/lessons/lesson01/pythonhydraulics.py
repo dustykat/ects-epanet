@@ -1675,6 +1675,10 @@ pipenet('PN-E2.txt')
 
 # Now will save the `pipenet()` function to a file named `pipenet.py` which we can now import as needed.
 
+# ## References
+# 
+# 1. [Cleveland, T.G., ECTS-EPANET-NOTES Notes from 1 Aug 2023 ](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson01/ects-2023-001.pdf)
+
 # In[ ]:
 
 
