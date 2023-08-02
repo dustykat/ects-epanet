@@ -131,6 +131,10 @@
 # 
 # 1. [EX1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX1.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.inp) An EPANET network input file (ASCII .inp file, readable by the toolkit)
+# 
+# #### Videos
+# 
+# 1. [](https://youtu.be/zCK4doJIG40) You tube video for example 1
 
 # <hr>
 # 
