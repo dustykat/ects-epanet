@@ -132,9 +132,6 @@
 # 1. [EX1.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX1.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex1/EX1.inp) An EPANET network input file (ASCII .inp file, readable by the toolkit)
 # 
-# #### Videos
-# 
-# 1. [FREESWMM-EPANET-EX1](https://youtu.be/zCK4doJIG40) You tube video for example 1
 
 # <hr>
 # 
@@ -380,13 +377,19 @@
 # 2. [EX5-JB.net](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/EX5-JB.net) An EPANET input file (binary .net file, readable by the GUI)
 # 3. [EX5-JB.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ex5/EX5-JB.inp) An EPANET input file (ASCII .inp file, readable by the GUI, CLI or the toolkit)
 
+# ### Notes
 # 
+# 1. [Cleveland,T.G.,"ECTS-EPANET-NOTES" Notes from 2 Aug 2023](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson02/ects-epanet-notes2.pdf)
 
-# ### Exercises
+# ### Videos
 # 
-# 1.
+# 1. [FREESWMM-EPANET-EX2](https://youtu.be/zCK4doJIG40) ICT Summer School Live Demo of Example 1 and 2
 # 
-# 2.
+# 3. [FREESWMM-EPANET-EX3-INCLASS](https://youtu.be/3jr63Wf9MAU) ICT Summer School Live Demo of 3-reservoir problem
+# 
+# 4. [FREESWMM-EPANET-EX4-INCLASS](https://youtu.be/gbPTetxlddE) ICT Summer School Live Demo of small network
+# 
+# 5. [FREESWMM-EPANET-EX5-INCLASS](https://youtu.be/JDmp_Xksf3s) ICT Summer School Live Demo of pump simulation
 # 
 # 
 
