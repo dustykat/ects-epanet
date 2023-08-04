@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.3 Extended period simulation (EPS) &#8212; Hydraulic Network Simulation with EPANET and Python</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.4 Water Quality Simulation in EPANET" href="epanet-watq.html" />
+    <link rel="prev" title="2.2 EPANET GUI Examples" href="epanet-gui.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Hydraulic Network Simulation with EPANET and Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   About this book
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lesson01/introduction.html">
+   1 Hydraulic Networks and Python
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson01/hydraulic-networks.html">
+     1.2 Network Hydraulics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson01/pythonjupyter.html">
+     1.3 Python/Jupyter Introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson01/pythonhydraulics.html">
+     1.4 Hydraulics in Python
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson01/pythonhydraulicsmodule.html">
+     1.5 The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       pipenet
+      </span>
+     </code>
+     module
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson01/pythonpumpingmodule.html">
+     1.6 Pumps
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="epanet-classic.html">
+   2 EPANET Intro/Examples
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="epanet-gui.html">
+     2.2 EPANET GUI Examples
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.3 Extended period simulation (EPS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="epanet-watq.html">
+     2.4 Water Quality Simulation in EPANET
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="epanet-rules.html">
+     2.5 EPANET Control Rules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lesson03/epanet-toolkit.html">
+   3 EPANET Programmers Toolkit
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson03/epanet-rulesGUI.html">
+     3.2 EPANET (Examples 1 and 2) using the Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson03/epanet-rulesCLI.html">
+     3.3 EPANET (Examples 3-5) using the Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson03/epanet-rulesAPI.html">
+     3.4 EPANET Control Rules using the Toolkit
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson03/epanet-sensors.html">
+     3.5 EPANET Sensors Integration
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../lesson04/epanet-future-CandC1.html">
+   4 Command and Control
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson04/epanet-future-CandC2.html">
+     4.2 CandC
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson04/epanet-future-CandC3.html">
+     4.X Build Notes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson04/epanet-future.html">
+     4.4 Unsolved Problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../lesson04/epanet-exam.html">
+     4.5 EPANET Exam
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/lessons/lesson02/epanet-eps.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flessons/lesson02/epanet-eps.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lessons/lesson02/epanet-eps.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#purpose">
+   Purpose
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background">
+     Background
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation-in-epanet">
+     Implementation in EPANET
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="extended-period-simulation-eps">
+<h1>2.3 Extended period simulation (EPS)<a class="headerlink" href="#extended-period-simulation-eps" title="Permalink to this headline">¶</a></h1>
+<p>Hydraulic network analysis plays a crucial role in ensuring efficient and reliable water distribution systems. One of the key tools used in this analysis is the extended period simulation (EPS). EPS is a dynamic modeling approach that takes into account varying demand patterns and system behavior over an extended period.<br></p>
+<div class="section" id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p>EPS is a representation is used to mimic dynamic behavior in a system.  Not strictly transient, but changes are tracked to approximate filling/draining of tanks and discharge moving along a pump curve.  EPS is also the fundamental concept needed to allow for water quality simulations in EPANET.</p>
+<div class="section" id="background">
+<h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+<p>Quoting from <a class="reference external" href="http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/readings/(ASCE)0733-9372(1988)114-5(1146).pdf">Bhave, P. R. (1988)</a></p>
+<blockquote>
+<div><p>The common practice  of analyzing  flow  in water-distribution  systems  is to model the flow to be in a steady-state condition. This is “static  analysis.”  However,  neither  the nodal demands nor the reservoir water levels  remain  constant  over  a period  of time.  To  ensure  an  adequate  level  of  service  to  the  consumers  under  varying  conditions  of  demands  and  reservoir  water  levels, proper  operation  of the  distribution  system  is  necessary.  From  an  operational  point  of  view,  it  is necessary  to  adequately  maintain  the  flow  rates  and pressures  (residual  heads) at  all nodes  at various times; it  is also necessary  to  manage  the  storage  to  balance  the  supply  and  distribution.  These  objectives   can  be  achieved  by  carrying  out  the  analysis  of  the  network  over  a  period  of  24-48  hr  under  varying  nodal  demands  and  reservoir  water  levels.  Such  an  analysis  of  the  distribution  system  is  an  <strong>extended  period  simulation</strong>  or  simply  a  “dynamic  analysis.”</p>
+</div></blockquote>
+<p>An alternate description is:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Extended period simulation involves the continuous analysis of a hydraulic network over an extended period, typically ranging from 24 to 72 hours or longer. Unlike traditional steady-state analysis, which assumes constant demand and neglects temporal changes, EPS incorporates time-varying demands, varying pressure conditions, and operational changes within the network. By capturing the temporal dynamics of the system, EPS enables a more accurate assessment of system performance and identifies potential issues that might arise due to demand fluctuations.<br></p></li>
+<li><p>EPS provides a comprehensive understanding of how a water distribution system behaves over time. By considering dynamic factors such as diurnal demand patterns, changes in water source availability, and varying pressure zones, EPS enables engineers to evaluate the performance of the network under realistic operating conditions. This analysis helps identify potential issues, such as insufficient pressure, low flow, or inadequate system capacity, that might occur during peak demand periods or emergency scenarios.<br></p></li>
+<li><p>EPS allows engineers to simulate and assess different operational strategies and infrastructure improvements. By modeling various scenarios, such as system expansion, adding storage tanks, or optimizing pump scheduling, EPS helps evaluate the impact of these changes on the network’s overall performance. This analysis aids in decision-making processes, as engineers can identify cost-effective solutions that enhance system reliability, reduce energy consumption, and improve overall efficiency.<br></p></li>
+<li><p>In addition to its role in system design and optimization, EPS plays a crucial role in real-time monitoring and control of water distribution networks. By continuously updating the simulation model with real-time data, EPS can predict system behavior, detect anomalies, and provide valuable insights for system operators. This information enables operators to make informed decisions to mitigate potential issues, respond to emergencies, and improve the overall performance of the network.<br></p></li>
+</ul>
+</div></blockquote>
+<p>Extended period simulation is a powerful tool in hydraulic network analysis, offering a more comprehensive understanding of system dynamics and behavior over time. By considering temporal variations in demand, pressure, and operational changes, EPS enables engineers to optimize system performance, evaluate different strategies, and enhance overall efficiency. Moreover, EPS facilitates real-time monitoring and control, empowering system operators to respond effectively to changing conditions and ensure reliable water distribution. With its ability to capture the complexities of real-world scenarios, extended period simulation continues to play a vital role in improving the design, operation, and management of hydraulic networks.</p>
+</div>
+<div class="section" id="implementation-in-epanet">
+<h3>Implementation in EPANET<a class="headerlink" href="#implementation-in-epanet" title="Permalink to this headline">¶</a></h3>
+<p>EPS is implemented in the EPANET program through its extended period simulation capabilities.
+In EPANET, extended period simulation is performed by specifying <strong>time patterns for demands</strong> and boundary conditions, as well as defining <strong>time controls for operational changes</strong> within the network. Here are the key steps involved in implementing EPS in EPANET:</p>
+<ul class="simple">
+<li><p>Network Definition: The first step is to define the geometric layout of the water distribution network in EPANET. This includes specifying pipes, nodes, pumps, valves, tanks, and other network components. The network properties such as pipe diameters, lengths, elevation data, and other hydraulic characteristics are also defined.</p></li>
+<li><p>Demand Patterns: EPANET allows users to define time patterns for demands at different nodes in the network. These patterns represent the variations in water demand throughout the simulation period. By assigning appropriate patterns to different nodes, EPANET can simulate the changing demand profiles over time.</p></li>
+<li><p>Boundary Conditions: EPANET allows users to define time-varying boundary conditions, such as time patterns for reservoir levels, tank levels, and nodal demands at external connections. This enables the simulation of varying system inflows and outflows, reflecting real-world conditions.</p></li>
+<li><p>Time Controls: EPANET provides the ability to specify time controls for various operational changes within the network. For example, users can define the activation and deactivation of pumps, changes in valve settings, and alterations in tank filling or emptying schedules at different time points. These time controls capture the dynamic behavior of the system over the extended simulation period.</p></li>
+<li><p>Simulation Settings: Once the network, demand patterns, boundary conditions, and time controls are defined, EPANET allows users to set the simulation parameters. This includes specifying the simulation duration, time step size, and other relevant settings.</p></li>
+<li><p>Running the Extended Period Simulation: After the setup is complete, EPANET performs the extended period simulation by solving the hydraulic equations iteratively over the specified time period. The simulation calculates the hydraulic state of the network at each time step, accounting for time-varying demands, boundary conditions, and operational changes.</p></li>
+<li><p>Analysis and Results: Finally, EPANET provides tools for analyzing and interpreting the simulation results. Users can examine various performance indicators, such as nodal pressures, flow rates, tank levels, and energy consumption, over the entire simulation period. These results help in assessing the system’s behavior, identifying potential issues, and optimizing the network design and operation.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to start understanding EPS is with a simple example; here the example is focused on the subtle changes to a simulation model to allow for time-varying demands.  Control changes are left for later on in this course.  Two important components for time varying simulations is specification of <strong>Times</strong> behavior and <strong>Patterns</strong>.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://ascelibrary.org/doi/epdf/10.1061/%28ASCE%290733-9372%281988%29114%3A5%281146%29">Bhave, P. R. (1988)”Extended Period Simulation of Water Systems—Direct Solution.” Journal of Environmental Engineering Vol. 114, No. 5, pp.1146-1159 (doi:10.1061/(ASCE)0733-9372(1988)114:5(1146))</a></p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./lessons/lesson02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="epanet-gui.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2.2 EPANET GUI Examples</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="epanet-watq.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2.4 Water Quality Simulation in EPANET</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Theodore G. Cleveland, Ph.D., P.E., M.ASCE, F.EWRI<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
