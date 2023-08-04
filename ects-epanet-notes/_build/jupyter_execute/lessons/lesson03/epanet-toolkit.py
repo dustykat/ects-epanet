@@ -91,12 +91,18 @@ import epamodule as em  # import the package
 # In[3]:
 
 
-em.ENepanet("Net1.inp", "Net1.rpt") # runs a complete simulation. input file must exist and have contents.
+em.ENepanet("./ex1-tk/EX1tk.inp", "./ex1-tk/EX1yk-live.rpt") # runs a complete simulation. input file must exist and have contents.
+
+
+# In[4]:
+
+
+get_ipython().system(' cat ./ex1-tk/EX1yk-live.rpt')
 
 
 # Now same example but more granular control.  
 
-# In[4]:
+# In[5]:
 
 
 #Open the EPANET toolkit & hydraulics solver   

@@ -373,6 +373,184 @@
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>The script below manipulates the <code class="docutils literal notranslate"><span class="pre">Net1.inp</span></code> example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## simple rules</span>
+<span class="kn">import</span> <span class="nn">epamodule</span> <span class="k">as</span> <span class="nn">em</span>  <span class="c1"># import the package</span>
+<span class="c1">#Open the EPANET toolkit &amp; hydraulics solver   </span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENopen</span><span class="p">(</span><span class="s2">&quot;./ex1-cr/Net1.inp&quot;</span><span class="p">,</span> <span class="s2">&quot;./ex1-cr/Net1-tk.rpt&quot;</span><span class="p">)</span>
+<span class="c1"># build report command strings Keyword  Action see user manual</span>
+<span class="n">command0</span> <span class="o">=</span> <span class="s2">&quot;Status     Yes&quot;</span>
+<span class="n">command1</span> <span class="o">=</span> <span class="s2">&quot;Summary            	Yes&quot;</span>
+<span class="n">command2</span> <span class="o">=</span> <span class="s2">&quot;Nodes            	ALL&quot;</span>
+<span class="n">command3</span> <span class="o">=</span> <span class="s2">&quot;Links            	ALL&quot;</span>
+<span class="c1">#em.ENsetstatusreport(2) # full status report</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENsetreport</span><span class="p">(</span><span class="n">command0</span><span class="p">)</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENsetreport</span><span class="p">(</span><span class="n">command1</span><span class="p">)</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENsetreport</span><span class="p">(</span><span class="n">command2</span><span class="p">)</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENsetreport</span><span class="p">(</span><span class="n">command3</span><span class="p">)</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENsaveinpfile</span><span class="p">(</span><span class="s2">&quot;./ex1-cr/Net1-tk.inp&quot;</span><span class="p">)</span> <span class="c1">#overwrite the input file</span>
+<span class="n">nodej</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">ENgetnodeindex</span><span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">)</span>
+<span class="n">linkp</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">ENgetlinkindex</span><span class="p">(</span><span class="s2">&quot;9&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Control Sensor Node: &quot;</span><span class="p">,</span><span class="n">nodej</span><span class="p">,</span><span class="s2">&quot;Controlled Link: &quot;</span><span class="p">,</span><span class="n">linkp</span><span class="p">)</span>
+<span class="n">outstr</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">ENgetcontrol</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Control Type: &quot;</span><span class="p">,</span><span class="n">outstr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot; Controlled Link: &quot;</span><span class="p">,</span>\
+      <span class="n">outstr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s2">&quot; Control Action: &quot;</span><span class="p">,</span><span class="n">outstr</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="s2">&quot; Control Sensor Node: &quot;</span><span class="p">,</span>\
+      <span class="n">outstr</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="s2">&quot;Control Value: &quot;</span><span class="p">,</span><span class="n">outstr</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">outstr</span> <span class="o">=</span> <span class="n">em</span><span class="o">.</span><span class="n">ENgetcontrol</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Control Type: &quot;</span><span class="p">,</span><span class="n">outstr</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot; Controlled Link: &quot;</span><span class="p">,</span>\
+      <span class="n">outstr</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="s2">&quot; Control Action: &quot;</span><span class="p">,</span><span class="n">outstr</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="s2">&quot; Control Sensor Node: &quot;</span><span class="p">,</span>\
+      <span class="n">outstr</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="s2">&quot;Control Value: &quot;</span><span class="p">,</span><span class="n">outstr</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+<span class="c1">#print(outstr)</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENclose</span><span class="p">()</span>
+<span class="c1"># now run from the new file</span>
+<span class="c1"># now run from the new file</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENopen</span><span class="p">(</span><span class="s2">&quot;./ex1-cr/Net1-tk.inp&quot;</span><span class="p">,</span> <span class="s2">&quot;./ex1-cr/Net1-tk.rpt&quot;</span><span class="p">)</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENopenH</span><span class="p">()</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENsolveH</span><span class="p">()</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENsaveH</span><span class="p">()</span> <span class="c1"># need to save to a binary file before write</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENcloseH</span><span class="p">()</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENopenQ</span><span class="p">()</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENsolveQ</span><span class="p">()</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENreport</span><span class="p">()</span> <span class="c1"># now write report</span>
+<span class="c1"># Close hydraulics solver &amp; toolkit */</span>
+<span class="n">em</span><span class="o">.</span><span class="n">ENclose</span><span class="p">()</span>
+<span class="o">!</span> cat ./ex1-cr/Net1-tk.rpt
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Control Sensor Node:  11 Controlled Link:  13
+Control Type:  0  Controlled Link:  13  Control Action:  1.0  Control Sensor Node:  11 Control Value:  110.0
+Control Type:  1  Controlled Link:  13  Control Action:  0.0  Control Sensor Node:  11 Control Value:  140.0
+  Page 1                                    Fri Aug  4 10:03:05 2023
+
+  ******************************************************************
+  *                           E P A N E T                          *
+  *                   Hydraulic and Water Quality                  *
+  *                   Analysis for Pipe Networks                   *
+  *                         Version 2.2                            *
+  ******************************************************************
+  
+   EPANET Example Network 1
+
+  A simple example of modeling chlorine decay. Both bulk and
+
+  wall reactions are included. 
+
+   
+      Input Data File ................... ./ex1-cr/Net1-tk.inp
+      Number of Junctions................ 9
+      Number of Reservoirs............... 1
+      Number of Tanks ................... 1
+      Number of Pipes ................... 12
+      Number of Pumps ................... 1
+      Number of Valves .................. 0
+      Headloss Formula .................. Hazen-Williams
+      Nodal Demand Model ................ DDA
+      Hydraulic Timestep ................ 1.00 hrs
+      Hydraulic Accuracy ................ 0.001000
+      Status Check Frequency ............ 2
+      Maximum Trials Checked ............ 10
+      Damping Limit Threshold ........... 0.000000
+      Maximum Trials .................... 40
+      Quality Analysis .................. Chlorine
+      Water Quality Time Step ........... 5.00 min
+      Water Quality Tolerance ........... 0.01 mg/L
+      Specific Gravity .................. 1.00
+      Relative Kinematic Viscosity ...... 1.00
+      Relative Chemical Diffusivity ..... 1.00
+      Demand Multiplier ................. 1.00
+      Total Duration .................... 24.00 hrs
+      Reporting Criteria:
+         All Nodes
+         All Links
+   
+  Analysis begun Fri Aug  4 10:03:05 2023
+
+   
+  Hydraulic Status:
+  -----------------------------------------------------------------------
+     0:00:00: Balanced after 4 trials
+     0:00:00: Reservoir 9 is emptying
+     0:00:00: Tank 2 is filling at 120.00 ft
+   
+     1:00:00: Balanced after 2 trials
+   
+     2:00:00: Balanced after 3 trials
+   
+     3:00:00: Balanced after 2 trials
+   
+     4:00:00: Balanced after 3 trials
+   
+     5:00:00: Balanced after 2 trials
+   
+     6:00:00: Balanced after 2 trials
+   
+     7:00:00: Balanced after 1 trials
+   
+     8:00:00: Balanced after 2 trials
+   
+     9:00:00: Balanced after 2 trials
+   
+    10:00:00: Balanced after 2 trials
+   
+    11:00:00: Balanced after 2 trials
+   
+    12:00:00: Balanced after 3 trials
+   
+    12:32:34: Pump 9 changed by Tank 2 control
+    12:32:34: Balanced after 4 trials
+    12:32:34: Reservoir 9 is closed
+    12:32:34: Tank 2 is emptying at 140.00 ft
+    12:32:34: Pump 9 changed from open to closed
+   
+    13:00:00: Balanced after 1 trials
+   
+    14:00:00: Balanced after 2 trials
+   
+    15:00:00: Balanced after 1 trials
+   
+    16:00:00: Balanced after 2 trials
+   
+    17:00:00: Balanced after 1 trials
+   
+    18:00:00: Balanced after 2 trials
+   
+    19:00:00: Balanced after 1 trials
+   
+    20:00:00: Balanced after 2 trials
+   
+    21:00:00: Balanced after 1 trials
+   
+    22:00:00: Balanced after 2 trials
+   
+    22:41:30: Pump 9 changed by Tank 2 control
+    22:41:30: Balanced after 15 trials
+    22:41:30: Reservoir 9 is emptying
+    22:41:30: Tank 2 is filling at 110.00 ft
+    22:41:30: Pump 9 changed from closed to open
+   
+    23:00:00: Balanced after 2 trials
+   
+    24:00:00: Balanced after 3 trials
+   
+  Water Quality Mass Balance (mg)
+  ================================
+  Initial Mass:       7.47582e+06
+  Mass Inflow:        5.73534e+06
+  Mass Outflow:       3.22693e+06
+  Mass Reacted:       5.27198e+06
+  Final Mass:         4.71226e+06
+  Mass Ratio:         1.00000
+  ================================
+
+  Analysis ended Fri Aug  4 10:03:05 2023
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
