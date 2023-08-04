@@ -56,6 +56,16 @@ get_ipython().system(' cat ./ex1-cr/Net1-tk.rpt')
 # ## Links to Server 
 # 
 # 1. [Control Example Files (above)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex1-cr)
+# 
+# ## Videos
+# 
+# 1. [Looped Network by GUI and Toolkit](https://youtu.be/8uU6FX_eV64)
+# 
+# 2. [Simple Toolkit Examples](https://youtu.be/HJTT8JTXOhE)
+# 
+# 3. [Complex System by GUI](https://youtu.be/icosl3r-qAE)
+# 
+# 4. [Pumps by Toolkit](https://youtu.be/uuy_uuX4b_Y)
 
 # In[ ]:
 
