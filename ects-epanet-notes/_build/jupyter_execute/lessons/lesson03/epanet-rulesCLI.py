@@ -373,9 +373,9 @@ get_ipython().system('cat ./ex5-tk/EX5-tk.rpt')
 # 
 # The files used in the above examples are located at:
 # 
-# 1. [EX3.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex3-tk/EX3.inp)
-# 2. [EX4-JB.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex4-tk/EX4-JB.inp)
-# 3. [EX5-tk.inp](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex5-tk/EX5-tk.inp)
+# 1. [Example 3 Files](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex3-tk/)
+# 2. [Example 4 Files](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex4-tk/)
+# 3. [Example 5 Files](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex5-tk/)
 
 # In[ ]:
 

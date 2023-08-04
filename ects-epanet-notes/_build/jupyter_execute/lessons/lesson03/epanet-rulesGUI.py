@@ -256,5 +256,11 @@ get_ipython().system(' cat ./ex2-tk/EX2-tkmodify.rpt')
 # So we have the ability to modify important parts of input files to meet our needs.  We could have also overwritten to the original file and juct run everything in a single pass, but for clarity we have kept the files separate.  Naturally, we are now responsible for our own "graphics" if thats of interest (later on we can try to adapt EPyT scripts)
 
 # ## References
+# 
+# ## Links
+# 
+# 1. [Example 1 Files](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex1-tk/)
+# 
+# 1. [Example 2 Files](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex2-tk/)
 
 # ## Exercises

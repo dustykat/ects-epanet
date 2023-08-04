@@ -53,6 +53,10 @@ em.ENclose()
 get_ipython().system(' cat ./ex1-cr/Net1-tk.rpt')
 
 
+# ## Links to Server 
+# 
+# 1. [Control Example Files (above)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03/ex1-cr)
+
 # In[ ]:
 
 

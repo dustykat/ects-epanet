@@ -133,6 +133,11 @@ em.ENclose()
 # Most of these sites cross-share content, so whether using OWA or EPA official you are likely getting the same program; if its use is for some official capacity (like a water utility) use the EPA sites as your source.
 # :::
 
+# ## Links
+# 
+# 1. [Directory with epamodule.py and libepanet2.so (for a Ubuntu/Raspberry Pi)](http://freeswmm.ddns.net/ects-epanet/ects-epanet-notes/lessons/lesson03)  You probably have to build the `.so` on your own machine - but you can at least examine the structure here
+# 
+# 2. [Directory of my `en2` on a raspberry pi](http://freeswmm.ddns.net/ects-epanet/en2/).  Again you probably have to do own builds - but you can examine structure.
 # 
 
 # 
