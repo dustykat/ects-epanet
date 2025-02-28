@@ -1,486 +1,460 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>1.6 Pumps &#8212; Hydraulic Network Simulation with EPANET and Python</title>
-    
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
-
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lessons/lesson01/pythonpumpingmodule';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="2 EPANET Intro/Examples" href="../lesson02/epanet-classic.html" />
     <link rel="prev" title="1.5 The pipenet module" href="pythonhydraulicsmodule.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Hydraulic Network Simulation with EPANET and Python</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   About this book
-  </a>
- </li>
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Hydraulic Network Simulation with EPANET and Python - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Hydraulic Network Simulation with EPANET and Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    About this book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="introduction.html">1 Hydraulic Networks and Python</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hydraulic-networks.html">1.2 Network Hydraulics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pythonjupyter.html">1.3 Python/Jupyter Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pythonhydraulics.html">1.4 Hydraulics in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pythonhydraulicsmodule.html">1.5 The <code class="docutils literal notranslate"><span class="pre">pipenet</span></code> module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.6 Pumps</a></li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="introduction.html">
-   1 Hydraulic Networks and Python
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="hydraulic-networks.html">
-     1.2 Network Hydraulics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pythonjupyter.html">
-     1.3 Python/Jupyter Introduction
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pythonhydraulics.html">
-     1.4 Hydraulics in Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pythonhydraulicsmodule.html">
-     1.5 The
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       pipenet
-      </span>
-     </code>
-     module
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     1.6 Pumps
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lesson02/epanet-classic.html">
-   2 EPANET Intro/Examples
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson02/epanet-gui.html">
-     2.2 EPANET GUI Examples
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson02/epanet-eps.html">
-     2.3 Extended period simulation (EPS)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson02/epanet-watq.html">
-     2.4 Water Quality Simulation in EPANET
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson02/epanet-rules.html">
-     2.5 EPANET Control Rules
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lesson03/epanet-toolkit.html">
-   3 EPANET Programmers Toolkit
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson03/epanet-rulesGUI.html">
-     3.2 EPANET (Examples 1 and 2) using the Toolkit
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson03/epanet-rulesCLI.html">
-     3.3 EPANET (Examples 3-5) using the Toolkit
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson03/epanet-rulesAPI.html">
-     3.4 EPANET Control Rules using the Toolkit
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson03/epanet-sensors.html">
-     3.5 EPANET Sensors Integration
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../lesson04/epanet-future-CandC1.html">
-   4 Command and Control
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson04/epanet-future-CandC2.html">
-     4.2 CandC
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson04/epanet-future-CandC3.html">
-     4.X Build Notes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson04/epanet-future.html">
-     4.4 Unsolved Problems
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../lesson04/epanet-exam.html">
-     4.5 EPANET Exam
-    </a>
-   </li>
-  </ul>
- </li>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lesson02/epanet-classic.html">2 EPANET Intro/Examples</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lesson02/epanet-gui.html">2.2 EPANET GUI Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesson02/epanet-eps.html">2.3 Extended period simulation (EPS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesson02/epanet-watq.html">2.4 Water Quality Simulation in EPANET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesson02/epanet-rules.html">2.5 EPANET Control Rules</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lesson03/epanet-toolkit.html">3 EPANET Programmers Toolkit</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lesson03/epanet-rulesGUI.html">3.2 EPANET (Examples 1 and 2) using the Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesson03/epanet-rulesCLI.html">3.3 EPANET (Examples 3-5) using the Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesson03/epanet-rulesAPI.html">3.4 EPANET Control Rules using the Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesson03/epanet-sensors.html">3.5 EPANET Sensors Integration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lesson04/epanet-future-CandC1.html">4 Command and Control</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lesson04/epanet-future-CandC2.html">4.2 CandC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesson04/epanet-future-CandC3.html">4.X Build Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesson04/epanet-future.html">4.4 Unsolved Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesson04/epanet-exam.html">4.5 EPANET Exam</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/lessons/lesson01/pythonpumpingmodule.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flessons/lesson01/pythonpumpingmodule.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Flessons/lesson01/pythonpumpingmodule.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/lessons/lesson01/pythonpumpingmodule.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lessons/lesson01/pythonpumpingmodule.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1.6 Pumps</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#purpose">
-   Purpose
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#background">
-     Background
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#types">
-     Types
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#positive-fixed-displacement-pumps">
-       Positive (Fixed) Displacement Pumps
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#variable-displacement-pumps">
-       Variable Displacement Pumps
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#examples-of-fixed-displacement-pumps">
-       Examples of Fixed Displacement Pumps
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#images-of-positive-displacement-pumps">
-       Images of Positive Displacement Pumps
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#examples-of-variable-displacement-pumps">
-       Examples of Variable Displacement Pumps
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#images-of-variable-displacement-pumps">
-       Images of Variable Displacement Pumps
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pump-selection">
-     Pump Selection
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#system-curve">
-       System Curve
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pump-curve-s">
-       Pump Curve(s)
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#an-example-pump-curve-is-shown-below">
-       An example pump curve is shown below
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#another-example-curve-for-a-different-pump">
-       Another example curve for a different pump
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#comparing-different-pumps">
-       Comparing Different Pumps
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#multiple-pumps">
-       Multiple Pumps
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#parallel-pumps">
-       Parallel Pumps
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#series-pumps">
-       Series Pumps
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#suction-requirements">
-       Suction Requirements
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-4">
-   Example 4
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pipenet-pumps-py-module-source">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pipenet_pumps.py
-    </span>
-   </code>
-   module source
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#readings">
-   Readings
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types">Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-fixed-displacement-pumps">Positive (Fixed) Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-displacement-pumps">Variable Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-fixed-displacement-pumps">Examples of Fixed Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#images-of-positive-displacement-pumps">Images of Positive Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-variable-displacement-pumps">Examples of Variable Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#images-of-variable-displacement-pumps">Images of Variable Displacement Pumps</a></li>
 </ul>
-
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-selection">Pump Selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-curve">System Curve</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-curve-s">Pump Curve(s)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-pump-curve-is-shown-below">An example pump curve is shown below</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#another-example-curve-for-a-different-pump">Another example curve for a different pump</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-different-pumps">Comparing Different Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-pumps">Multiple Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-pumps">Parallel Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#series-pumps">Series Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#suction-requirements">Suction Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipenet-pumps-py-module-source"><code class="docutils literal notranslate"><span class="pre">pipenet_pumps.py</span></code> module source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="pumps">
-<h1>1.6 Pumps<a class="headerlink" href="#pumps" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="purpose">
-<h2>Purpose<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pumps">
+<h1>1.6 Pumps<a class="headerlink" href="#pumps" title="Link to this heading">#</a></h1>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">#</a></h2>
 <p>This is the last of the python native sections to illustrate hown pumps are managed in our solver.  After this is done, we will focus on EPANET as the computation engine, but have our homebrew framework to examine from an algorithmic aspect if necessary.</p>
 <p>Herein we will simply add a few bits of code to the simulator, modify the input file structure then will have a homebrew tool that mimics most features of professional hydraulics software (except the error checking).   As before we will start with an example, beat our code to solve the example, then generailze.</p>
 <p>We will name the module <code class="docutils literal notranslate"><span class="pre">pipenet-pumps.py</span></code></p>
 <p>But first some background</p>
-<div class="section" id="background">
-<h3>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h3>
+<section id="background">
+<h3>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h3>
 <p>Water moves from higher to lower energy</p>
 <ul class="simple">
 <li><p>Path of least resistance</p></li>
@@ -501,51 +475,51 @@
 <li><p>Big <br>
 <img alt="" src="../../_images/pumpbig.png" /></p></li>
 </ul>
-</div>
-<div class="section" id="types">
-<h3>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="positive-fixed-displacement-pumps">
-<h4>Positive (Fixed) Displacement Pumps<a class="headerlink" href="#positive-fixed-displacement-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="types">
+<h3>Types<a class="headerlink" href="#types" title="Link to this heading">#</a></h3>
+<section id="positive-fixed-displacement-pumps">
+<h4>Positive (Fixed) Displacement Pumps<a class="headerlink" href="#positive-fixed-displacement-pumps" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Fixed volume of fluid is displaced each cycle regardless of
 system static head/pressure</p></li>
 <li><p>Lower flow rates and higher head than non-positive pumps</p></li>
 </ul>
-</div>
-<div class="section" id="variable-displacement-pumps">
-<h4>Variable Displacement Pumps<a class="headerlink" href="#variable-displacement-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="variable-displacement-pumps">
+<h4>Variable Displacement Pumps<a class="headerlink" href="#variable-displacement-pumps" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Varying volume of fluid is displaced dependent on system static
 head/pressure (back pressure)</p></li>
 </ul>
-</div>
-<div class="section" id="examples-of-fixed-displacement-pumps">
-<h4>Examples of Fixed Displacement Pumps<a class="headerlink" href="#examples-of-fixed-displacement-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="examples-of-fixed-displacement-pumps">
+<h4>Examples of Fixed Displacement Pumps<a class="headerlink" href="#examples-of-fixed-displacement-pumps" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Screw Pumps</p></li>
 <li><p>Progressive Cavity Pumps</p></li>
 <li><p>Reciprocating Pumps</p></li>
 </ul>
-</div>
-<div class="section" id="images-of-positive-displacement-pumps">
-<h4>Images of Positive Displacement Pumps<a class="headerlink" href="#images-of-positive-displacement-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="images-of-positive-displacement-pumps">
+<h4>Images of Positive Displacement Pumps<a class="headerlink" href="#images-of-positive-displacement-pumps" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Screw Pumps <img alt="" src="../../_images/screwpump.png" /></p></li>
 <li><p>Progressive Cavity Pumps <img alt="" src="../../_images/cavitypump.png" /></p></li>
 <li><p>Reciprocating Pumps <img alt="" src="../../_images/pistonpump.png" /></p></li>
 </ul>
-</div>
-<div class="section" id="examples-of-variable-displacement-pumps">
-<h4>Examples of Variable Displacement Pumps<a class="headerlink" href="#examples-of-variable-displacement-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="examples-of-variable-displacement-pumps">
+<h4>Examples of Variable Displacement Pumps<a class="headerlink" href="#examples-of-variable-displacement-pumps" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Centrifugal (Radial-Flow) Pumps</p></li>
 <li><p>Propeller Pumps (Axial-Flow)</p></li>
 <li><p>Jet Pumps (Mixed-Flow)</p></li>
 </ul>
 <p><img alt="" src="../../_images/pumpclassification.png" /></p>
-</div>
-<div class="section" id="images-of-variable-displacement-pumps">
-<h4>Images of Variable Displacement Pumps<a class="headerlink" href="#images-of-variable-displacement-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="images-of-variable-displacement-pumps">
+<h4>Images of Variable Displacement Pumps<a class="headerlink" href="#images-of-variable-displacement-pumps" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>Centrifugal (Radial-Flow) Pumps <img alt="" src="../../_images/centifrugalpump.png" /></p></li>
 <li><p>Propeller Pumps (Axial-Flow) <img alt="" src="../../_images/axialfrowpump.png" /></p></li>
@@ -555,13 +529,13 @@ head/pressure (back pressure)</p></li>
 <p>A couple of explainatory videos are listed below.</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=BaEHVpKc-1Q">Explaination of Centrifugal Pump</a></p></li>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?feature=player_detailpage&amp;v=ECv1VwW6RTo#t=122">Lab-Scale model of a flexible impeller pump(Variable-Cavity;Positive Displacement)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?feature=player_detailpage&amp;amp;v=ECv1VwW6RTo#t=122">Lab-Scale model of a flexible impeller pump(Variable-Cavity;Positive Displacement)</a></p></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="section" id="pump-selection">
-<h3>Pump Selection<a class="headerlink" href="#pump-selection" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="pump-selection">
+<h3>Pump Selection<a class="headerlink" href="#pump-selection" title="Link to this heading">#</a></h3>
 <p>A primary design activity is selecting or sizing a pump for a specific application.  The protocol is:</p>
 <ul class="simple">
 <li><p>Design conditions are specified by system hydraulics (i.e. energy equation at desired flow rate)</p></li>
@@ -577,8 +551,8 @@ head/pressure (back pressure)</p></li>
 <li><p>Is pump efficiency close to optimal for the particular pump?</p></li>
 <li><p>Is Net Positive Suction Head Available (NPSHa) large enough for the particular pump at the operating point (and start-up)?</p></li>
 </ul>
-<div class="section" id="system-curve">
-<h4>System Curve<a class="headerlink" href="#system-curve" title="Permalink to this headline">¶</a></h4>
+<section id="system-curve">
+<h4>System Curve<a class="headerlink" href="#system-curve" title="Link to this heading">#</a></h4>
 <p>A system (characteristic) curve is a plot of required head versus flow rate in a hydraulic system.<br />
 The curve depicts how much energy is needed to maintain a steady flow under the supplied conditions.</p>
 <p>The curve is constructed at the pump location and relates the required added head (at a particular flowrate) needed to be supplied by some pump.</p>
@@ -590,9 +564,9 @@ The curve depicts how much energy is needed to maintain a steady flow under the 
 <p><img alt="" src="../../_images/system-equation.png" /></p>
 <p>The equation tells us that the added head has to be at least 30 meters just to keep the reservoirs at the two levels shown, if any flow is to occur the pump must supply more than 30 meters of head at a prescribed flow rate.  The zero flow head value is called the shutoff head.  The equation plots as the figure below</p>
 <p><img alt="" src="../../_images/system-curve.png" /></p>
-</div>
-<div class="section" id="pump-curve-s">
-<h4>Pump Curve(s)<a class="headerlink" href="#pump-curve-s" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="pump-curve-s">
+<h4>Pump Curve(s)<a class="headerlink" href="#pump-curve-s" title="Link to this heading">#</a></h4>
 <p>Pump curves are supplied by the manufacturer and convey performance of a specific pump.
 Information ususally includes:</p>
 <ul class="simple">
@@ -603,36 +577,36 @@ Information ususally includes:</p>
 <li><p>The speed of the pump (RPM)</p></li>
 <li><p>The required Net Positive Suction Head (<span class="math notranslate nohighlight">\(NPSH_r\)</span>)</p></li>
 </ul>
-</div>
-<div class="section" id="an-example-pump-curve-is-shown-below">
-<h4>An example pump curve is shown below<a class="headerlink" href="#an-example-pump-curve-is-shown-below" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="an-example-pump-curve-is-shown-below">
+<h4>An example pump curve is shown below<a class="headerlink" href="#an-example-pump-curve-is-shown-below" title="Link to this heading">#</a></h4>
 <p><img alt="" src="../../_images/pump-curve.png" /></p>
-</div>
-<div class="section" id="another-example-curve-for-a-different-pump">
-<h4>Another example curve for a different pump<a class="headerlink" href="#another-example-curve-for-a-different-pump" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="another-example-curve-for-a-different-pump">
+<h4>Another example curve for a different pump<a class="headerlink" href="#another-example-curve-for-a-different-pump" title="Link to this heading">#</a></h4>
 <p><img alt="" src="../../_images/pump-curve-two.png" /></p>
-</div>
-<div class="section" id="comparing-different-pumps">
-<h4>Comparing Different Pumps<a class="headerlink" href="#comparing-different-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="comparing-different-pumps">
+<h4>Comparing Different Pumps<a class="headerlink" href="#comparing-different-pumps" title="Link to this heading">#</a></h4>
 <p><img alt="" src="../../_images/pumpA-B.png" /></p>
-</div>
-<div class="section" id="multiple-pumps">
-<h4>Multiple Pumps<a class="headerlink" href="#multiple-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="multiple-pumps">
+<h4>Multiple Pumps<a class="headerlink" href="#multiple-pumps" title="Link to this heading">#</a></h4>
 <p>Various multi-pump combinations can be employed to meet hydraulic needs - a lot of flexibility can be achieved with a few pumps and ingenious plumbing.</p>
 <p><img alt="" src="../../_images/multi-pumps-one.png" /></p>
-</div>
-<div class="section" id="parallel-pumps">
-<h4>Parallel Pumps<a class="headerlink" href="#parallel-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="parallel-pumps">
+<h4>Parallel Pumps<a class="headerlink" href="#parallel-pumps" title="Link to this heading">#</a></h4>
 <p>Parallel pumps add discharge for a given working head.</p>
 <p><img alt="" src="../../_images/parallelpumps.png" /></p>
-</div>
-<div class="section" id="series-pumps">
-<h4>Series Pumps<a class="headerlink" href="#series-pumps" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="series-pumps">
+<h4>Series Pumps<a class="headerlink" href="#series-pumps" title="Link to this heading">#</a></h4>
 <p>Series pumps add head for a given discharge.</p>
 <p><img alt="" src="../../_images/seriespumps.png" /></p>
-</div>
-<div class="section" id="suction-requirements">
-<h4>Suction Requirements<a class="headerlink" href="#suction-requirements" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="suction-requirements">
+<h4>Suction Requirements<a class="headerlink" href="#suction-requirements" title="Link to this heading">#</a></h4>
 <p>The most common cause of pumping system failure is poor suction conditions.</p>
 <p>Cavitation occurs when liquid pressure is reduced to the vapor pressure of the liquid, then the liquid flashes to make small gas bubbles, which are unstable and collapse back into liquid - this rapid localized phase change process imparts large destructive energy into the pump impeller and housing and quickly destroys the pump itself in addition to creating loss of priming.</p>
 <p>In a pipe system with a pump, cavitation will occur when the absolute pressure at the inlet (eye) falls below the vapor pressure of the water.</p>
@@ -666,17 +640,19 @@ Information ususally includes:</p>
 <li><p>Remember can run multiple pumps if a single pump is not available (really big pumps can be custom built, but we usually want to use off-the-shelf pumps)</p></li>
 </ul>
 <p>Now lets add these concepts into our network script</p>
-</div>
-</div>
-</div>
-<div class="section" id="example-4">
-<h2>Example 4<a class="headerlink" href="#example-4" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="example-4">
+<h2>Example 4<a class="headerlink" href="#example-4" title="Link to this heading">#</a></h2>
 <p>Build a script that includes a pump that supplies the network at the upper left corner
 and determine the flow distribution in <a class="reference internal" href="#netwiddapump"><span class="std std-numref">Fig. 15</span></a>.</p>
-<div class="figure align-default" id="netwiddapump">
+<figure class="align-default" id="netwiddapump">
 <a class="reference internal image-reference" href="../../_images/netwiddapump.png"><img alt="../../_images/netwiddapump.png" src="../../_images/netwiddapump.png" style="width: 400px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Pipe network for Example 4</span><a class="headerlink" href="#netwiddapump" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Pipe network for Example 4</span><a class="headerlink" href="#netwiddapump" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p><a class="reference internal" href="#netwiddapump"><span class="std std-numref">Fig. 15</span></a> is a pipe network for with supply and demands identified. Pipe
 lengths (in feet) and diameters (in feet) are also depicted.  The supply to the upper left corner node is through a pump with the following characteristic curve</p>
 <div class="math notranslate nohighlight">
@@ -985,9 +961,7 @@ node-arc incidence matrix
 [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
 -----------------------------
 pump id: 11.0 , shutoff head:  418.11 , constant:  0.25 , exponent:  1.86
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>###EXIT TYPE###
+###EXIT TYPE###
 Gradient near zero --exit and report current update
 iteration 12
 #####SIMULATION RESULTS#####
@@ -1027,9 +1001,9 @@ pump id: 11.0 , shutoff head:  418.11 , constant:  0.25 , exponent:  1.86  added
 <p class="admonition-title">Note</p>
 <p>The script still needs some fixes, because pumps are used to overwrite links, information for both are provided; hence there are duplicate entries in the pipes array - its easier for homebrew to accept this structure, professional code would build in logic toidentify the overwrite and at least supress it from the output.  This is as far with this script as we go, and will use it for a few examples and compare to EPANET results to convince ourselves we have reverse-engineered EPANET (and hence have a good working understanding of whats going on in the program), then will explore the EPANET toolbox as a replacement for <code class="docutils literal notranslate"><span class="pre">pipenet-pumps</span></code> to programmatically access EPANET.</p>
 </div>
-</div>
-<div class="section" id="pipenet-pumps-py-module-source">
-<h2><code class="docutils literal notranslate"><span class="pre">pipenet_pumps.py</span></code> module source<a class="headerlink" href="#pipenet-pumps-py-module-source" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="pipenet-pumps-py-module-source">
+<h2><code class="docutils literal notranslate"><span class="pre">pipenet_pumps.py</span></code> module source<a class="headerlink" href="#pipenet-pumps-py-module-source" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pipenet_pumps</span><span class="p">(</span><span class="n">infilename</span><span class="p">,</span><span class="n">verbose</span><span class="p">):</span> <span class="c1"># pass input file name as a parameter,pass verbose flag as string</span>
 
     <span class="c1"># hydraulic elements prototype functions</span>
@@ -1516,10 +1490,10 @@ pump id: 11.0 , shutoff head:  418.11 , constant:  0.25 , exponent:  1.86  added
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="readings">
-<h2>Readings<a class="headerlink" href="#readings" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
+</section>
+<section id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
 <li><p>Hibbeler, R.C, Fluid Mechanics, 2ed. Prentice Hall, 2018. ISBN: 9780134655413 pp. 469-490</p></li>
 <li><p>DF Elger, BC Williams, Crowe, CT and JA Roberson, <em>Engineering Fluid Mechanics 10th edition</em>, John Wiley &amp; Sons, Inc., 2013. <a class="reference external" href="http://54.243.252.9/ce-3305-webroot/3-Readings/EFM-15.pdf">http://54.243.252.9/ce-3305-webroot/3-Readings/EFM-15.pdf</a></p></li>
 <li><p>Cleveland, T. G. (2014) <em>Fluid Mechanics Notes to Accompany CE 3305 at Jade-Holshule (TTU Study Abroad 2015-2019)</em>, Department of Civil, Environmental, and Construction Engineering, Whitacre College of Engineering. <a class="reference external" href="http://54.243.252.9/ce-3305-webroot/3-Readings/ce3305-lecture12.pdf">http://54.243.252.9/ce-3305-webroot/3-Readings/ce3305-lecture12.pdf</a></p></li>
@@ -1538,8 +1512,8 @@ pump id: 11.0 , shutoff head:  418.11 , constant:  0.25 , exponent:  1.86  added
 <li><p>City of Houston; List Station Design Guidelines <a class="reference external" href="http://54.243.252.9/ce-3372-webroot/3-Readings/LiftStationCityofHouston/">http://54.243.252.9/ce-3372-webroot/3-Readings/LiftStationCityofHouston/</a></p></li>
 <li><p>Highway Stormwater Pump Station Design. FHWA-NHI-01-007. <a class="reference external" href="http://54.243.252.9/ce-3372-webroot/3-Readings/LiftStationDesign/">http://54.243.252.9/ce-3372-webroot/3-Readings/LiftStationDesign/</a></p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1553,7 +1527,7 @@ pump id: 11.0 , shutoff head:  418.11 , constant:  0.25 , exponent:  1.86  added
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./lessons/lesson01"
         },
         predefinedOutput: true
@@ -1561,56 +1535,130 @@ pump id: 11.0 , shutoff head:  418.11 , constant:  0.25 , exponent:  1.86  added
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        
-            
 
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="pythonhydraulicsmodule.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">1.5 The <code class="docutils literal notranslate"><span class="pre">pipenet</span></code> module</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="../lesson02/epanet-classic.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">2 EPANET Intro/Examples</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
-</div>
-        
-        </div>
-    </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Theodore G. Cleveland, Ph.D., P.E., M.ASCE, F.EWRI<br/>
-        
-            &copy; Copyright 2023.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pythonhydraulicsmodule.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1.5 The <code class="docutils literal notranslate"><span class="pre">pipenet</span></code> module</p>
       </div>
-    </div>
-  
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+    </a>
+    <a class="right-next"
+       href="../lesson02/epanet-classic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">2 EPANET Intro/Examples</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#purpose">Purpose</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types">Types</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-fixed-displacement-pumps">Positive (Fixed) Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-displacement-pumps">Variable Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-fixed-displacement-pumps">Examples of Fixed Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#images-of-positive-displacement-pumps">Images of Positive Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-variable-displacement-pumps">Examples of Variable Displacement Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#images-of-variable-displacement-pumps">Images of Variable Displacement Pumps</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-selection">Pump Selection</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-curve">System Curve</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pump-curve-s">Pump Curve(s)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-pump-curve-is-shown-below">An example pump curve is shown below</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#another-example-curve-for-a-different-pump">Another example curve for a different pump</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-different-pumps">Comparing Different Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-pumps">Multiple Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#parallel-pumps">Parallel Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#series-pumps">Series Pumps</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#suction-requirements">Suction Requirements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pipenet-pumps-py-module-source"><code class="docutils literal notranslate"><span class="pre">pipenet_pumps.py</span></code> module source</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#readings">Readings</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
+  <div class="footer-item">
+    
+<p class="component-author">
+By Theodore G. Cleveland, Ph.D., P.E., M.ASCE, F.EWRI
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
